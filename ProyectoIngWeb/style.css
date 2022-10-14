@@ -5,6 +5,7 @@
     --secundarioObscuro: rgb(233,287,2);
     --blanco: white;
     --negro: black;
+	--transparente: trasparent;
 }
 
 html{
@@ -19,7 +20,10 @@ html{
 /**Globales**/
 body{
     background-color: var(--primario);
-    font-size: 1.6rem;
+	background-image: url(https://www.menstylefashion.com/wp-content/uploads/2021/06/streetstyle-fashion.jpg);
+    background-repeat: no-repeat;
+	background-size:cover;
+	font-size: 1.6rem;
     line-height: 1.5;
 }
 p{
@@ -57,8 +61,9 @@ h3{
 }
 /**Footer**/
 .footer{
-    background-color: var(--primarioObscuro);
-    padding: 1rem;
+    /*background-color: var(--primarioObscuro);*/
+    background-color: var(--transparente);
+	padding: 1rem;
     margin-top: 2rem;
 }
 .footer__texto{
@@ -68,7 +73,8 @@ h3{
 }
 /**Navegacion**/
 .navegacion{
-    background-color: var(--primarioObscuro);
+/*background-color: var(--primarioObscuro);*/
+    background-color: var(--transparente);
     padding: 1rem 0;
     display: flex;
     justify-content: center;

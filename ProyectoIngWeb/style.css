@@ -19,7 +19,7 @@ html{
 
 /**Globales**/
 body{
-    background-color: var(--primario);
+    background-color: var(--blanco);
 	background-image: url(https://www.menstylefashion.com/wp-content/uploads/2021/06/streetstyle-fashion.jpg);
     background-repeat: no-repeat;
 	background-size:cover;
@@ -187,9 +187,13 @@ h3{
 .boton:hover{
     cursor: pointer;
 }
+.boton__transparente{
+    background-color: var(--transparente);
+}
 .boton__primario{
     background-color: var(--secundario);
 }
 .boton__secundario{
     background-color: var(--secundarioObscuro);
 }
+

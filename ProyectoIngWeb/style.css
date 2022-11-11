@@ -145,7 +145,7 @@ h3{
 }
 /**Formulario**/
 .formulario{
-    background-color: var(--primarioObscuro);
+    background-color: var(--blanco);
     font-family: Arial, Helvetica, sans-serif;
     color: var(--blanco);
     margin: 5rem auto 0 auto;
@@ -155,15 +155,17 @@ h3{
 .campo{
     display: flex;
     margin-bottom: 2rem;
+    margin-right: 2rem;
 }
 .campo__label{
-    flex: 0 0 18rem;
-    text-align: right;
-    padding-right: 2rem;
+    flex: 0 0 2rem;
+    text-align: left;
+    color: var(--primario);
+    padding-left: 2rem;
 }
 .campo__field{
     flex: 1;
-    border: 1px solid var(--blanco);
+    border: 1px solid var(--secundario);
 }
 /**Botones**/
 .boton{

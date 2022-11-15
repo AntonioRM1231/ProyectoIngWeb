@@ -155,10 +155,9 @@ h3{
 .campo{
     display: flex;
     margin-bottom: 2rem;
-    margin-right: 2rem;
 }
 .campo__label{
-    flex: 0 0 2rem;
+    flex: 1 0 18rem;
     text-align: left;
     color: var(--primario);
     padding-left: 2rem;

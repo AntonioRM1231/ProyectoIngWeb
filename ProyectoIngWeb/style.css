@@ -1,7 +1,9 @@
 :root{
-    --primario: #9c27b0;
+    /**--primario: #9c27b0;**/
+    --primario:#459a96;
+    --secundario: #484450;
     --primarioObscuro: #89119d;
-    --secundario: #FFCE00;
+    /**--secundario: #FFCE00;**/
     --secundarioObscuro: rgb(233,287,2);
     --blanco: white;
     --negro: black;
@@ -77,7 +79,7 @@ h3{
 /**Navegacion**/
 .navegacion{
 /*background-color: var(--primarioObscuro);*/
-    background-color: var(--secundario);
+    background-color: var(--transparente);
     padding: 1rem 0;
     display: flex;
     justify-content: center;
@@ -85,12 +87,15 @@ h3{
 }
 .navegacion__enlace{
     font-family: var(--fuetePrincipal);
-    color: var(--negro);
-    font-size: 3rem;
+    color: var(--secundario);
+    font-size: 2rem;
+}
+.navegacion__enlace--medio{
+    margin-left: 48rem;
 }
 .navegacion__enlace--activo,
 .navegacion__enlace:hover{
-    color: var(--blanco);
+    color: var(--primario);
 }
 /**Grid**/
 .grid{
@@ -149,21 +154,21 @@ h3{
 /**Formulario**/
 .formulario{
     background-color: var(--blanco);
-    font-family: var(--fuetePrincipal);
+    font-family: var(--fuenteBold);
     color: var(--blanco);
     margin: 5rem auto 0 auto;
     width: 95%;
-    padding: 5rem;
+    padding: 1rem;
 }
 .campo{
     display: flex;
     margin-bottom: 2rem;
 }
 .campo__label{
-    flex: 1 0 18rem;
+    flex: 0 0 18rem;
     text-align: left;
-    color: var(--primario);
-    padding-left: 2rem;
+    color: var(--secundario);
+    padding-left: 0rem;
 }
 .campo__field{
     flex: 1;
@@ -177,7 +182,7 @@ h3{
     text-align: center;
     padding: 1rem 3rem;
     font-size: 1.8rem;
-    text-transform: uppercase;
+    /**text-transform: uppercase;**/
     font-weight: 700;
     margin-bottom: none;
     border: none;
@@ -195,16 +200,11 @@ h3{
     background-color: var(--transparente);
 }
 .boton__primario{
-    background-color: var(--secundario);
+    background-color: var(--primario);
 }
 .boton__secundario{
-    background-color: var(--secundarioObscuro);
+    background-color: var(--secundario);
 }
 /**Contenedores**/
-.contenedor__head{
-    margin-top: none;
-    margin-bottom: none;
-    margin-left: 18rem;
-    margin-right: none;
-}
+
 

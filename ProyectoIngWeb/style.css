@@ -6,6 +6,9 @@
     --blanco: white;
     --negro: black;
 	--transparente: trasparent;
+    --fuentePrincipal:'Nunito', sans-serif;
+    --fuenteBold:'Nunito', sans-serif,700;
+    
 }
 
 html{
@@ -20,16 +23,16 @@ html{
 /**Globales**/
 body{
     background-color: var(--blanco);
-	background-image: url(https://www.menstylefashion.com/wp-content/uploads/2021/06/streetstyle-fashion.jpg);
-    background-repeat: no-repeat;
+	/**background-image: url(https://www.menstylefashion.com/wp-content/uploads/2021/06/streetstyle-fashion.jpg);
+    **/background-repeat: no-repeat;
 	background-size:cover;
 	font-size: 1.6rem;
     line-height: 1.5;
 }
 p{
     font-size: 1.8rem;
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--blanco);
+    font-family: var(--fuetePrincipal);
+    color: var(--negro);
 }
 a{
     text-decoration: none;
@@ -40,10 +43,10 @@ img{
 h1,h2,h3{
     text-align: center;
     color: var(--secundario);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--fuenteBold);
 }
 h1{
-    font: 4rem;
+    font-size: 4rem;
 }
 h2{
     font-size: 3.2rem;
@@ -67,27 +70,27 @@ h3{
     margin-top: 2rem;
 }
 .footer__texto{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--fuetePrincipal);
     text-align: center;
     font-size: 2.2rem;
 }
 /**Navegacion**/
 .navegacion{
 /*background-color: var(--primarioObscuro);*/
-    background-color: var(--transparente);
+    background-color: var(--secundario);
     padding: 1rem 0;
     display: flex;
     justify-content: center;
     gap: 2rem;
 }
 .navegacion__enlace{
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--blanco);
+    font-family: var(--fuetePrincipal);
+    color: var(--negro);
     font-size: 3rem;
 }
 .navegacion__enlace--activo,
 .navegacion__enlace:hover{
-    color: var(--secundario);
+    color: var(--blanco);
 }
 /**Grid**/
 .grid{
@@ -117,7 +120,7 @@ h3{
 }
 .producto__nombre,
 .producto__precio{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--fuetePrincipal);
     margin: 1rem 0;
     text-align: center;
     list-style: 1.2;
@@ -146,7 +149,7 @@ h3{
 /**Formulario**/
 .formulario{
     background-color: var(--blanco);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--fuetePrincipal);
     color: var(--blanco);
     margin: 5rem auto 0 auto;
     width: 95%;
@@ -169,16 +172,16 @@ h3{
 /**Botones**/
 .boton{
     display: block;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--fuentePrincipal);
     color: var(--blanco);
     text-align: center;
     padding: 1rem 3rem;
     font-size: 1.8rem;
     text-transform: uppercase;
     font-weight: 700;
-    margin-bottom: 2rem;
+    margin-bottom: none;
     border: none;
-    margin-left: auto;
+    /**margin-left: auto;**/
 }
 @media (min-width: 768px){
     .boton{
@@ -196,5 +199,12 @@ h3{
 }
 .boton__secundario{
     background-color: var(--secundarioObscuro);
+}
+/**Contenedores**/
+.contenedor__head{
+    margin-top: none;
+    margin-bottom: none;
+    margin-left: 18rem;
+    margin-right: none;
 }
 

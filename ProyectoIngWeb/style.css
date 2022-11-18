@@ -82,8 +82,8 @@ h3{
     background-color: var(--transparente);
     padding: 1rem 0;
     display: flex;
-    justify-content: center;
-    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
 }
 .navegacion__enlace{
     font-family: var(--fuetePrincipal);
@@ -96,6 +96,17 @@ h3{
 .navegacion__enlace--activo,
 .navegacion__enlace:hover{
     color: var(--primario);
+}
+.barra{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+.barra__left{
+    margin-left: 2rem;
+}
+.barra__right{
+    margin-right: 2rem;
 }
 /**Grid**/
 .grid{

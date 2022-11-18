@@ -61,9 +61,6 @@ h3{
     display: flex;
     justify-content: center;
 }
-.header__logo{
-    margin:3rem 0;
-}
 /**Footer**/
 .footer{
     /*background-color: var(--primarioObscuro);*/
@@ -82,7 +79,7 @@ h3{
     background-color: var(--transparente);
     padding: 1rem 0;
     display: flex;
-    justify-content: space-between;
+    justify-content:space-around;
     align-items: center;
 }
 .navegacion__enlace{
@@ -97,7 +94,7 @@ h3{
 .navegacion__enlace:hover{
     color: var(--primario);
 }
-.barra{
+.navegacion__barra{
     display: flex;
     justify-content: center;
     gap: 2rem;
@@ -108,6 +105,16 @@ h3{
 .barra__right{
     margin-right: 2rem;
 }
+.navegacion__logo{
+    justify-content: center;
+}
+.navegacion__logo__img{
+    width: 20%;
+    height: 20%;
+    margin-top: none;
+    margin-bottom: none;
+}
+
 /**Grid**/
 .grid{
     display: grid;

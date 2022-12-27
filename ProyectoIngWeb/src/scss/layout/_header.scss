@@ -1,0 +1,30 @@
+@use 'base/variables' as v;
+.header {
+    display: flex;
+    justify-content: center;
+}
+.navegacion{
+    background-color: v.$transparente;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    a{
+        font-family: v.$fuente_principal;
+        font-size: 2rem;
+        color: v.$marron;
+
+        &:hover {
+            color: v.$agua;
+        }
+    }
+    img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        width: 25%;
+        height: auto;
+    }
+}

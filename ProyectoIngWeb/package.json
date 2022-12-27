@@ -1,0 +1,35 @@
+{
+  "name": "proyectoingweb",
+  "version": "1.0.0",
+  "description": " Proyecto de desarrollo web cuidado con el michi",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass src/scss:build/css",
+    "css": "gulp css",
+    "dev": "gulp dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AntonioRM1231/ProyectoIngWeb.git"
+  },
+  "keywords": [
+    "HTML",
+    "CSS",
+    "SCSS",
+    "SASS",
+    "GULP",
+    "JS"
+  ],
+  "author": "Rodriguez Salto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AntonioRM1231/ProyectoIngWeb/issues"
+  },
+  "homepage": "https://github.com/AntonioRM1231/ProyectoIngWeb#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.57.1"
+  }
+}

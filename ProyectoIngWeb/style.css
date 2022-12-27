@@ -192,13 +192,13 @@ h3{
     display: flex;
     margin-bottom: 2rem;
 }
-.campo__label{
+.campo__label{/*label*/
     flex: 0 0 18rem;
     text-align: left;
     color: var(--secundario);
     padding-left: 0rem;
 }
-.campo__field{
+.campo__field{/*input*/
     flex: 1;
     border: 1px solid var(--secundario);
 }

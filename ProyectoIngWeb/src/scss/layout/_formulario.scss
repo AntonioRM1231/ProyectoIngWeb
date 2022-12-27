@@ -1,0 +1,24 @@
+@use 'base/variables' as v;
+.formulario{
+    background-color: v.$blanco;
+    font-family: v.$fuente_principal;
+    color: v.$blanco;
+    margin: 5rem auto 0 auto;
+    width: 95%;
+    padding: 1rem;
+    
+}
+.campo{
+    display: flex;
+    margin-bottom: 2rem;
+    .label{
+        flex: 0 0 18rem;
+        text-align: left;
+        color: v.$marron;
+        padding-left: 0rem;
+    }
+    .field{
+        flex: 1;
+        border: 1px solid v.$marron;
+    }
+}

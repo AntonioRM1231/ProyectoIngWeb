@@ -1,0 +1,8 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+.boton-marron{
+    @include m.boton(v.$marron, inline-block);
+}
+.boton-agua{
+    @include m.boton(v.$agua, inline-block);
+}

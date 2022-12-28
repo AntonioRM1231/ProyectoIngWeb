@@ -1,0 +1,52 @@
+@use 'base/variables' as v; 
+@use 'base/mixins' as m;
+
+.contenedor-anuncio{
+    padding-bottom: 2rem;
+    @include m.tablet{
+        @include m.grid(3, 2rem);
+    }  
+}
+.anuncio{
+    background-color:#e1e6e3;
+    //border: 1px solid #bfd6c7;
+    border: 1px solid v.$negro;
+    &:hover {
+        color: v.$rosa;
+    }
+    h3{
+        color: v.$marron;
+        padding-top: 2rem;
+    }
+}
+.precio{
+    font-size: 2rem;
+    color: v.$agua;
+    text-align: center;
+    padding-top: 1rem;
+}
+.cuerpo-anuncio{
+    padding-bottom: 2rem;
+    @include m.tablet{
+        @include m.grid(2, 2rem);
+    }
+}
+.anuncio-izq{
+    padding-bottom: 2rem;
+    @include m.tablet{
+        @include m.grid(2, 2rem);
+    }
+}
+.anuncio-der{
+    h2{
+        text-align: justify;
+    }
+    p{
+        font-size: 3rem;
+        color: v.$agua;
+        padding-top: 1rem;
+    }
+}
+.pics{
+    border: 1px solid v.$negro;
+}

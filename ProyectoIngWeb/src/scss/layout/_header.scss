@@ -1,15 +1,19 @@
 @use 'base/variables' as v;
+@use 'base/mixins' as m;
 .header {
     display: flex;
     justify-content: center;
 }
 .navegacion{
-    background-color: v.$transparente;
-    padding: 1rem 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
+    @include m.tablet{
+        background-color: v.$transparente;
+        padding: 1rem 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    } 
+    
     a{
         font-family: v.$fuente_principal;
         font-size: 2rem;

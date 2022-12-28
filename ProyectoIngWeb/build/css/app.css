@@ -329,7 +329,6 @@ body {
 p {
   font-size: 1.8rem;
   font-family: "Nunito", sans-serif;
-  color: black;
 }
 
 .contenedor {
@@ -364,18 +363,50 @@ h3 {
   font-size: 2.4rem;
 }
 
+.boton-marron {
+  background-color: #484450;
+  font-family: "Nunito", sans-serif;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  text-align: center;
+  margin-top: 1rem;
+  display: inline-block;
+}
+.boton-marron:hover {
+  background-color: #3c3842;
+}
+
+.boton-agua {
+  background-color: #459a96;
+  font-family: "Nunito", sans-serif;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  text-align: center;
+  margin-top: 1rem;
+  display: inline-block;
+}
+.boton-agua:hover {
+  background-color: #3d8885;
+}
+
 .header {
   display: flex;
   justify-content: center;
 }
 
-.navegacion {
-  background-color: transparent;
-  padding: 1rem 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
+@media (min-width: 768px) {
+  .navegacion {
+    background-color: transparent;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
 }
 .navegacion a {
   font-family: "Nunito", sans-serif;
@@ -416,4 +447,79 @@ h3 {
 .campo .field {
   flex: 1;
   border: 1px solid #484450;
+}
+
+.contenedor-anuncio {
+  padding-bottom: 2rem;
+}
+@media (min-width: 768px) {
+  .contenedor-anuncio {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+.anuncio {
+  background-color: #e1e6e3;
+  border: 1px solid black;
+}
+.anuncio:hover {
+  color: #89119d;
+}
+.anuncio h3 {
+  color: #484450;
+  padding-top: 2rem;
+}
+
+.precio {
+  font-size: 2rem;
+  color: #459a96;
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.cuerpo-anuncio {
+  padding-bottom: 2rem;
+}
+@media (min-width: 768px) {
+  .cuerpo-anuncio {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+.anuncio-izq {
+  padding-bottom: 2rem;
+}
+@media (min-width: 768px) {
+  .anuncio-izq {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+.anuncio-der h2 {
+  text-align: justify;
+}
+.anuncio-der p {
+  font-size: 3rem;
+  color: #459a96;
+  padding-top: 1rem;
+}
+
+.pics {
+  border: 1px solid black;
+}
+
+.site-footer {
+  background-color: #bfd6c7;
+  padding: 2rem;
+}
+.site-footer p {
+  margin: 0;
+  text-align: center;
+  color: #484450;
 }

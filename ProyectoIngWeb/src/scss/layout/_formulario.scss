@@ -4,9 +4,16 @@
     font-family: v.$fuente_principal;
     color: v.$blanco;
     margin: 5rem auto 0 auto;
-    width: 95%;
+    //width: 95%;
     padding: 1rem;
     
+}
+.formulario-select{
+    background-color: v.$blanco;
+    font-family: v.$fuente_principal;
+    margin: 2rem auto 0 auto;
+    //width: 95%;
+    padding: 1rem;
 }
 .campo{
     display: flex;
@@ -16,6 +23,12 @@
         text-align: left;
         color: v.$marron;
         padding-left: 0rem;
+    }
+    .label-select{
+        font-size: 2rem;
+        text-align: left;
+        color: v.$marron;
+        padding-right: 2rem;
     }
     .field{
         flex: 1;

@@ -430,7 +430,13 @@ h3 {
   font-family: "Nunito", sans-serif;
   color: white;
   margin: 5rem auto 0 auto;
-  width: 95%;
+  padding: 1rem;
+}
+
+.formulario-select {
+  background-color: white;
+  font-family: "Nunito", sans-serif;
+  margin: 2rem auto 0 auto;
   padding: 1rem;
 }
 
@@ -443,6 +449,12 @@ h3 {
   text-align: left;
   color: #484450;
   padding-left: 0rem;
+}
+.campo .label-select {
+  font-size: 2rem;
+  text-align: left;
+  color: #484450;
+  padding-right: 2rem;
 }
 .campo .field {
   flex: 1;
@@ -512,6 +524,27 @@ h3 {
 
 .pics {
   border: 1px solid black;
+}
+
+.contenedor-nosotros {
+  width: 95%;
+  padding-top: 2rem;
+  padding-bottom: none;
+}
+@media (min-width: 768px) {
+  .contenedor-nosotros {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+.img-nosotros {
+  width: 95%;
+}
+
+.desc-nosotros p {
+  text-align: justify;
 }
 
 .site-footer {

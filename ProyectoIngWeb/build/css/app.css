@@ -398,12 +398,41 @@ h3 {
   justify-content: center;
 }
 
+.logotipo {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 25%;
+  height: auto;
+}
 @media (min-width: 768px) {
-  .navegacion {
-    background-color: transparent;
-    padding: 1rem 0;
+  .logotipo {
     display: flex;
     justify-content: center;
+    margin: auto;
+    width: 13%;
+    height: auto;
+  }
+}
+
+.barra {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .barra {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.navegacion {
+  display: none;
+}
+@media (min-width: 768px) {
+  .navegacion {
+    display: flex;
     align-items: center;
     gap: 2rem;
   }
@@ -423,6 +452,23 @@ h3 {
   margin: auto;
   width: 25%;
   height: auto;
+}
+
+@media (min-width: 768px) {
+  .mobile-menu {
+    display: none;
+  }
+}
+
+.mostrar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .mostrar {
+    flex-direction: row;
+  }
 }
 
 .formulario {

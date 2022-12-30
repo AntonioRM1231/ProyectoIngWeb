@@ -4,12 +4,33 @@
     display: flex;
     justify-content: center;
 }
-.navegacion{
+.logotipo{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 25%;
+    height: auto;
     @include m.tablet{
-        background-color: v.$transparente;
-        padding: 1rem 0;
         display: flex;
         justify-content: center;
+        margin: auto;
+        width: 13%;
+        height: auto;
+    }
+}
+.barra{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include m.tablet{
+        flex-direction: row;
+        justify-content: center;
+    } 
+}
+.navegacion{
+    display: none;
+    @include m.tablet{
+        display: flex;
         align-items: center;
         gap: 2rem;
     } 
@@ -30,5 +51,18 @@
         margin: auto;
         width: 25%;
         height: auto;
+    }
+}
+.mobile-menu{
+    @include m.tablet{
+        display: none;
+    }
+}
+.mostrar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include m.tablet{
+        flex-direction: row;
     }
 }

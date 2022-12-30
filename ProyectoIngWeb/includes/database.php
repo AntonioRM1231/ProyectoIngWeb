@@ -1,7 +1,7 @@
 <?php
 
 //host,usuario,contraseña,base de datos a la que nos vamos a conectar
-$db = mysqli_connect('localhost','root','anahi1610','ccm');
+//$db = mysqli_connect('localhost','root','anahi1610','ccm');//Comentado porque ya se hizo otra conexion
 
 if(!$db){
     echo "Se ha producido un error en la conexión";

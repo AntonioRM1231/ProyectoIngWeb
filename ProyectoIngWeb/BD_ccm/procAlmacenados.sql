@@ -4,7 +4,7 @@ SHOW TABLES;
 DESCRIBE cliente;
 DESCRIBE tarjeta;
 SELECT * FROM cliente;
-SELECT * FROM tarjeta;
+SELECT * FROM tarjeta;   
 
 /* PROCEDIMIENTOS ALMACENADOS */
 DROP PROCEDURE IF EXISTS ingresarPedido;

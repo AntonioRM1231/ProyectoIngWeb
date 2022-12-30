@@ -127,8 +127,25 @@ SELECT * FROM pedido;
 
 
 /*INGRESAR VALORES EN LA TABLA DE zapato*/
-DESCRIBE zapato;
+DELIMITER $$
+CREATE PROCEDURE ingresarZapato(
+	IN _Color VARCHAR(25),
+	IN _NumeroDisp INT,
+    IN _Disponibilidad INT,
+    IN _Marca VARCHAR(25),
+    IN _Modelo VARCHAR(25),
+    IN _PrecioCompra DECIMAL(7,2),
+    IN _PrecioVenta DECIMAL(7,2),
+    IN _ImagenA VARCHAR(150),
+    IN _ImagenB VARCHAR(150),
+    IN _ImagenC VARCHAR(150),
+    IN _ImagenD VARCHAR(150)
+)
+BEGIN
+	INSERT INTO 
+    zapato (Color,NumeroDisp,Disponibilidad,Marca,Modelo,PrecioCompra,PrecioVenta,imagenA,imagenB,imagenC,imagenD)
+    VALUES (_Color,_NumeroDisp,_Disponibilidad,_Marca,_Modelo,_PrecioCompra,_PrecioVenta,_ImagenA,_ImagenB,_ImagenC,_ImagenD);
+END;
+$$
+CALL ingresarZapato('Azul',4,30,'Dorothy Gaynor','Bota',700.00,800.00,'equipolocal','equipolocal','equipolocal','equipolocal');
 SELECT * FROM zapato;
-INSERT INTO 
-    zapato (Color,NumeroDisp,Disponibilidad,Marca,Modelo,PrecioCompra,PrecioVenta)
-    VALUES ('Rosa',3,25,'Nike','X',400.00,500.00);

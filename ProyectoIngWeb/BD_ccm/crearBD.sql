@@ -44,6 +44,7 @@ CREATE TABLE pedido(
     ID_Direccion INT NOT NULL,
     FechaPedido DATE DEFAULT NULL,
     HoraPedido TIME DEFAULT NULL,
+    CorreoE VARCHAR(70),
     PRIMARY KEY (ID_Pedido),
     KEY ID_Zapato (ID_Zapato),
     CONSTRAINT FK_ID_Zapato
@@ -52,7 +53,11 @@ CREATE TABLE pedido(
     KEY ID_Direccion (ID_Direccion),
     CONSTRAINT FK_ID_Direccion
     FOREIGN KEY (ID_Direccion)
-    REFERENCES direccion (ID_Direccion)
+    REFERENCES direccion (ID_Direccion),
+    KEY CorreoE (CorreoE),
+    CONSTRAINT FK_CorreoE
+    FOREIGN KEY (CorreoE)
+    REFERENCES cliente (CorreoE)
 );
 
 CREATE TABLE cliente(
@@ -64,18 +69,18 @@ CREATE TABLE cliente(
     ApMaterno VARCHAR(18) NOT NULL,
     Edad INT NOT NULL,
     NumTelefono VARCHAR(10) NOT NULL,
-    ID_Pedido INT,
     NumeroTarjeta VARCHAR(17),
     PRIMARY KEY (CorreoE),
-    KEY ID_Pedido (ID_Pedido),
-    CONSTRAINT FK_ID_Pedido
-    FOREIGN KEY (ID_Pedido)
-    REFERENCES pedido (ID_Pedido),
     KEY NumeroTarjeta (NumeroTarjeta),
     CONSTRAINT FK_NumeroTarjeta
     FOREIGN KEY (NumeroTarjeta)
     REFERENCES tarjeta (NumeroTarjeta)
 );
+/*Ignorar este código :) */
+ALTER TABLE cliente DROP FOREIGN KEY FK_ID_Pedido;/*Eliminar el constraint de la llave foránea*/
+ALTER TABLE cliente DROP COLUMN ID_Pedido;
+/*Ignorar hasta aquí :)*/
+DESCRIBE cliente;
 
 CREATE TABLE administrador(
 	UsuarioAdmin VARCHAR(50) NOT NULL,

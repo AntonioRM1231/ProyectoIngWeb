@@ -7,7 +7,7 @@ SELECT * FROM cliente;
 SELECT * FROM tarjeta;
 
 /* PROCEDIMIENTOS ALMACENADOS */
-DROP PROCEDURE IF EXISTS ingresarDireccion;
+DROP PROCEDURE IF EXISTS ingresarPedido;
 
 /*INGRESAR VALORES EN LA TABLA DE cliente CUANDO AÚN NO REGISTRA TARJETA*/
 DELIMITER $$
@@ -106,10 +106,29 @@ BEGIN
 END;
 $$
 CALL ingresarDireccion('Manuel A. Camacho','18-A',' ',53770,'El Chamizal','Naucalpan','México');
-DESCRIBE direccion;
 SELECT * FROM direccion;
 
 
 /*INGRESAR VALORES EN LA TABLA DE pedido */
+DELIMITER $$
+CREATE PROCEDURE ingresarPedido(
+	IN _ID_Zapato INT,
+	IN _ID_Direccion INT,
+    IN _CorreoE VARCHAR(70)
+)
+BEGIN
+	INSERT INTO 
+    pedido (ID_Zapato,ID_Direccion,CorreoE)
+    VALUES (_ID_Zapato,_ID_Direccion,_CorreoE);
+END;
+$$
+CALL ingresarPedido(1,1,'anahisalto16@gmail.com');
+SELECT * FROM pedido;
+
 
 /*INGRESAR VALORES EN LA TABLA DE zapato*/
+DESCRIBE zapato;
+SELECT * FROM zapato;
+INSERT INTO 
+    zapato (Color,NumeroDisp,Disponibilidad,Marca,Modelo,PrecioCompra,PrecioVenta)
+    VALUES ('Rosa',3,25,'Nike','X',400.00,500.00);

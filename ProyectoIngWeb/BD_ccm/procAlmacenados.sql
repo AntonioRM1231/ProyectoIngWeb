@@ -7,11 +7,11 @@ SELECT * FROM cliente;
 SELECT * FROM tarjeta;
 
 /* PROCEDIMIENTOS ALMACENADOS */
-DROP PROCEDURE IF EXISTS ingresarClienteST;
+DROP PROCEDURE IF EXISTS ingresarDireccion;
 
 /*INGRESAR VALORES EN LA TABLA DE cliente CUANDO AÚN NO REGISTRA TARJETA*/
 DELIMITER $$
-CREATE PROCEDURE ingresarClienteST(
+CREATE PROCEDURE ingresarClienteST(/*ST->Sin Tarjeta*/
 	IN _CorreoE VARCHAR(70),
 	IN _NombreUsuario VARCHAR(50),
     IN _Contrasenia VARCHAR(50),
@@ -32,7 +32,7 @@ SELECT * FROM cliente;
 
 /*INGRESAR VALORES EN LA TABLA DE cliente CUANDO YA REGISTRÓ TARJETA*/
 DELIMITER $$
-CREATE PROCEDURE ingresarClienteCT(
+CREATE PROCEDURE ingresarClienteCT(/*CT -> Con Tarjeta*/
 	IN _CorreoE VARCHAR(70),
 	IN _NombreUsuario VARCHAR(50),
     IN _Contrasenia VARCHAR(50),
@@ -62,7 +62,7 @@ BEGIN
 	UPDATE cliente SET NumeroTarjeta = _NumeroTarjeta WHERE CorreoE = _CorreoE;
 END;
 $$
-CALL ingActTarjetaEnCliente('nayeli@gmail.com','1236547898529634');
+CALL ingActTarjetaEnCliente('nayeli@gmail.com','1236547898529635');
 SELECT * FROM cliente;
 SELECT * FROM tarjeta;
 
@@ -83,11 +83,31 @@ BEGIN
     VALUES (_NumeroTarjeta,_CVC,_FechaVenc,_NombreTarjeta,_ApPatTarjeta,_ApMatTarjeta);
 END;
 $$
-CALL ingresarTarjeta('1236547898529634','123','1230','Anahi','S','C');
+CALL ingresarTarjeta('1236547898529635','321','0629','Alina','S','C');
 SELECT * FROM tarjeta;
 
 /*INGRESAR VALORES EN LA TABLA DE direccion*/
-
+DELIMITER $$
+CREATE PROCEDURE ingresarDireccion(
+	IN _Calle VARCHAR(70),
+	IN _NumExt VARCHAR(8),
+    IN _NumInt VARCHAR(5),
+    IN _CP INT,
+    IN _Colonia VARCHAR(60),
+    IN _Municipio VARCHAR(70),
+    IN _Estado VARCHAR(60)
+)
+BEGIN
+	INSERT INTO 
+    direccion (Calle,NumExt,NumInt,CP,COLONIA,Municipio,Estado)
+    VALUES (_Calle,_NumExt,_NumInt,_CP,_Colonia,_Municipio,_Estado);
+    /*Se devuelve el ID de la dirección*/
+    SELECT MAX(ID_Direccion) AS ID_Dir FROM direccion;
+END;
+$$
+CALL ingresarDireccion('Manuel A. Camacho','18-A',' ',53770,'El Chamizal','Naucalpan','México');
+DESCRIBE direccion;
+SELECT * FROM direccion;
 
 
 /*INGRESAR VALORES EN LA TABLA DE pedido */

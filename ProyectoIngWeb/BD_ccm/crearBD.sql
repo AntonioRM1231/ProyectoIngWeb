@@ -44,7 +44,7 @@ CREATE TABLE pedido(
     ID_Direccion INT NOT NULL,
     FechaPedido DATE DEFAULT NULL,
     HoraPedido TIME DEFAULT NULL,
-    CorreoE VARCHAR(70),
+    CorreoE VARCHAR(70),/*ESTA COLUMNA TAMPOCO PUEDE IR VACIA D:*/
     PRIMARY KEY (ID_Pedido),
     KEY ID_Zapato (ID_Zapato),
     CONSTRAINT FK_ID_Zapato

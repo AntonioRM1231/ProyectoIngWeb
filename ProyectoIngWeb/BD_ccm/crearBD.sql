@@ -13,7 +13,7 @@ CREATE TABLE tarjeta(
     ApMatTarjeta VARCHAR(18) NOT NULL,
     PRIMARY KEY (NumeroTarjeta)
 );
-
+DESCRIBE zapato;
 CREATE TABLE zapato(
 	ID_Zapato INT NOT NULL AUTO_INCREMENT,
     Color VARCHAR(25) NOT NULL,
@@ -23,6 +23,10 @@ CREATE TABLE zapato(
     Modelo VARCHAR(25) NOT NULL,
     PrecioCompra DECIMAL(7,2) NOT NULL,
     PrecioVenta DECIMAL(7,2) NOT NULL,
+    imagenA VARCHAR(150),
+    imagenB VARCHAR(150),
+    imagenC VARCHAR(150),
+    imagenD VARCHAR(150),
     PRIMARY KEY (ID_Zapato)
 );
 

@@ -25,8 +25,8 @@ function obtenerServicios() : array{
             $clientes[$i]['ID_Pedido'] = $row['ID_Pedido'];
             $clientes[$i]['NumeroTarjeta'] = $row['NumeroTarjeta'];
             $i++;
-        }
-        /*
+        } 
+        /*  
         echo "<pre>";
             var_dump($clientes);
         echo "<pre>";*/
@@ -37,5 +37,5 @@ function obtenerServicios() : array{
         var_dump($th);
     }
 }
-
 obtenerServicios();
+

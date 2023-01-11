@@ -28,27 +28,43 @@
       <div class="offcanvas offcanvas-end" id="demo2">
         <div class="offcanvas-header">
           <h1>
-            Registrate
+            ¡Regístrate!
           </h1>
           <button class="btn-close" type="button" data-bs-dismiss="offcanvas"></button>
         </div>
         <div class="offcanvas-body">
-          <form class="formulario">
+          <form class="formulario" action="pru.php" method="get">
             <div class="campo">
-                <label class="label" for="name">NOMBRE</label>
-                <input class="field" type="text" id="name">
+                <label class="label">Correo Electrónico</label>
+                <input class="field" type="email" name="CorreoEf" placeholder="email@ejemplo.com">
             </div>
             <div class="campo">
-                <label class="label" for="lastname">APELLIDO</label>
-                <input class="field" type="text" id="lastname">
+                <label class="label">Nombre de Usuario</label>
+                <input class="field" type="text" name="NombreUsuariof" placeholder="Usuario">
             </div>
             <div class="campo">
-                <label class="label" for="email2">CORREO ELECTRONICO</label>
-                <input class="field" type="email" id="email2">
+                <label class="label">Contraseña</label>
+                <input class="field" type="password" name="Contraseniaf" placeholder="**********">
             </div>
             <div class="campo">
-                <label class="label" for="password2">CONTRASEÑA</label>
-                <input class="field" type="password" id="password2">
+                <label class="label">Nombre</label>
+                <input class="field" type="text" name="Nombref" placeholder="Nombre">
+            </div>
+            <div class="campo">
+                <label class="label">Apellido Paterno</label>
+                <input class="field" type="text" name="ApPaternof" placeholder="Apellido Paterno">
+            </div>
+            <div class="campo">
+                <label class="label">Apellido Materno</label>
+                <input class="field" type="text" name="ApMaternof" placeholder="Apellido Materno">
+            </div>
+            <div class="campo">
+                <label class="label">Edad</label>
+                <input class="field" type="number" name="Edadf" placeholder="00">
+            </div>
+            <div class="campo">
+                <label class="label">NumTelefono</label>
+                <input class="field" type="number" name="NumTelefonof" minlength="10" placeholder="1234567890">
             </div>
             <div class="campo">
                 <input type="submit" value="Enviar" class="boton-marron">

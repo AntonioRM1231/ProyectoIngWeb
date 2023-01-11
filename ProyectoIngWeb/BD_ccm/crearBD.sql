@@ -97,4 +97,8 @@ CREATE TABLE gerente(
     PRIMARY KEY (UsuarioGerente)
 );
 
+ALTER TABLE zapato ADD imagenA VARCHAR(150);
+ALTER TABLE zapato ADD imagenB VARCHAR(150);
+ALTER TABLE zapato ADD imagenC VARCHAR(150);
+ALTER TABLE zapato ADD imagenD VARCHAR(150);
 SHOW TABLES;

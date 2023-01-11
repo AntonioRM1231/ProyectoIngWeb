@@ -84,6 +84,7 @@ ALTER TABLE cliente DROP FOREIGN KEY FK_ID_Pedido;/*Eliminar el constraint de la
 ALTER TABLE cliente DROP COLUMN ID_Pedido;
 /*Ignorar hasta aquí :)*/
 DESCRIBE cliente;
+SELECT * FROM cliente;
 
 CREATE TABLE administrador(
 	UsuarioAdmin VARCHAR(50) NOT NULL,

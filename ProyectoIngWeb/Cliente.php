@@ -1,5 +1,6 @@
 <?php
-    class RegistroUsuarios{
+
+    class Cliente{
         private $CorreoE;
         private $NombreUsuario;
         private $Contrasenia;
@@ -73,3 +74,4 @@
             $this->NumeroTarjeta = $NumeroTarjeta;
         }
     }
+?>

@@ -1,6 +1,6 @@
 <?php
 include 'RegistroUsuarios.php';
 //echo 'Hola';
-//echo $CorreoEf;
-$registroUsuarios = new RegistroUsuarios();
+echo $CorreoEf;
+$registroUsuarios = new Cliente();
 echo $registroUsuarios->getCorreoE();

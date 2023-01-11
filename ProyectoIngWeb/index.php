@@ -1,6 +1,46 @@
    <?php
-        require 'includes/funciones.php';
-        incluirTemplate('header');
+      require 'includes/funciones.php';
+      require 'Cliente.php';
+      require 'conexionBD/connection.php';
+      incluirTemplate('header');
+
+
+
+      echo 'Hola 1';
+      $mysql = new connection();
+      $conexion = $mysql->get_connection();
+      echo 'Hola 2';
+      
+      $statement = $conexion->prepare('CALL ingresarClienteST(?,?,?,?,?,?,?,?)');
+      echo 'Hola 3';
+      $statement->bind_param('ssssssis',
+        $_POST['CorreoEf'],
+        $_POST['NombreUsuariof'],
+        $_POST['Contraseniaf'],
+        $_POST['Nombref'],
+        $_POST['ApPaternof'],
+        $_POST['ApMaternof'],
+        $_POST['Edadf'],
+        $_POST['NumTelefonof']
+    );
+      
+      echo 'Hola 4';
+      $statement->execute();
+      echo 'Hola 4-1';
+      $statement->close();
+      echo 'Hola 4-2';
+      $conexion->close();
+
+      echo 'Hola 5';
+      
+
+      if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        echo "<pre>";
+          var_dump($_POST);
+        echo "</pre>";
+      }
+
+        
     ?>
     <div class="offcanvas offcanvas-end" id="demo">
         <div class="offcanvas-header">
@@ -33,7 +73,7 @@
           <button class="btn-close" type="button" data-bs-dismiss="offcanvas"></button>
         </div>
         <div class="offcanvas-body">
-          <form class="formulario" action="pru.php" method="get">
+          <form class="formulario" method="POST" action="http://localhost/ProyectoIngWeb/ProyectoIngWeb/index.php">
             <div class="campo">
                 <label class="label">Correo Electrónico</label>
                 <input class="field" type="email" name="CorreoEf" placeholder="email@ejemplo.com">
@@ -60,11 +100,11 @@
             </div>
             <div class="campo">
                 <label class="label">Edad</label>
-                <input class="field" type="number" name="Edadf" placeholder="00">
+                <input class="field" type="number" name="Edadf" placeholder="00" min="0">
             </div>
             <div class="campo">
                 <label class="label">NumTelefono</label>
-                <input class="field" type="number" name="NumTelefonof" minlength="10" placeholder="1234567890">
+                <input class="field" type="number" name="NumTelefonof" minlength="10" placeholder="1234567890" min="0">
             </div>
             <div class="campo">
                 <input type="submit" value="Enviar" class="boton-marron">

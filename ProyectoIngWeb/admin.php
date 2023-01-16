@@ -1,12 +1,14 @@
   <?php
-    require_once 'conexionBD/connection.php';
-    $mysql = new connection();
-    $conexion = $mysql->get_connection();
+  require_once 'conexionBD/database.php';
+  require 'includes/funciones.php';
+  incluirTemplate('header_admin');
+//   $db = conectarDB();
+  $db = new connection();
+  $conexion = $db->get_connection();
     if($_SERVER['REQUEST_METHOD']==='POST'){
         echo "<pre>";
         var_dump($_POST);
         echo "</pre>";
-        /*
         $color = $_POST['color'];
         $numeroD = $_POST['numeroD'];
         $stock = $_POST['stock'];
@@ -14,22 +16,26 @@
         $modelo = $_POST['modelo'];
         $pcompra = $_POST['pcompra'];
         $pventa = $_POST['pventa'];
-        $img1 = '';
-        $img2 = '';
-        $img3 = '';
-        $img4 = '';*/
         echo 'hi1';
+        // //Insertar en la base de datos 
+        // $query = " INSERT INTO zapato (Color,NumeroDisp, Disponibilidad, Marca, Modelo, PrecioCompra, PrecioVenta, imagenA, imagenB, imagenC, imagenD)
+        //  VALUES ('$color','$numeroD','$stock','$marca','$modelo','$pcompra','$pventa','','','','')";
+        // //echo $query
+        // $resultado = mysqli_query($db,$query);
 
+        // if($resultado){
+        //     echo "Insertado correctamente";
+        // }
         $statement = $conexion->prepare('CALL ingresarZapato(?,?,?,?,?,?,?,?,?,?,?)');
         echo 'prueba';
         $statement->bind_param('siissddssss',
-            $_POST['color'],
-            $_POST['numeroD'],
-            $_POST['stock'],
-            $_POST['marca'],
-            $_POST['modelo'],
-            $_POST['pcompra'],
-            $_POST['pventa'],
+            $color,
+            $numeroD,
+            $stock,
+            $marca,
+            $modelo,
+            $pcompra,
+            $pventa,
             ' ',
             ' ',
             ' ',
@@ -43,9 +49,7 @@
         $conexion->close();
         echo 'hi5';
     }
-    require 'includes/funciones.php';
-    incluirTemplate('header_admin');
-  ?>
+   ?>
         <hr>
         <section id="#crear">
             <h2>Crear</h2>

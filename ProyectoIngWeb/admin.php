@@ -6,6 +6,7 @@
         echo "<pre>";
         var_dump($_POST);
         echo "</pre>";
+        /*
         $color = $_POST['color'];
         $numeroD = $_POST['numeroD'];
         $stock = $_POST['stock'];
@@ -16,44 +17,31 @@
         $img1 = '';
         $img2 = '';
         $img3 = '';
-        $img4 = '';
+        $img4 = '';*/
+        echo 'hi1';
 
-        $query="INSERT INTO zapato (Color,NumeroDisp,Disponibilidad,Marca,Modelo,PrecioCompra,PrecioVenta,imagenA,imagenB,imagenC,imagenD)
-        VALUES ('$color','$numD','$stock','$marca','$modelo','$pcompra','$pventa','$img1','$img2','$img3','$img4');";
-
-        $resultado=mysqli($conexion,$query);
-        /*
-        $newZapatoST = array(
-            'color' => $color,
-            'numeroD' => $numeroD,
-            'stock' => $stock,
-            'marca' => $marca,
-            'modelo' => $modelo,
-            'pcompra' => $pcompra,
-            'pventa' => $pventa, 
-            'img1' => $img1,
-            'img2'=> $img2,
-            'img3' => $img3,
-            'img4'=> $img4
-        );
         $statement = $conexion->prepare('CALL ingresarZapato(?,?,?,?,?,?,?,?,?,?,?)');
-        $statement->bind_param('siissiissss',
-        $newZapatoST['color'],
-        $newZapato['numeroD'],
-        $newZapato['stock'],
-        $newZapatoST['marca'],
-        $newZapatoST['modelo'],
-        $newZapatoST['pcompra'],
-        $newZapatoST['pventa'],
-        $newZapatoST['img1'],
-        $newZapatoST['img2'],
-        $newZapatoST['img3'],
-        $newZapatoST['img4']
+        echo 'prueba';
+        $statement->bind_param('siissddssss',
+            $_POST['color'],
+            $_POST['numeroD'],
+            $_POST['stock'],
+            $_POST['marca'],
+            $_POST['modelo'],
+            $_POST['pcompra'],
+            $_POST['pventa'],
+            ' ',
+            ' ',
+            ' ',
+            ' '
         );
+        echo 'hi';
         $statement->execute();
+        echo 'hi3';
         $statement->close();
+        echo 'hi4';
         $conexion->close();
-        */
+        echo 'hi5';
     }
     require 'includes/funciones.php';
     incluirTemplate('header_admin');

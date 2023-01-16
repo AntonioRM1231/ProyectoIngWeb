@@ -1,6 +1,6 @@
 <?php
     require_once 'connection.php';
-
+    echo 'esto es una prueba';
     $mysql = new connection();
     $conexion = $mysql->get_connection();
     /*Valores de prueba para almacenar en la base de datos*/
@@ -14,8 +14,10 @@
         'Edadp' => 21, 
         'NumTelefonop' => '5547677837'
     );
-
+    echo 'esto es una prueba intermedia';
+    var_dump($conexion);
     $statement = $conexion->prepare('CALL ingresarClienteST(?,?,?,?,?,?,?,?)');
+    echo 'esto es una prueba 2.0';
     $statement->bind_param('ssssssis',
         $newUsuarioST['CorreoEp'],
         $newUsuarioST['NombreUsuariop'],
@@ -26,6 +28,7 @@
         $newUsuarioST['Edadp'],
         $newUsuarioST['NumTelefonop']
     );
+    echo 'esto es una prueba fff';
     /**
      * s -> string
      * i -> int
@@ -35,4 +38,5 @@
     $statement->execute();
     $statement->close();
     $conexion->close();
+    echo 'esto es una prueba final';
 ?>

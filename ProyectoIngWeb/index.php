@@ -1,6 +1,7 @@
    <?php
-        require 'includes/funciones.php';
-        incluirTemplate('header');
+        // require 'includes/funciones.php';
+        // incluirTemplate('header');
+        include 'includes/templates/header.php';
     ?>
     <div class="offcanvas offcanvas-end" id="demo">
         <div class="offcanvas-header">

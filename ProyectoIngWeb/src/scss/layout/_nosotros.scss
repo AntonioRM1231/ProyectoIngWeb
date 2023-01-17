@@ -2,7 +2,7 @@
 @use 'base/mixins' as m;
 
 .contenedor-nosotros{
-    background-color: aqua;
+    background-color: v.$blanco;
     width: 95%;
     padding-top: 2rem;
     padding-bottom: none;

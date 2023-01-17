@@ -234,5 +234,7 @@ h3{
     background-color: var(--secundario);
 }
 /**Contenedores**/
-
+.alerta.error {
+    background-color: red;
+}
 

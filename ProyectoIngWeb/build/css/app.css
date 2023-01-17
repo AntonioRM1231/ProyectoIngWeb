@@ -396,6 +396,7 @@ h3 {
 .header {
   display: flex;
   justify-content: center;
+  background-color: aqua;
 }
 
 .logotipo {
@@ -572,7 +573,7 @@ h3 {
 }
 
 .contenedor-nosotros {
-  background-color: aqua;
+  background-color: white;
   width: 95%;
   padding-top: 2rem;
   padding-bottom: none;
@@ -601,4 +602,8 @@ h3 {
   margin: 0;
   text-align: center;
   color: #484450;
+}
+
+.alerta.error {
+  background-color: red;
 }

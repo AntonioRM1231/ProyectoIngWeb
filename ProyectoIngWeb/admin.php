@@ -1,14 +1,15 @@
   <?php
-  require_once 'conexionBD/database.php';
+  require 'conexionBD/database.php';
   require 'includes/funciones.php';
   incluirTemplate('header_admin');
-//   $db = conectarDB();
-  $db = new connection();
-  $conexion = $db->get_connection();
+  $errores = [];
+  $db = conectarDB();
+//   $db = new connection();
+//   $conexion = $db->get_connection();
     if($_SERVER['REQUEST_METHOD']==='POST'){
-        echo "<pre>";
-        var_dump($_POST);
-        echo "</pre>";
+        // echo "<pre>";
+        // var_dump($_POST);
+        // echo "</pre>";
         $color = $_POST['color'];
         $numeroD = $_POST['numeroD'];
         $stock = $_POST['stock'];
@@ -16,44 +17,73 @@
         $modelo = $_POST['modelo'];
         $pcompra = $_POST['pcompra'];
         $pventa = $_POST['pventa'];
-        echo 'hi1';
-        // //Insertar en la base de datos 
-        // $query = " INSERT INTO zapato (Color,NumeroDisp, Disponibilidad, Marca, Modelo, PrecioCompra, PrecioVenta, imagenA, imagenB, imagenC, imagenD)
-        //  VALUES ('$color','$numeroD','$stock','$marca','$modelo','$pcompra','$pventa','','','','')";
-        // //echo $query
-        // $resultado = mysqli_query($db,$query);
+        //Errores
+        if (!$color) {
+            $errores[] = "Debes añadir un color";
+        }
+        if (!$numeroD) {
+            $errores[] = "Debes añadir el numero";
+        }
+        if (!$stock) {
+            $errores[] = "Debes añadir el stcok";
+        }
+        if (!$marca) {
+            $errores[] = "Debes añadir la marca";
+        }
+        if (!$modelo) {
+            $errores[] = "Debes añadir el modelo";
+        }
+        if (!$pcompra) {
+            $errores[] = "Debes añadir el precio de compra";
+        }
+        if (!$pventa) {
+            $errores[] = "Debes añadir el precio de venta";
+        }
+        //Insertar en la base de datos
+        if (empty($errores)) {
+           $query = " INSERT INTO zapato (Color,NumeroDisp, Disponibilidad, Marca, Modelo, PrecioCompra, PrecioVenta, imagenA, imagenB, imagenC, imagenD)
+            VALUES ('$color','$numeroD','$stock','$marca','$modelo','$pcompra','$pventa','','','','')";
+           //echo $query
+           $resultado = mysqli_query($db,$query); 
+        } 
+        
 
         // if($resultado){
         //     echo "Insertado correctamente";
         // }
-        $statement = $conexion->prepare('CALL ingresarZapato(?,?,?,?,?,?,?,?,?,?,?)');
-        echo 'prueba';
-        $statement->bind_param('siissddssss',
-            $color,
-            $numeroD,
-            $stock,
-            $marca,
-            $modelo,
-            $pcompra,
-            $pventa,
-            ' ',
-            ' ',
-            ' ',
-            ' '
-        );
-        echo 'hi';
-        $statement->execute();
-        echo 'hi3';
-        $statement->close();
-        echo 'hi4';
-        $conexion->close();
-        echo 'hi5';
+        // $statement = $conexion->prepare('CALL ingresarZapato(?,?,?,?,?,?,?,?,?,?,?)');
+        // echo 'prueba';
+        // $statement->bind_param('siissddssss',
+        //     $color,
+        //     $numeroD,
+        //     $stock,
+        //     $marca,
+        //     $modelo,
+        //     $pcompra,
+        //     $pventa,
+        //     ' ',
+        //     ' ',
+        //     ' ',
+        //     ' '
+        // );
+        // echo 'hi';
+        // $statement->execute();
+        // echo 'hi3';
+        // $statement->close();
+        // echo 'hi4';
+        // $conexion->close();
+        // echo 'hi5';
     }
    ?>
         <hr>
         <section id="#crear">
             <h2>Crear</h2>
             <div class="contenedor">
+                <?php foreach ($errores as $error): ?>
+                <div class="alerta error">
+                    <?php echo $error; ?>
+                </div>
+                <?php endforeach; ?>
                 <form action="admin.php" method="POST" class="formulario">
                     <fieldset>
                         <legend>Zapato</legend>
@@ -66,7 +96,7 @@
                             <input class="field" type="number" id="numeroD" name="numeroD" placeholder="Color">
                         </div>
                         <div class="campo">
-                            <label class="label" for="stock">Inventario</label>
+                            <label class="label" for="stock">Stock</label>
                             <input class="field" type="number" id="stock" name="stock" placeholder="Color">
                         </div>
                         <div class="campo">

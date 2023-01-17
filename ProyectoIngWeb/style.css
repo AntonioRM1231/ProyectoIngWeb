@@ -233,6 +233,7 @@ h3{
 .boton__secundario{
     background-color: var(--secundario);
 }
+
 /**Contenedores**/
 .alerta.error {
     background-color: red;

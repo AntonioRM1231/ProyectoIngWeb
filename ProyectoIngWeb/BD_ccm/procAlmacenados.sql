@@ -147,5 +147,5 @@ BEGIN
     VALUES (_Color,_NumeroDisp,_Disponibilidad,_Marca,_Modelo,_PrecioCompra,_PrecioVenta,_ImagenA,_ImagenB,_ImagenC,_ImagenD);
 END;
 $$
-CALL ingresarZapato('Azul',4,30,'Dorothy Gaynor','Bota',700.00,800.00,'equipolocal','equipolocal','equipolocal','equipolocal');
+CALL ingresarZapato('Azul',4,30,'Adidas','forum',700.00,800.00,'equipolocal','equipolocal','equipolocal','equipolocal');
 SELECT * FROM zapato;

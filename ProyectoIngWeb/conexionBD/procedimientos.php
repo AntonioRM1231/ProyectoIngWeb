@@ -1,7 +1,7 @@
 <?php
     require_once 'connection.php';
     require '../Cliente.php';
-
+    echo 'Hola 0';
     
     $cliente = new Cliente();
 
@@ -11,12 +11,12 @@
     /*Valores de prueba para almacenar en la base de datos*/
     echo 'Hola 2';
     $newUsuarioST = array(
-        'CorreoEp' => '1109@gmail.com',
+        'CorreoEp' => 'pruebah@gmail.com',
         'NombreUsuariop' => '1038',
         'Contraseniap' => '123654852',
-        'Nombrep' => 'Holis',
-        'ApPaternop' => 'Holis2',
-        'ApMaternop' => 'Holis3',
+        'Nombrep' => 'a',
+        'ApPaternop' => 'b',
+        'ApMaternop' => 'c',
         'Edadp' => 21, 
         'NumTelefonop' => '5547677837'
     );
@@ -44,4 +44,5 @@
     $statement->execute();
     $statement->close();
     $conexion->close();
+    echo 'Hola 5';
 ?>

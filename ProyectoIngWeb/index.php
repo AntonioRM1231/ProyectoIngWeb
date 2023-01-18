@@ -1,9 +1,4 @@
    <?php
-<<<<<<< HEAD
-        // require 'includes/funciones.php';
-        // incluirTemplate('header');
-        include 'includes/templates/header.php';
-=======
       require 'includes/funciones.php';
       require 'Cliente.php';
       require 'conexionBD/connection.php';
@@ -137,7 +132,6 @@
         }
       }
       echo 'Hola 6';        
->>>>>>> c53ddd67134fe3e45721f884e2fa9c067b5cb412
     ?>
 
     <div class="offcanvas offcanvas-end" id="demo">

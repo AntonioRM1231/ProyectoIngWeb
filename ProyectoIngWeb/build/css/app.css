@@ -396,7 +396,7 @@ h3 {
 .header {
   display: flex;
   justify-content: center;
-  background-color: aqua;
+  background-color: transparent;
 }
 
 .logotipo {
@@ -503,6 +503,7 @@ h3 {
   padding-right: 2rem;
 }
 .campo .field {
+  color: #484450;
   flex: 1;
   border: 1px solid #484450;
 }
@@ -606,4 +607,14 @@ h3 {
 
 .alerta.error {
   background-color: red;
+}
+
+.alerta {
+  padding: 0.5rem;
+  text-align: center;
+  color: white;
+  margin: 1rem;
+}
+.alerta.error {
+  background-color: rgb(189, 7, 7);
 }

@@ -2,7 +2,14 @@
 @use 'base/mixins' as m;
 
 .alerta{
+    padding: .5rem;
+    text-align: center;
+    color: v.$blanco;
+    margin: 1rem;
     &.error{
-        background-color: v.$rojo; 
+        background-color: v.$rojo;
+    }
+    &.exito{
+        background-color: v.$verde;
     }
 }

@@ -605,10 +605,6 @@ h3 {
   color: #484450;
 }
 
-.alerta.error {
-  background-color: red;
-}
-
 .alerta {
   padding: 0.5rem;
   text-align: center;
@@ -617,4 +613,7 @@ h3 {
 }
 .alerta.error {
   background-color: rgb(189, 7, 7);
+}
+.alerta.exito {
+  background-color: #71B100;
 }

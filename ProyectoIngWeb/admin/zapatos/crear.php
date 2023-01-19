@@ -1,7 +1,8 @@
-  <?php
-  require 'conexionBD/database.php';
-  require 'includes/funciones.php';
-  incluirTemplate('header_admin');
+<?php
+  require '../../conexionBD/database.php';
+  include "../../includes/templates/header_admin.php";
+  //require '../../includes/funciones.php';
+  //incluirTemplate('header_admin');
   $db = conectarDB();
   $errores = [];
   $color = "";
@@ -12,13 +13,13 @@
   $pcompra = "";
   $pventa = "";
     if($_SERVER['REQUEST_METHOD']==='POST'){
-        // echo "<pre>";
-        // var_dump($_POST);
-        // echo "</pre>";
-        // echo "<pre>";
-        // var_dump($_FILES);
-        // echo "</pre>";
-        // exit;
+    //     echo "<pre>";
+    //     var_dump($_POST);
+    //     echo "</pre>";
+    //     echo "<pre>";
+    //     var_dump($_FILES);
+    //     echo "</pre>";
+    //     exit;
         $color = $_POST['color'];
         $numeroD = $_POST['numeroD'];
         $stock = $_POST['stock'];
@@ -67,29 +68,36 @@
         }
         //Insertar en la base de datos
         if (empty($errores)) {
-            /*SUBIDA DE ARCHIVOS */
-            //Crear carpetas 
-            $carpetaImagenes ='image/';
+             /*SUBIDA DE ARCHIVOS */
+             //Crear carpetas 
+             $carpetaImagenes ='image/';
 
-            if (!is_dir($carpetaImagenes)) {
-                mkdir($carpetaImagenes);
-            }
-            //Generar un nombre unico
+             if (!is_dir($carpetaImagenes)) {
+                 mkdir($carpetaImagenes);
+             }
+             //Generar un nombre unico
             $nombreImagen1 = md5(uniqid(rand(),true)).".jpg";
             $nombreImagen2 = md5(uniqid(rand(),true)).".jpg";
             $nombreImagen3 = md5(uniqid(rand(),true)).".jpg";
             $nombreImagen4 = md5(uniqid(rand(),true)).".jpg";
-            //Subir la imagen
-            move_uploaded_file($imagen1['tmp_name'], $carpetaImagenes.$nombreImagen1);
-            move_uploaded_file($imagen2['tmp_name'], $carpetaImagenes.$nombreImagen2);
-            move_uploaded_file($imagen3['tmp_name'], $carpetaImagenes.$nombreImagen3);
-            move_uploaded_file($imagen4['tmp_name'], $carpetaImagenes.$nombreImagen4);
+             //Subir la imagen
+             move_uploaded_file($imagen1['tmp_name'], $carpetaImagenes.$nombreImagen1);
+             move_uploaded_file($imagen2['tmp_name'], $carpetaImagenes.$nombreImagen2);
+             move_uploaded_file($imagen3['tmp_name'], $carpetaImagenes.$nombreImagen3);
+             move_uploaded_file($imagen4['tmp_name'], $carpetaImagenes.$nombreImagen4);
 
-           $query = " INSERT INTO zapato (Color,NumeroDisp, Disponibilidad, Marca, Modelo, PrecioCompra, PrecioVenta, imagenA, imagenB, imagenC, imagenD)
-            VALUES ('$color','$numeroD','$stock','$marca','$modelo','$pcompra','$pventa','$nombreImagen1','$nombreImagen2','$nombreImagen3','$nombreImagen4')";
-           //echo $query
-           $resultado = mysqli_query($db,$query); 
-        }
+            $query = " INSERT INTO zapato (Color,NumeroDisp, Disponibilidad, Marca, Modelo, PrecioCompra, PrecioVenta, imagenA, imagenB, imagenC, imagenD)
+             VALUES ('$color','$numeroD','$stock','$marca','$modelo','$pcompra','$pventa','$nombreImagen1','$nombreImagen2','$nombreImagen3','$nombreImagen4')";
+            //echo $query
+            $resultado = mysqli_query($db,$query); 
+            
+            if ($resultado) {
+                //Redireccionando al usuario
+                header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/index.php?result=1');
+            }
+
+
+         }
     }
    ?>
         <hr>
@@ -101,7 +109,7 @@
                     <?php echo $error; ?>
                 </div>
                 <?php endforeach; ?>
-                <form action="admin.php" method="POST" class="formulario" enctype="multipart/form-data">
+                <form action="crear.php" method="POST" class="formulario" enctype="multipart/form-data">
                     <fieldset>
                         <legend>Zapato</legend>
                         <div class="campo">

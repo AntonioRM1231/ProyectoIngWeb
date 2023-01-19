@@ -393,6 +393,36 @@ h3 {
   background-color: #3d8885;
 }
 
+.boton-verde {
+  background-color: #71B100;
+  font-family: "Nunito", sans-serif;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  text-align: center;
+  margin-top: 1rem;
+  display: inline-block;
+}
+.boton-verde:hover {
+  background-color: #619800;
+}
+
+.boton-rojo {
+  background-color: rgb(189, 7, 7);
+  font-family: "Nunito", sans-serif;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  text-align: center;
+  margin-top: 1rem;
+  display: block;
+}
+.boton-rojo:hover {
+  background-color: #a40606;
+}
+
 .header {
   display: flex;
   justify-content: center;
@@ -616,4 +646,21 @@ h3 {
 }
 .alerta.exito {
   background-color: #71B100;
+}
+
+table.zapatos {
+  margin-top: 4rem;
+  width: 100%;
+  border-spacing: 0;
+  text-align: center;
+}
+table.zapatos thead {
+  background-color: #459a96;
+}
+table.zapatos thead th {
+  color: white;
+  padding: 2rem;
+}
+table.zapatos .imagen-table {
+  width: 10rem;
 }

@@ -125,10 +125,14 @@
           );
         
           echo 'Hola 4';
-          $statement->execute();
+          $statement->execute(); 
+          echo 'Hola 4_1';
           $statement->close();
+          echo 'Hola 4_2';
           $conexion->close();
           echo 'Hola 5';
+          
+          header('Location: productos.php'); 
         }
       }
       echo 'Hola 6';        
@@ -213,6 +217,7 @@
         </div>
     </div>
     <hr>
+    
     <main class="contenedor">
         <h2>NUESTROS PRODUCTOS</h2>
         <section class="seccion contenedor">
@@ -230,6 +235,7 @@
           </div>
         </section>
     </main>
+    
     <hr>
     <section id="nosotros">
       <div class="contenedor-nosotros">

@@ -18,7 +18,7 @@
         <div class="contenedor contenido-header">
            
             <!--LOGOTIPO-->
-            <a href="admin.php">
+            <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/index.php">
                 <img class="logotipo" src="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/imagenes/ccm.png" alt="logotipo">
             </a>
             <div class="barra">
@@ -29,7 +29,7 @@
                 </div>
                 <nav class="navegacion">
                     <!--CATEGORIAS-->
-                    <a href="../admin/zapatos/crear.php">Crear</a>
+                    <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/crear.php">Crear</a>
                 </nav>
             </div>
         </div>

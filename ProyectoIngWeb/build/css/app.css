@@ -537,6 +537,9 @@ h3 {
   flex: 1;
   border: 1px solid #484450;
 }
+.campo .imagen-campo {
+  width: 10rem;
+}
 
 .contenedor-anuncio {
   padding-bottom: 2rem;

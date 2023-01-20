@@ -5,9 +5,11 @@
       incluirTemplate('header');
       echo 'Hola 1';
       $mysql = new connection();
+      echo 'Hola 1';
       $conexion = $mysql->get_connection();
+      echo 'Hola 1';
       $statement = $conexion->prepare('CALL ingresarClienteST(?,?,?,?,?,?,?,?)');
-
+      echo 'Hola 1';
       $CorreoE = '';
       $NombreUsuario = '';
       $Contrasenia = '';
@@ -132,7 +134,7 @@
           $conexion->close();
           echo 'Hola 5';
           
-          header('Location: http://localhost/ProyectoIngWeb/ProyectoIngWeb/productos.php?resultado=1');
+          header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/productos.php?resultado=1');
           //resultado=1 Si se llevo exitosamente el registro del nuevo cliente
         }
       }
@@ -178,7 +180,7 @@
             </div>
           <?php endforeach; ?>  
 
-          <form class="formulario" method="POST" action="http://localhost/ProyectoIngWeb/ProyectoIngWeb/index.php">
+          <form class="formulario" method="POST" action="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/index.php">
             <div class="campo">
                 <label class="label">Correo Electrónico</label>
                 <input class="field" type="email" name="CorreoEf" placeholder="email@ejemplo.com" value="<?php echo $CorreoE?>">

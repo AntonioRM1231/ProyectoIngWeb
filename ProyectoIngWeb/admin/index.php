@@ -8,6 +8,29 @@
   $consulta = mysqli_query($db, $query);
   //Muestra mensaje condicional
   $result=$_GET['result'] ?? null;
+
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $id = $_POST['id'];
+      $id = filter_var($id, FILTER_VALIDATE_INT);
+      if($id){
+        //Eliminar el archivo
+        $query = "SELECT imagenA, imagenB, imagenC, imagenD FROM zapato WHERE ID_Zapato = ${id}";
+        $resultado = mysqli_query($db, $query);
+        $zapato = mysqli_fetch_assoc($resultado);
+        unlink('zapatos/image/'.$zapato['imagenA']);
+        unlink('zapatos/image/'.$zapato['imagenB']);
+        unlink('zapatos/image/'.$zapato['imagenC']);
+        unlink('zapatos/image/'.$zapato['imagenD']);
+        //Eliminar zapato
+        $query = "DELETE FROM zapato WHERE ID_Zapato = ${id}";
+        $resultado = mysqli_query($db, $query);
+
+        if ($resultado) {
+            header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/index.php?result=3');
+        }
+
+      }
+  }
   //Incluye un template
   include "../includes/templates/header_admin.php";
   //incluirTemplate('header_admin');
@@ -18,6 +41,8 @@
     <div class="alerta exito">Creado correctamente </div>
   <?php elseif(intval($result)===2):?>
     <div class="alerta exito">Actualizado correctamente </div>
+  <?php elseif(intval($result)===3):?>
+    <div class="alerta exito">Eminado correctamente </div>
   <?php endif;?>
 
   <table class="zapatos">
@@ -55,7 +80,10 @@
         <th><img src="zapatos/image/<?php echo $zapato['imagenD'] ?>" class="imagen-table"></th>
         <td>
           <a href="zapatos/actualizar.php?id=<?php echo $zapato['ID_Zapato'] ?>" class="boton-verde">Actualizar</a>
-          <a href="#" class="boton-rojo">Eliminar</a>
+          <form method='POST'>
+            <input type="hidden" name="id" value="<?php echo $zapato['ID_Zapato'] ?>">
+            <input type="submit" class="boton-rojo" value="Eliminar">
+          </form>
         </td>
       </tr>
       <?php endwhile;?>

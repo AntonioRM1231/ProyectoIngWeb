@@ -1,13 +1,21 @@
 <?php
+    $resultado = $_GET['resultado'];
+    //echo "resulta es:";
+    //var_dump($_GET['resultado']);
+    //exit;
     require 'includes/funciones.php';
     //require 'Cliente.php';
     //require 'conexionBD/connection.php';
-    incluirTemplate('header');
+    //incluirTemplate('header');  
+    include "includes/templates/header.php";
 ?>
 
-<html>
+<html> 
     <body>
         <main class="contenedor">
+        <?php if(intval($resultado) === 1):?>
+            <div class="alerta exito">¡El registro se llevó a cabo exitosamente!</div>  
+        <?php endif;?>   
         <h2>NUESTROS PRODUCTOS</h2>
             <section class="seccion contenedor">
                 <div class="contenedor-anuncio">

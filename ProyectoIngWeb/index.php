@@ -22,14 +22,14 @@
       
       //Ejecutar el código después de que el usuario envie el formulario
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $CorreoE = $_POST['CorreoEf'];
+        $CorreoE = filter_var($_POST['CorreoEf'],FILTER_SANITIZE_EMAIL);
         $NombreUsuario = $_POST['NombreUsuariof'];
         $Contrasenia = $_POST['Contraseniaf'];
-        $Nombre = $_POST['Nombref'];
-        $ApPaterno = $_POST['ApPaternof'];
-        $ApMaterno = $_POST['ApMaternof'];
+        $Nombre = strtoupper(filter_var($_POST['Nombref'],FILTER_SANITIZE_STRING));
+        $ApPaterno = strtoupper(filter_var($_POST['ApPaternof'],FILTER_SANITIZE_STRING));
+        $ApMaterno = strtoupper(filter_var($_POST['ApMaternof'],FILTER_SANITIZE_STRING));
         $Edad = $_POST['Edadf'];
-        $NumTelefono = $_POST['NumTelefonof'];
+        $NumTelefono = filter_var($_POST['NumTelefonof'],FILTER_SANITIZE_NUMBER_INT);
         echo "<pre>";
           var_dump($_POST);
         echo "</pre>";
@@ -114,25 +114,26 @@
 
         if(empty($errores)){
           $statement->bind_param('ssssssis',  
-            $_POST['CorreoEf'],
-            $_POST['NombreUsuariof'],
-            $_POST['Contraseniaf'],
-            $_POST['Nombref'],
-            $_POST['ApPaternof'],
-            $_POST['ApMaternof'],
-            $_POST['Edadf'],
-            $_POST['NumTelefonof']
+            $CorreoE,
+            $NombreUsuario,
+            $Contrasenia,
+            $Nombre,
+            $ApPaterno,
+            $ApMaterno,
+            $Edad,
+            $NumTelefono
           );
         
           echo 'Hola 4';
           $statement->execute(); 
           echo 'Hola 4_1';
           $statement->close();
-          echo 'Hola 4_2';
+          echo 'Hola 4_2';  
           $conexion->close();
           echo 'Hola 5';
           
-          header('Location: productos.php'); 
+          header('Location: http://localhost/ProyectoIngWeb/ProyectoIngWeb/productos.php?resultado=1');
+          //resultado=1 Si se llevo exitosamente el registro del nuevo cliente
         }
       }
       echo 'Hola 6';        
@@ -172,7 +173,7 @@
 
           <!-- Código para ver errores en el registro -->
           <?php foreach($errores as $error): ?>
-            <div class = "alerta error">
+            <div class = "alerta error"> <!-- ...error-->
               <?php echo '*'.$error; ?>
             </div>
           <?php endforeach; ?>  
@@ -208,7 +209,7 @@
             </div>
             <div class="campo">
                 <label class="label">NumTelefono</label>
-                <input class="field" type="number" name="NumTelefonof" minlength="10" placeholder="1234567890" min="0" value="<?php echo $NumTelefono?>">
+                <input class="field" type="text" name="NumTelefonof" minlength="10" placeholder="1234567890" value="<?php echo $NumTelefono?>">
             </div>
             <div class="campo">
                 <input type="submit" value="Enviar" class="boton-marron">

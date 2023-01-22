@@ -373,6 +373,7 @@ h3 {
   text-align: center;
   margin-top: 1rem;
   display: inline-block;
+  border: 1px solid transparent;
 }
 .boton-marron:hover {
   background-color: #3c3842;
@@ -388,6 +389,7 @@ h3 {
   text-align: center;
   margin-top: 1rem;
   display: inline-block;
+  border: 1px solid transparent;
 }
 .boton-agua:hover {
   background-color: #3d8885;
@@ -403,6 +405,7 @@ h3 {
   text-align: center;
   margin-top: 1rem;
   display: inline-block;
+  border: 1px solid transparent;
 }
 .boton-verde:hover {
   background-color: #619800;
@@ -418,6 +421,8 @@ h3 {
   text-align: center;
   margin-top: 1rem;
   display: block;
+  border: 1px solid transparent;
+  width: 100%;
 }
 .boton-rojo:hover {
   background-color: #a40606;

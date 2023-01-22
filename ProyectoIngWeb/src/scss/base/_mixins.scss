@@ -35,6 +35,7 @@
     text-align: center;
     margin-top: 1rem;
     display: $display;
+    border: 1px solid v.$transparente;
     &:hover{
         background-color: darken($bgColor, 5);
     }

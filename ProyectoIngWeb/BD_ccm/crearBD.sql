@@ -80,6 +80,7 @@ CREATE TABLE cliente(
     FOREIGN KEY (NumeroTarjeta)
     REFERENCES tarjeta (NumeroTarjeta)
 );
+ALTER TABLE cliente ADD ID_Cliente INT;
 /*Ignorar este código :) */
 ALTER TABLE cliente DROP FOREIGN KEY FK_ID_Pedido;/*Eliminar el constraint de la llave foránea*/
 ALTER TABLE cliente DROP COLUMN ID_Pedido;

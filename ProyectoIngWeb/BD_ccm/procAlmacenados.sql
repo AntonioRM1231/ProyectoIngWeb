@@ -9,6 +9,7 @@ SELECT * FROM tarjeta;
 /* PROCEDIMIENTOS ALMACENADOS */
 DROP PROCEDURE IF EXISTS ingresarPedido;
 
+DROP PROCEDURE IF EXISTS ingresarClienteST;
 /*INGRESAR VALORES EN LA TABLA DE cliente CUANDO AÚN NO REGISTRA TARJETA*/
 DELIMITER $$
 CREATE PROCEDURE ingresarClienteST(/*ST->Sin Tarjeta*/
@@ -19,15 +20,16 @@ CREATE PROCEDURE ingresarClienteST(/*ST->Sin Tarjeta*/
     IN _ApPaterno VARCHAR(18),
     IN _ApMaterno VARCHAR(18),
     IN _Edad INT,
-    IN _NumTelefono VARCHAR(10)
+    IN _NumTelefono VARCHAR(10),
+    IN _ID_Cliente INT
 )
 BEGIN
 	INSERT INTO 
-    cliente (CorreoE,NombreUsuario,Contrasenia,Nombre,ApPaterno,ApMaterno,Edad,NumTelefono)
-    VALUES (_CorreoE,_NombreUsuario,_Contrasenia,_Nombre,_ApPaterno,_ApMaterno,_Edad,_NumTelefono);
+    cliente (CorreoE,NombreUsuario,Contrasenia,Nombre,ApPaterno,ApMaterno,Edad,NumTelefono,ID_Cliente)
+    VALUES (_CorreoE,_NombreUsuario,_Contrasenia,_Nombre,_ApPaterno,_ApMaterno,_Edad,_NumTelefono,_ID_Cliente);
 END;
 $$
-CALL ingresarClienteST('correo2@gmail.com','Ana1610','123456','Ana','S','C',21,'5547677837');
+CALL ingresarClienteST('idprueba@gmail.com','Ana1610','123456','Anahi','Salto','Cruz',21,'5547677837',1);
 SELECT * FROM cliente;
 
 /*INGRESAR VALORES EN LA TABLA DE cliente CUANDO YA REGISTRÓ TARJETA*/

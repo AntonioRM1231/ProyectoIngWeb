@@ -8,7 +8,7 @@
       echo 'Hola 1';
       $conexion = $mysql->get_connection();
       echo 'Hola 1';
-      $statement = $conexion->prepare('CALL ingresarClienteST(?,?,?,?,?,?,?,?)');
+      $statement = $conexion->prepare('CALL ingresarClienteST(?,?,?,?,?,?,?,?,?)');
       echo 'Hola 1';
       $CorreoE = '';
       $NombreUsuario = '';
@@ -35,7 +35,14 @@
         echo "<pre>";
           var_dump($_POST);
         echo "</pre>";
+        //Verificar si el correo electrónico ya existe en la base de datos
+        $consulta = "SELECT * FROM cliente WHERE CorreoE = '".$CorreoE."';";
+        $resultado = mysqli_query($conexion,$consulta);
+        $cliente_res = mysqli_fetch_assoc($resultado);
         //Posibles errores al registrar un usuario
+        if(!empty($cliente_res)){
+          $errores[] = 'El correo electrónico con el que desea registrarse ya se ha asignado a otra cuenta';
+        }
         if(!$_POST['CorreoEf']){
           $errores[] = 'El correo electrónico es obligatorio';
         }
@@ -113,9 +120,12 @@
         echo "<pre>";
           var_dump($errores);
         echo "</pre>";*/
-
+        $consulta = "SELECT MAX(ID_Cliente) AS ID_Max FROM cliente";
+        $resultado = mysqli_query($conexion,$consulta);
+        $id_res = mysqli_fetch_assoc($resultado);
+        $id_Cliente = $id_res['ID_Max']+1;
         if(empty($errores)){
-          $statement->bind_param('ssssssis',  
+          $statement->bind_param('ssssssisi',  
             $CorreoE,
             $NombreUsuario,
             $Contrasenia,
@@ -123,7 +133,8 @@
             $ApPaterno,
             $ApMaterno,
             $Edad,
-            $NumTelefono
+            $NumTelefono,
+            $id_Cliente
           );
         
           echo 'Hola 4';
@@ -131,10 +142,11 @@
           echo 'Hola 4_1';
           $statement->close();
           echo 'Hola 4_2';  
+          
           $conexion->close();
           echo 'Hola 5';
           
-          header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/productos.php?resultado=1');
+          header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/productos.php?res=1?id='.strval($id_Cliente));
           //resultado=1 Si se llevo exitosamente el registro del nuevo cliente
         }
       }

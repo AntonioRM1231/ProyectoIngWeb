@@ -1,5 +1,5 @@
 <?php
-    $resultado = $_GET['resultado'];
+    $resultado = $_GET['res'];
     //echo "resulta es:";
     //var_dump($_GET['resultado']);
     //exit;

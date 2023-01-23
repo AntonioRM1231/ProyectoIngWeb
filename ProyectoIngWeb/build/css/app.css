@@ -375,9 +375,6 @@ h3 {
   display: inline-block;
   border: 1px solid transparent;
 }
-.boton-marron:hover {
-  background-color: #3c3842;
-}
 
 .boton-agua {
   background-color: #459a96;
@@ -390,9 +387,6 @@ h3 {
   margin-top: 1rem;
   display: inline-block;
   border: 1px solid transparent;
-}
-.boton-agua:hover {
-  background-color: #3d8885;
 }
 
 .boton-verde {
@@ -407,9 +401,6 @@ h3 {
   display: inline-block;
   border: 1px solid transparent;
 }
-.boton-verde:hover {
-  background-color: #619800;
-}
 
 .boton-rojo {
   background-color: rgb(189, 7, 7);
@@ -420,12 +411,8 @@ h3 {
   padding: 1rem 3rem;
   text-align: center;
   margin-top: 1rem;
-  display: block;
+  display: inline-block;
   border: 1px solid transparent;
-  width: 100%;
-}
-.boton-rojo:hover {
-  background-color: #a40606;
 }
 
 .header {
@@ -552,7 +539,7 @@ h3 {
 @media (min-width: 768px) {
   .contenedor-anuncio {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
   }
 }
@@ -560,9 +547,6 @@ h3 {
 .anuncio {
   background-color: #e1e6e3;
   border: 1px solid black;
-}
-.anuncio:hover {
-  color: #89119d;
 }
 .anuncio h3 {
   color: #484450;
@@ -578,6 +562,7 @@ h3 {
 
 .cuerpo-anuncio {
   padding-bottom: 2rem;
+  padding-top: 2rem;
 }
 @media (min-width: 768px) {
   .cuerpo-anuncio {
@@ -585,6 +570,19 @@ h3 {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
   }
+}
+
+.contenido-anuncio {
+  padding-left: 2rem;
+  padding-bottom: none;
+  justify-content: center;
+}
+
+.botones-anuncio {
+  width: 95%;
+  padding-left: 2rem;
+  padding-top: none;
+  padding-bottom: 2rem;
 }
 
 .anuncio-izq {

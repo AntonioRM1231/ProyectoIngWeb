@@ -45,50 +45,52 @@
     <div class="alerta exito">Eminado correctamente </div>
   <?php endif;?>
 
-  <table class="zapatos">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Color</th>
-        <th>Número</th>
-        <th>Stock</th>
-        <th>Marca</th>
-        <th>Modelo</th>
-        <th>Precio de compra</th>
-        <th>Precio de venta</th>
-        <th>Imagen 1</th>
-        <th>Imagen 2</th>
-        <th>Imagen 3</th>
-        <th>Imagen 4</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody><!--Mostrar los resultados-->
-      <?php while($zapato = mysqli_fetch_assoc($consulta)):?>
-      <tr>
-        <td><?php echo $zapato['ID_Zapato'] ?></td>
-        <td><?php echo $zapato['Color'] ?></td>
-        <td><?php echo $zapato['NumeroDisp'] ?></td>
-        <td><?php echo $zapato['Disponibilidad'] ?></td>
-        <td><?php echo $zapato['Marca'] ?></td>
-        <td><?php echo $zapato['Modelo'] ?></td>
-        <td><?php echo $zapato['PrecioCompra'] ?></td>
-        <td><?php echo $zapato['PrecioVenta'] ?></td>
-        <th><img src="zapatos/image/<?php echo $zapato['imagenA'] ?>" class="imagen-table"></th>
-        <th><img src="zapatos/image/<?php echo $zapato['imagenB'] ?>" class="imagen-table"></th>
-        <th><img src="zapatos/image/<?php echo $zapato['imagenC'] ?>" class="imagen-table"></th>
-        <th><img src="zapatos/image/<?php echo $zapato['imagenD'] ?>" class="imagen-table"></th>
-        <td>
-          <a href="zapatos/actualizar.php?id=<?php echo $zapato['ID_Zapato'] ?>" class="boton-verde">Actualizar</a>
-          <form method='POST'>
-            <input type="hidden" name="id" value="<?php echo $zapato['ID_Zapato'] ?>">
-            <input type="submit" class="boton-rojo" value="Eliminar">
-          </form>
-        </td>
-      </tr>
-      <?php endwhile;?>
-    </tbody>
-  </table>
+  <!-- CARDS -->
+  <section class="contenedor-anuncio">
+  <?php while($zapato = mysqli_fetch_assoc($consulta)):?>
+    <div class="anuncio">
+      <div id="<?php echo "carousel".$zapato['ID_Zapato'] ?>" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="zapatos/image/<?php echo $zapato['imagenA'] ?>" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="zapatos/image/<?php echo $zapato['imagenB'] ?>" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="zapatos/image/<?php echo $zapato['imagenC'] ?>" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="zapatos/image/<?php echo $zapato['imagenD'] ?>" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="<?php echo "#carousel".$zapato['ID_Zapato'] ?>" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="<?php echo "#carousel".$zapato['ID_Zapato'] ?>" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <div class="contenido-anuncio">
+        <h3><?php echo $zapato['Modelo'] ?></h3>
+        <p><?php echo $zapato['Categoria'] ?>--<?php echo $zapato['Marca'] ?><p>
+        <p>ID: <?php echo $zapato['ID_Zapato'] ?> Color: <?php echo $zapato['Color'] ?><p>
+        <p>Sz: <?php echo $zapato['NumeroDisp']."MX" ?> Stock: <?php echo $zapato['Disponibilidad'] ?><p>
+        <p><?php echo "$".$zapato['PrecioCompra'] ?>-<?php echo "$".$zapato['PrecioVenta'] ?><p>
+      </div>
+      <div class="botones-anuncio">
+        <a href="zapatos/zapato.php?id=<?php echo $zapato['ID_Zapato'] ?>" class="boton-agua">Ver</a>
+        <a href="zapatos/actualizar.php?id=<?php echo $zapato['ID_Zapato'] ?>" class="boton-verde">Actualizar</a>
+        <form method='POST'>
+          <input type="hidden" name="id" value="<?php echo $zapato['ID_Zapato'] ?>">
+          <input type="submit" class="boton-rojo" value="Eliminar">
+        </form>
+      </div>
+    </div>
+  <?php endwhile;?>
+  </section>
 </main>
 <hr>
 <?php 

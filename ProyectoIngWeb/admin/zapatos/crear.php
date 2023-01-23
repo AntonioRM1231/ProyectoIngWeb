@@ -12,6 +12,7 @@
   $modelo = "";
   $pcompra = "";
   $pventa = "";
+  $categoria = "";
     if($_SERVER['REQUEST_METHOD']==='POST'){
     //     echo "<pre>";
     //     var_dump($_POST);
@@ -27,6 +28,7 @@
         $modelo = $_POST['modelo'];
         $pcompra = $_POST['pcompra'];
         $pventa = $_POST['pventa'];
+        $categoria = $_POST['categoria'];
         //Para las imagenes 
         $imagen1 = $_FILES['img1'];
         $imagen2 = $_FILES['img2'];
@@ -53,6 +55,9 @@
         }
         if (!$pventa) {
             $errores[] = "Debes añadir el precio de venta";
+        }
+        if (!$categoria) {
+            $errores[] = "Debes añadir la categoria";
         }
         if (!$imagen1['name'] || $imagen1['error'] ) {
             $errores[] = "La imagen 1 es obligatoria";
@@ -86,8 +91,8 @@
              move_uploaded_file($imagen3['tmp_name'], $carpetaImagenes.$nombreImagen3);
              move_uploaded_file($imagen4['tmp_name'], $carpetaImagenes.$nombreImagen4);
 
-            $query = " INSERT INTO zapato (Color,NumeroDisp, Disponibilidad, Marca, Modelo, PrecioCompra, PrecioVenta, imagenA, imagenB, imagenC, imagenD)
-             VALUES ('$color','$numeroD','$stock','$marca','$modelo','$pcompra','$pventa','$nombreImagen1','$nombreImagen2','$nombreImagen3','$nombreImagen4')";
+            $query = " INSERT INTO zapato (Color,NumeroDisp, Disponibilidad, Marca, Modelo, PrecioCompra, PrecioVenta, imagenA, imagenB, imagenC, imagenD, Categoria)
+             VALUES ('$color','$numeroD','$stock','$marca','$modelo','$pcompra','$pventa','$nombreImagen1','$nombreImagen2','$nombreImagen3','$nombreImagen4','$categoria')";
             //echo $query
             $resultado = mysqli_query($db,$query); 
             
@@ -138,7 +143,11 @@
                         </div>
                         <div class="campo">
                             <label class="label" for="pventa">Precio de venta</label>
-                            <input class="field" type="numeber" id="pventa" name="pventa" placeholder="Precio de venta" value="<?php echo $pventa; ?>">
+                            <input class="field" type="number" id="pventa" name="pventa" placeholder="Precio de venta" value="<?php echo $pventa; ?>">
+                        </div>
+                        <div class="campo">
+                            <label class="label" for="categoria">Categoria</label>
+                            <input class="field" type="text" id="categoria" name="categoria" placeholder="Categoria" value="<?php echo $categoria; ?>">
                         </div>
                         <div class="campo">
                             <label class="label" for="img1">Imagen 1</label>

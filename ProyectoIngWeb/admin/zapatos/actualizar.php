@@ -31,6 +31,7 @@
   $imagenB = $zapato['imagenB'];
   $imagenC = $zapato['imagenC'];
   $imagenD = $zapato['imagenD'];
+  $categoria = $zapato['Categoria'];
     if($_SERVER['REQUEST_METHOD']==='POST'){
     //     echo "<pre>";
     //     var_dump($_POST);
@@ -46,6 +47,7 @@
         $modelo = $_POST['modelo'];
         $pcompra = $_POST['pcompra'];
         $pventa = $_POST['pventa'];
+        $categoria = $_POST['categoria'];
         //Para las imagenes 
         $imagen1 = $_FILES['img1'];
         $imagen2 = $_FILES['img2'];
@@ -72,6 +74,9 @@
         }
         if (!$pventa) {
             $errores[] = "Debes añadir el precio de venta";
+        }
+        if (!$categoria) {
+            $errores[] = "Debes añadir la categoria";
         }
         //Insertar en la base de datos
         if (empty($errores)) {
@@ -126,7 +131,7 @@
              
             $query = " UPDATE zapato SET Color='${color}',NumeroDisp=${numeroD}, Disponibilidad=${stock}, 
             Marca='${marca}', Modelo='${modelo}', PrecioCompra=${pcompra}, PrecioVenta=${pventa},
-            imagenA='${nombreImagen1}', imagenB='${nombreImagen2}', imagenC='${nombreImagen3}', imagenD='${nombreImagen4}' WHERE ID_Zapato=${id}";
+            imagenA='${nombreImagen1}', imagenB='${nombreImagen2}', imagenC='${nombreImagen3}', imagenD='${nombreImagen4}', Categoria='${categoria}' WHERE ID_Zapato=${id}";
             $resultado = mysqli_query($db,$query); 
             
             if ($resultado) {
@@ -175,6 +180,10 @@
                         <div class="campo">
                             <label class="label" for="pventa">Precio de venta</label>
                             <input class="field" type="numeber" id="pventa" name="pventa" placeholder="Precio de venta" value="<?php echo $pventa; ?>">
+                        </div>
+                        <div class="campo">
+                            <label class="label" for="categoria">Categoria</label>
+                            <input class="field" type="text" id="categoria" name="categoria" placeholder="Categoria" value="<?php echo $categoria; ?>">
                         </div>
                         <div class="campo">
                             <label class="label" for="img1">Imagen 1</label>

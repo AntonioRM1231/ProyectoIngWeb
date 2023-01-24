@@ -4,16 +4,13 @@
 .contenedor-anuncio{
     padding-bottom: 2rem;
     @include m.tablet{
-        @include m.grid(3, 2rem);
+        @include m.grid(4, 2rem);
     }  
 }
 .anuncio{
     background-color:#e1e6e3;
     //border: 1px solid #bfd6c7;
     border: 1px solid v.$negro;
-    &:hover {
-        color: v.$rosa;
-    }
     h3{
         color: v.$marron;
         padding-top: 2rem;
@@ -27,9 +24,21 @@
 }
 .cuerpo-anuncio{
     padding-bottom: 2rem;
+    padding-top: 2rem;
     @include m.tablet{
         @include m.grid(2, 2rem);
     }
+}
+.contenido-anuncio{
+    padding-left: 2rem;
+    padding-bottom: none;
+    justify-content: center;
+}
+.botones-anuncio{
+    width: 95%;
+    padding-left: 2rem;
+    padding-top: none;
+    padding-bottom: 2rem;
 }
 .anuncio-izq{
     padding-bottom: 2rem;

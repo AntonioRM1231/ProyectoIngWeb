@@ -75,7 +75,7 @@
         if (empty($errores)) {
              /*SUBIDA DE ARCHIVOS */
              //Crear carpetas 
-             $carpetaImagenes ='image/';
+             $carpetaImagenes ='/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/image/';
 
              if (!is_dir($carpetaImagenes)) {
                  mkdir($carpetaImagenes);
@@ -98,7 +98,7 @@
             
             if ($resultado) {
                 //Redireccionando al usuario
-                header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/index.php?result=1');
+                header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/editar.php?result=1');
             }
 
 
@@ -175,6 +175,6 @@
             <p><b>CUIDADO CON EL MICHI</b></p>
             <p>TODOS LOS DERECHOS RESERVADOS</p>
         </footer>
-        <script src="build/js/app.js"></script>
+        <script src="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/image//build/js/app.js"></script>
     </body>
 </html>

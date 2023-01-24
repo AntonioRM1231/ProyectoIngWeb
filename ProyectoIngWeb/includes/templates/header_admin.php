@@ -29,7 +29,7 @@
                 </div>
                 <nav class="navegacion">
                     <!--CATEGORIAS-->
-                    <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/crear.php">Crear</a>
+                    <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/editar.php">Editar</a>
                 </nav>
             </div>
         </div>

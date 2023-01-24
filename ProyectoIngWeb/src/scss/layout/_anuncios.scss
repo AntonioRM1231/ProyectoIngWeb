@@ -3,14 +3,17 @@
 
 .contenedor-anuncio{
     padding-bottom: 2rem;
+    padding-top: 4rem;
     @include m.tablet{
-        @include m.grid(4, 2rem);
+        @include m.grid(4, 3rem);
     }  
 }
 .anuncio{
-    background-color:#e1e6e3;
+    //background-color:#e1e6e3;
+    background-color: v.$blanco;
     //border: 1px solid #bfd6c7;
-    border: 1px solid v.$negro;
+    border: 1px solid v.$marron;
+    border-radius: 5px;
     h3{
         color: v.$marron;
         padding-top: 2rem;
@@ -30,16 +33,13 @@
     }
 }
 .contenido-anuncio{
+    background-color: v.$blanco;
+    color: v.$marron;
     padding-left: 2rem;
-    padding-bottom: none;
+    padding-bottom: 2rem;
     justify-content: center;
 }
-.botones-anuncio{
-    width: 95%;
-    padding-left: 2rem;
-    padding-top: none;
-    padding-bottom: 2rem;
-}
+
 .anuncio-izq{
     padding-bottom: 2rem;
     @include m.tablet{

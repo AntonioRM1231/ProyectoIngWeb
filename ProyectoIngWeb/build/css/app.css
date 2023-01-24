@@ -535,18 +535,20 @@ h3 {
 
 .contenedor-anuncio {
   padding-bottom: 2rem;
+  padding-top: 4rem;
 }
 @media (min-width: 768px) {
   .contenedor-anuncio {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    gap: 3rem;
   }
 }
 
 .anuncio {
-  background-color: #e1e6e3;
-  border: 1px solid black;
+  background-color: white;
+  border: 1px solid #484450;
+  border-radius: 5px;
 }
 .anuncio h3 {
   color: #484450;
@@ -573,16 +575,11 @@ h3 {
 }
 
 .contenido-anuncio {
+  background-color: white;
+  color: #484450;
   padding-left: 2rem;
-  padding-bottom: none;
-  justify-content: center;
-}
-
-.botones-anuncio {
-  width: 95%;
-  padding-left: 2rem;
-  padding-top: none;
   padding-bottom: 2rem;
+  justify-content: center;
 }
 
 .anuncio-izq {

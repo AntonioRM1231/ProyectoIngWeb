@@ -5,6 +5,7 @@ CREATE DATABASE ccm;
 SHOW DATABASES;
 USE ccm;
 SELECT * FROM cliente;
+DESCRIBE cliente;
 CREATE TABLE tarjeta(
 	NumeroTarjeta VARCHAR(17) NOT NULL,
     CVC VARCHAR(4) NOT NULL,
@@ -80,7 +81,9 @@ CREATE TABLE cliente(
     FOREIGN KEY (NumeroTarjeta)
     REFERENCES tarjeta (NumeroTarjeta)
 );
+/* EJECUTAR ESTAS DOS LINEAS */
 ALTER TABLE cliente ADD ID_Cliente INT;
+ALTER TABLE cliente CHANGE Contrasenia Contrasenia VARCHAR(60);
 /*Ignorar este código :) */
 ALTER TABLE cliente DROP FOREIGN KEY FK_ID_Pedido;/*Eliminar el constraint de la llave foránea*/
 ALTER TABLE cliente DROP COLUMN ID_Pedido;

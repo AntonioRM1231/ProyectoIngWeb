@@ -1,5 +1,7 @@
 <?php
     $resultado = $_GET['res'];
+    $id_cliente = $_GET['id'];
+    $id_cliente = filter_var($id_cliente,FILTER_VALIDATE_INT);
     //echo "resulta es:";
     //var_dump($_GET['resultado']);
     //exit;
@@ -7,7 +9,7 @@
     //require 'Cliente.php';
     //require 'conexionBD/connection.php';
     //incluirTemplate('header');  
-    include "includes/templates/header.php";
+    include "includes/templates/header_productos.php";
 ?>
 
 <html> 

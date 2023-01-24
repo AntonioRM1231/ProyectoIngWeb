@@ -15,7 +15,7 @@ DELIMITER $$
 CREATE PROCEDURE ingresarClienteST(/*ST->Sin Tarjeta*/
 	IN _CorreoE VARCHAR(70),
 	IN _NombreUsuario VARCHAR(50),
-    IN _Contrasenia VARCHAR(50),
+    IN _Contrasenia VARCHAR(60),
     IN _Nombre VARCHAR(18),
     IN _ApPaterno VARCHAR(18),
     IN _ApMaterno VARCHAR(18),

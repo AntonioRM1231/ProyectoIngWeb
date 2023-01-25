@@ -24,11 +24,7 @@
         <div class="contenedor contenido-header">
            
             <!--LOGOTIPO-->
-<<<<<<< HEAD
             <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/productos.php">
-=======
-            <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/index.php">
->>>>>>> refs/remotes/origin/main
                 <img class="logotipo" src="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/imagenes/ccm.png" alt="logotipo">
             </a>
             <div class="barra">

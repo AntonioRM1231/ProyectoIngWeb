@@ -35,6 +35,7 @@
                     </svg>
                 </div>
                 <nav class="navegacion">
+<<<<<<< HEAD
                     <!--CATEGORIAS-->  
                     <?php  if(!$auth): ?>
                         <a href="#" data-bs-toggle="offcanvas" data-bs-target="#demo"> 
@@ -47,6 +48,10 @@
                         <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/crear.php">Crear</a>
                         <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/cerrarSesion.php">Cerrar sesión</a>
                     <?php endif ?>
+=======
+                    <!--CATEGORIAS-->
+                    <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/editar.php">Editar</a>
+>>>>>>> e897a159563c9c1b0e3246948591063490c9149c
                 </nav>
             </div>
         </div>

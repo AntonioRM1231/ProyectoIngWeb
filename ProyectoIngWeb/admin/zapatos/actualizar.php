@@ -5,7 +5,7 @@
   $id = filter_var($id, FILTER_VALIDATE_INT);
 
   if (!$id) {
-        header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/index.php');
+        header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/editar.php');
   }
   include "../../includes/templates/header_admin.php";
   //require '../../includes/funciones.php';
@@ -83,7 +83,7 @@
              /*SUBIDA DE ARCHIVOS */
 
              //Crear carpetas 
-             $carpetaImagenes ='image/';
+             $carpetaImagenes ='/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/image/';
 
              if (!is_dir($carpetaImagenes)) {
                  mkdir($carpetaImagenes);
@@ -136,7 +136,7 @@
             
             if ($resultado) {
                 //Redireccionando al usuario
-                header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/index.php?result=2');
+                header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/editar.php?result=2');
             }
          }
     }
@@ -215,6 +215,6 @@
             <p><b>CUIDADO CON EL MICHI</b></p>
             <p>TODOS LOS DERECHOS RESERVADOS</p>
         </footer>
-        <script src="build/js/app.js"></script>
+        <script src="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/build/js/app.js"></script>
     </body>
 </html>

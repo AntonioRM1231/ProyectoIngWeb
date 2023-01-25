@@ -15,9 +15,12 @@
     //Obtener los datos del zapato
     $consulta = "SELECT * FROM zapato WHERE ID_Zapato = ${id}";
     $resultado = mysqli_query($db, $consulta);
+    if (!$resultado->num_rows) {
+        header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/index.php');
+    }
     $zapato = mysqli_fetch_assoc($resultado);
 ?>
-
+<hr>
 <main class="contenedor">
         <section class="contenedor">
             <div class="cuerpo-anuncio">
@@ -30,7 +33,7 @@
                 <div class="anuncio-der">
                     <h2><?php echo $zapato['Modelo'] ?></h2>
                     <p><?php echo "$".$zapato['PrecioVenta'] ?></p>
-                    <p>|<?php echo $zapato['NumeroDisp'] ?> MX </p>
+                    <p><?php echo $zapato['NumeroDisp'] ?> MX </p>
                     <button class="boton-agua">Comprar</button>
                 </div>
             </div>
@@ -40,6 +43,6 @@
             <p><b>CUIDADO CON EL MICHI</b></p>
             <p>TODOS LOS DERECHOS RESERVADOS</p>
         </footer>
-        <script src="build/js/app.js"></script>
+        <script src="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/build/js/app.js"></script>
     </body>
 </html>

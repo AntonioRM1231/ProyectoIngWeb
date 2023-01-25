@@ -35,23 +35,16 @@
                     </svg>
                 </div>
                 <nav class="navegacion">
-<<<<<<< HEAD
+
                     <!--CATEGORIAS-->  
                     <?php  if(!$auth): ?>
-                        <a href="#" data-bs-toggle="offcanvas" data-bs-target="#demo"> 
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                            </svg>
-                        </a>
+                        <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/iniSesionAdmin.php">Iniciar Sesión</a>
                     <?php endif ?>
                     <?php  if($auth): ?>
                         <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/crear.php">Crear</a>
+                        <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/editar.php">Editar</a>
                         <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/cerrarSesion.php">Cerrar sesión</a>
                     <?php endif ?>
-=======
-                    <!--CATEGORIAS-->
-                    <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/editar.php">Editar</a>
->>>>>>> e897a159563c9c1b0e3246948591063490c9149c
                 </nav>
             </div>
         </div>

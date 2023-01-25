@@ -1,3 +1,10 @@
+<?php
+    if(!isset($_SESSION)){
+        session_start();
+    }
+    $auth = $_SESSION['loginAdmin'] ?? false; //null
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,8 +35,16 @@
                     </svg>
                 </div>
                 <nav class="navegacion">
-                    <!--CATEGORIAS-->
-                    <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/editar.php">Editar</a>
+
+                    <!--CATEGORIAS-->  
+                    <?php  if(!$auth): ?>
+                        <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/iniSesionAdmin.php">Iniciar Sesión</a>
+                    <?php endif ?>
+                    <?php  if($auth): ?>
+                        <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/crear.php">Crear</a>
+                        <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/editar.php">Editar</a>
+                        <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/cerrarSesion.php">Cerrar sesión</a>
+                    <?php endif ?>
                 </nav>
             </div>
         </div>

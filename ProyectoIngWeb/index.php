@@ -35,6 +35,14 @@
             $id_res = mysqli_fetch_assoc($resultado);
             $id_Cliente = $id_res['ID_Cliente'];
             $conexion->close();
+
+            session_start();
+            $_SESSION['CorreoE'] = $correo;
+            $_SESSION['login'] = true;
+            echo "<pre>";
+              var_dump($_SESSION);
+            echo "</pre>";
+
             header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/productos.php?idIS='.strval($id_Cliente));
           }else{
             $erroresIS[] = "La contraseña es incorrecta, por favor intente de nuevo";
@@ -162,15 +170,16 @@
         </div>
         <div class="desc-nosotros">
           <h3>NOSOTROS</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus mauris nisl, 
-            cursus feugiat sapien ac, facilisis mollis enim. Aenean bibendum urna id ante varius 
-            interdum. In vulputate lacus in pulvinar suscipit. Pellentesque posuere varius 
-            vestibulum. Pellentesque sapien nisl, malesuada non sapien at, mattis elementum 
-            diam. Donec nisi quam, ultrices ut pharetra eget, pharetra in mauris. Nullam ullamcorper, 
-            nunc ac dignissim luctus, ante massa tempor nunc, non aliquet tellus quam sed eros. Quisque gravida, 
-            diam a molestie ultrices, ex neque pretium felis, a tempor diam leo sed orci. Pellentesque 
-            id metus quis neque laoreet placerat. Quisque commodo, diam ac accumsan sollicitudin, 
-            odio libero eleifend enim, in pretium odio felis eu elit.</p>
+          <p>
+            En 2022 se fundó Cuidado con el Michi que nació de la idea 
+            de la familia Rodríguez y Salto ellos idearon que México podía tener un tipo de zapatos
+            que se ajustara a las tendencias mundiales, convirtiendose en una de las mejores empresas 
+            de venta de calzado online. 
+          </p>
+          <p>
+            Cuidado con el Michi se caracteriza por estar a la vanguardia en diseños, precios y modelos.
+            Además de que la calidad de todos nuestros productos es excelente.
+          </p>
         </div>
       </div>
     </section>

@@ -1,7 +1,8 @@
 <?php
-    include "includes/templates/header_registro.php";
-    require 'includes/funciones.php';
-    require 'conexionBD/connection.php';
+    include "../includes/templates/header_admin.php";
+    
+    require '../includes/funciones.php';
+    require '../conexionBD/connection.php';
     $mysql = new connection();
     $conexion = $mysql->get_connection();
     $statement = $conexion->prepare('CALL ingresarClienteST(?,?,?,?,?,?,?,?,?)');
@@ -197,3 +198,8 @@
         <script src="build/js/app.js"></script>
     </body>
 </html>
+
+
+
+
+    

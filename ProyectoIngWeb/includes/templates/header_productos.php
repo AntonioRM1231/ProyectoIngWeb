@@ -1,3 +1,9 @@
+<?php
+    if(!isset($_SESSION)){{
+        session_start();
+    }}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +24,7 @@
         <div class="contenedor contenido-header">
            
             <!--LOGOTIPO-->
-            <a href="/">
+            <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/index.php">
                 <img class="logotipo" src="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/imagenes/ccm.png" alt="logotipo">
             </a>
             <div class="barra">
@@ -34,6 +40,7 @@
                     <a href="nino.php">Niño</a>
                     <a href="nina.php">Niña</a>
                     <a href="index.php.#nosotros">Nosotros</a>
+                    <a href="cerrarSesion.php">Cerrar sesión</a>
                 </nav>
             </div>
         </div>

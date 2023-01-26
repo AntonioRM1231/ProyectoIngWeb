@@ -96,6 +96,7 @@ CREATE TABLE administrador(
     ContraseniaAdmin VARCHAR(50) NOT NULL,
     PRIMARY KEY (UsuarioAdmin)
 );
+ALTER TABLE administrador CHANGE ContraseniaAdmin ContraseniaAdmin VARCHAR(60);
 
 CREATE TABLE gerente(
 	UsuarioGerente VARCHAR(50) NOT NULL,

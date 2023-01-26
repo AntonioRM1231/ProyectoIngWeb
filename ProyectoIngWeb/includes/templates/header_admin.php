@@ -41,11 +41,12 @@
                         <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/iniSesionAdmin.php">Iniciar Sesión</a>
                     <?php endif ?>
                     <?php  if($auth): ?>
-                        <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/crear.php">Crear</a>
-                        <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/editar.php">Editar</a>
+                        <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/editar.php">Editar Zapato</a>
+                        <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/registroAdmin.php">Crear Nuevo Admin</a>
                         <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/cerrarSesion.php">Cerrar sesión</a>
                     <?php endif ?>
                 </nav>
+                <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/crear.php">Crear</a>
             </div>
         </div>
     </header>

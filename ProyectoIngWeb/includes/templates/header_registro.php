@@ -1,3 +1,9 @@
+<?php
+    if(!isset($_SESSION)){
+        session_start();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +34,7 @@
                     </svg>
                 </div>
                 <nav class="navegacion">
-                    <a href="index.php.#nosotros">Nosotros</a>
+                    <a href="index.php.#nosotros">NOSOTROS</a>
                 </nav>
             </div>
         </div>

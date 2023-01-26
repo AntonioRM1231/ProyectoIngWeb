@@ -2,9 +2,11 @@ SHOW DATABASES;
 USE ccm;
 SHOW TABLES;
 DESCRIBE cliente;
+DESCRIBE administrador;
 DESCRIBE tarjeta;
 SELECT * FROM cliente;
-SELECT * FROM tarjeta;   
+SELECT * FROM tarjeta;  
+SELECT * FROM administrador; 
 
 /* PROCEDIMIENTOS ALMACENADOS */
 DROP PROCEDURE IF EXISTS ingresarPedido;
@@ -151,3 +153,18 @@ END;
 $$
 CALL ingresarZapato('Azul',4,30,'Adidas','forum',700.00,800.00,'equipolocal','equipolocal','equipolocal','equipolocal');
 SELECT * FROM zapato;
+
+/*INGRESAR VALORES EN LA TABLA DE administrador*/
+DELIMITER $$
+CREATE PROCEDURE ingresarAdmin(
+	IN _UsuarioAdmin VARCHAR(50),
+	IN _ContraseniaAdmin VARCHAR(60)
+)
+BEGIN
+	INSERT INTO 
+    administrador (UsuarioAdmin,ContraseniaAdmin)
+    VALUES (_UsuarioAdmin,_ContraseniaAdmin);
+END;
+$$
+CALL ingresarAdmin('Admin2','1234567891023654789');
+SELECT * FROM administrador;

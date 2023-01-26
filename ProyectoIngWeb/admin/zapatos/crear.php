@@ -75,7 +75,7 @@
         if (empty($errores)) {
              /*SUBIDA DE ARCHIVOS */
              //Crear carpetas 
-             $carpetaImagenes ='/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/image/';
+             $carpetaImagenes ='image/';
 
              if (!is_dir($carpetaImagenes)) {
                  mkdir($carpetaImagenes);

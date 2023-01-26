@@ -8,5 +8,6 @@ include "../includes/templates/header_admin.php";
     include "../includes/templates/anuncios.php";
     ?>
 </main>
-</body>
-</html>
+<?php
+include "../includes/templates/footer.php";
+?>

@@ -20,7 +20,6 @@
     }
     $zapato = mysqli_fetch_assoc($resultado);
 ?>
-<hr>
 <main class="contenedor">
         <section class="contenedor">
             <div class="cuerpo-anuncio">
@@ -34,6 +33,7 @@
                     <h2><?php echo $zapato['Modelo'] ?></h2>
                     <p><?php echo "$".$zapato['PrecioVenta'] ?></p>
                     <p><?php echo $zapato['NumeroDisp'] ?> MX </p>
+                    <input type="submit" class="boton-marron" value="Comprar">
                 </div>
             </div>
         </section>

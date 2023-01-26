@@ -1,7 +1,5 @@
 <?php
   //Importar la conexion
-  // require '../../conexionBD/database.php';
-  // $db = conectarDB();
   // //Escribir el Query
   // $query = "SELECT * FROM zapato";
   // //Consultar la BD 
@@ -10,13 +8,17 @@
   $result=$_GET['result'] ?? null;
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      require '../../conexionBD/database.php';
+      $db = conectarDB();
       $id = $_POST['id'];
       $id = filter_var($id, FILTER_VALIDATE_INT);
       if($id){
         //Eliminar el archivo
         $query = "SELECT imagenA, imagenB, imagenC, imagenD FROM zapato WHERE ID_Zapato = ${id}";
         $resultado = mysqli_query($db, $query);
+        echo "prueba";
         $zapato = mysqli_fetch_assoc($resultado);
+
         unlink('image/'.$zapato['imagenA']);
         unlink('image/'.$zapato['imagenB']);
         unlink('image/'.$zapato['imagenC']);
@@ -24,12 +26,13 @@
         //Eliminar zapato
         $query = "DELETE FROM zapato WHERE ID_Zapato = ${id}";
         $resultado = mysqli_query($db, $query);
-
+        
         if ($resultado) {
             header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/editar.php?result=3');
         }
 
       }
+      
   }
   //Incluye un template
   include "../../includes/templates/header_admin.php";

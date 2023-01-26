@@ -46,7 +46,6 @@
                         <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/cerrarSesion.php">Cerrar sesión</a>
                     <?php endif ?>
                 </nav>
-                <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/crear.php">Crear</a>
             </div>
         </div>
     </header>

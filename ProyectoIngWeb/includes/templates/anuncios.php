@@ -1,10 +1,33 @@
 <?php 
-
+//Logica de usuarios
+switch ($usr) {
+  case 1:
+    $urlDB = 'conexionBD/database.php';
+    $ver = '/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/zapato.php?id=';
+    break;
+  case 2:
+    $urlDB = '../conexionBD/database.php';
+    $ver = '/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/zapato.php?id=';
+    break;
+  default:
+    # code...
+    break;
+}
 // Base de datos
-require '../conexionBD/database.php';
+require $urlDB;
 $db = conectarDB();
 //Obtener los datos del zapato
-$query = "SELECT * FROM zapato";
+if ($cat==='HOMBRE') {
+  $query = "SELECT * FROM zapato WHERE Categoria='HOMBRE' ";
+}elseif ($cat==='MUJER') {
+  $query = "SELECT * FROM zapato WHERE Categoria='MUJER' ";
+}elseif ($cat==='NIÑO') {
+  $query = "SELECT * FROM zapato WHERE Categoria='NIÑO' ";
+}elseif($cat==='NIÑA'){
+  $query = "SELECT * FROM zapato WHERE Categoria='NIÑA' ";
+}else {
+  $query = "SELECT * FROM zapato";
+} 
 $consulta = mysqli_query($db, $query);
 ?>
 <div class="contenedor-anuncio">
@@ -41,7 +64,7 @@ $consulta = mysqli_query($db, $query);
         <p>Color: <?php echo $zapato['Color'] ?><p>
         <p>Sz: <?php echo $zapato['NumeroDisp']."MX" ?><p>
         <p><?php echo "$".$zapato['PrecioVenta'] ?><p>
-        <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/zapato.php?id=<?php echo $zapato['ID_Zapato'] ?>" class="boton-agua">Ver</a>
+        <a href="<?php echo $ver.$zapato['ID_Zapato'] ?>" class="boton-agua">Ver</a>
       </div>
     </div>
   <?php endwhile;?>

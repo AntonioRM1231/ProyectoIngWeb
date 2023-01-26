@@ -18,33 +18,19 @@
     $id_cliente = $_GET['id'];
     $id_cliente = filter_var($id_cliente,FILTER_VALIDATE_INT);
 ?>
-
-<html> 
-    <body>
         <main class="contenedor">
-        <?php if(intval($resultado) === 1):?>
-            <div class="alerta exito">¡El registro se llevó a cabo exitosamente!</div>  
-        <?php endif;?>   
-        <h2>NUESTROS PRODUCTOS</h2>
-            <section class="seccion contenedor">
-                <div class="contenedor-anuncio">
-                    <a href="anuncio.html" class="anuncio">
-                        <picture>
-                            <source srcset="imagenes/forum1.png" type="image/jpg">
-                            <img loading="lazy" src="imagenes/forum1.png" alt="anuncio">
-                        </picture>
-                        <div class="contenido-anuncio">
-                            <h3>ADIDAS FORUM LOW EXHIBIT</h3>
-                            <p class="precio"><b> $1,200.00</b></p>
-                        </div>
-                    </a>
-                </div>
-            </section>
+            <?php if(intval($resultado) === 1):?>
+                <div class="alerta exito">¡El registro se llevó a cabo exitosamente!</div>  
+            <?php endif;?>   
+            <h2>NUESTROS PRODUCTOS</h2>
+            <?php
+                $usr = 1;
+                $cat = '';
+                include "includes/templates/anuncios.php";
+            ?>
         </main>
-        <footer  class="site-footer">
-            <p><b>CUIDADO CON EL MICHI</b></p>
-            <p>TODOS LOS DERECHOS RESERVADOS</p>
-        </footer>
-        <script src="build/js/app.js"></script>
-    </body>
-</html>
+        <?php 
+            include "includes/templates/nosotros.php";
+            include "includes/templates/footer.php"; 
+        ?>
+

@@ -24,7 +24,7 @@
         <div class="contenedor contenido-header">
            
             <!--LOGOTIPO-->
-            <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/index.php">
+            <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/productos.php">
                 <img class="logotipo" src="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/imagenes/ccm.png" alt="logotipo">
             </a>
             <div class="barra">
@@ -45,3 +45,4 @@
             </div>
         </div>
     </header>
+    <hr>

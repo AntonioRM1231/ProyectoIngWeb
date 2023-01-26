@@ -34,7 +34,6 @@
                     <h2><?php echo $zapato['Modelo'] ?></h2>
                     <p><?php echo "$".$zapato['PrecioVenta'] ?></p>
                     <p><?php echo $zapato['NumeroDisp'] ?> MX </p>
-                    <button class="boton-agua">Comprar</button>
                 </div>
             </div>
         </section>

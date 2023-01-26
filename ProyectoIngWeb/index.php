@@ -138,56 +138,16 @@
             </div>
           </form>
         </div>
-    </div>
-    <hr>
-    
+    </div> 
     <main class="contenedor">
         <h2>NUESTROS PRODUCTOS</h2>
-        <section class="seccion contenedor">
-          <div class="contenedor-anuncio">
-              <a href="anuncio.html" class="anuncio">
-                  <picture>
-                      <source srcset="imagenes/forum1.png" type="image/jpg">
-                      <img loading="lazy" src="imagenes/forum1.png" alt="anuncio">
-                  </picture>
-                  <div class="contenido-anuncio">
-                      <h3>ADIDAS FORUM LOW EXHIBIT</h3>
-                      <p class="precio"><b> $1,200.00</b></p>
-                  </div>
-              </a>
-          </div>
-        </section>
+        <?php
+          $usr = 3;
+          $cat = '';
+          include "includes/templates/anuncios.php";
+        ?>
     </main>
-    
-    <hr>
-    <section id="nosotros">
-      <div class="contenedor-nosotros">
-        <div class="img-nosotros">
-          <picture>
-            <source srcset="imagenes/catsnk.jpg" type="image/jpg">
-            <img loading="lazy" src="imagenes/catsnk.jpg" alt="anuncio">
-          </picture>
-        </div>
-        <div class="desc-nosotros">
-          <h3>NOSOTROS</h3>
-          <p>
-            En 2022 se fundó Cuidado con el Michi que nació de la idea 
-            de la familia Rodríguez y Salto ellos idearon que México podía tener un tipo de zapatos
-            que se ajustara a las tendencias mundiales, convirtiendose en una de las mejores empresas 
-            de venta de calzado online. 
-          </p>
-          <p>
-            Cuidado con el Michi se caracteriza por estar a la vanguardia en diseños, precios y modelos.
-            Además de que la calidad de todos nuestros productos es excelente.
-          </p>
-        </div>
-      </div>
-    </section>
-    <hr>
-    <footer  class="site-footer">
-        <p><b>CUIDADO CON EL MICHI</b></p>
-        <p>TODOS LOS DERECHOS RESERVADOS</p>
-    </footer>
-    <script src="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/build/js/app.js"></script>
-</body>
-</html>
+    <?php 
+      include "includes/templates/nosotros.php";
+      include "includes/templates/footer.php"; 
+    ?>

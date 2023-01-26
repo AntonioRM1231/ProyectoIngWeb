@@ -1,5 +1,5 @@
 <?php 
-//Logica de usuarios
+//Logica de usuario
 switch ($usr) {
   case 1:
     $urlDB = 'conexionBD/database.php';
@@ -8,6 +8,10 @@ switch ($usr) {
   case 2:
     $urlDB = '../conexionBD/database.php';
     $ver = '/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/zapato.php?id=';
+    break;
+  case 3:
+    $urlDB = 'conexionBD/database.php';
+    $ver = '/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/zapato2.php?id=';
     break;
   default:
     # code...

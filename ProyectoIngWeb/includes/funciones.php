@@ -12,3 +12,13 @@ function estaAutenticado() : bool {
         return false;
     }
 }
+
+function estaAutenticadoAdmin() : bool {
+    session_start();
+    $auth = $_SESSION['loginAdmin'];
+    if($auth){
+        return true;
+    }else{
+        return false;
+    }
+}

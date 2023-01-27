@@ -3,6 +3,16 @@
       //require 'Cliente.php';
       require '../conexionBD/connection.php';
       include "../includes/templates/header_registro.php";
+
+      $auth = estaAutenticadoAdmin();
+      // var_dump($auth);
+      // echo "var session: ";
+      // var_dump($_SESSION);
+      if(!$auth){
+          // echo 'dentro del if';
+          header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/index.php');
+      }
+
       //incluirTemplate('header');
       $mysql = new connection();
       $conexion = $mysql->get_connection();

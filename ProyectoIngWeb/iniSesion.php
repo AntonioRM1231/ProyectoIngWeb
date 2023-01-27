@@ -34,17 +34,21 @@
             $resultado = mysqli_query($conexion,$consulta);
             $id_res = mysqli_fetch_assoc($resultado);
             $id_Cliente = $id_res['ID_Cliente'];
-            $conexion->close();
 
             session_start();
             $_SESSION['CorreoE'] = $correo;
             $_SESSION['login'] = true;
+
             echo "<pre>";
               var_dump($_SESSION);   
             echo "</pre>";
-            $consulta = "SELECT NumeroTarjeta FROM cliente WHERE CorreoE = '".$correo."';";
+            $consulta = "SELECT NumeroTarjeta FROM cliente WHERE CorreoE = '".$correo."';"; 
             $resultado = mysqli_query($conexion,$consulta);
-            $NumeroTarjeta = $resultado['NumeroTarjeta'];
+            $hayTarjeta = mysqli_fetch_assoc($resultado);
+            $NumeroTarjeta = $hayTarjeta['NumeroTarjeta'];
+            $conexion->close();
+            //var_dump($NumeroTarjeta);
+            
             if($NumeroTarjeta == NULL){
               //No tiene una tarjeta vinculada a su cuenta, etonces debe registrar una
               header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/regTarjeta.php');

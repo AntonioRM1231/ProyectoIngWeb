@@ -65,8 +65,8 @@ CREATE PROCEDURE ingActTarjetaEnCliente(
 BEGIN
 	UPDATE cliente SET NumeroTarjeta = _NumeroTarjeta WHERE CorreoE = _CorreoE;
 END;
-$$
-CALL ingActTarjetaEnCliente('nayeli@gmail.com','1236547898529635');
+$$ 
+CALL ingActTarjetaEnCliente('porfavor@funcionaa.com','1236547898529635');
 SELECT * FROM cliente;
 SELECT * FROM tarjeta;
 

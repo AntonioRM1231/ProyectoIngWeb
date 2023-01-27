@@ -42,10 +42,8 @@
             echo "<pre>";
               var_dump($_SESSION);   
             echo "</pre>";
-            $consulta = "SELECT NumeroTarjeta FROM cliente WHERE CorreoE = '".$correo."';";
-            $resultado = mysqli_query($conexion,$consulta);
-            $NumeroTarjeta = $resultado['NumeroTarjeta'];
-            header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/productos.php');
+            
+            header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/productos.php?idIS='.strval($id_Cliente));
           }else{
             $erroresIS[] = "La contraseña es incorrecta, por favor intente de nuevo";
           }
@@ -69,7 +67,7 @@
                 </div>
             <?php endforeach; ?> 
 
-            <form class="formulario" method="POST" action="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/iniSesion.php">
+            <form class="formulario" method="POST" action="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/iniSesionCat.php">
                 <div class="campo">
                     <label  class="label" for="email">Correo Electrónico </label>
                     <input  class="field" type="email" id="email" name="CorreoEIS" placeholder="email@ejemplo.com" value="<?php echo $correo?>" required>

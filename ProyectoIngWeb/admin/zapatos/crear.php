@@ -21,14 +21,14 @@
     //     var_dump($_FILES);
     //     echo "</pre>";
     //     exit;
-        $color = $_POST['color'];
-        $numeroD = $_POST['numeroD'];
-        $stock = $_POST['stock'];
-        $marca = $_POST['marca'];
-        $modelo = $_POST['modelo'];
+        $color = strtoupper(filter_var($_POST['color'], FILTER_SANITIZE_STRING));
+        $numeroD = filter_var($_POST['numeroD'], FILTER_SANITIZE_NUMBER_INT);
+        $stock = filter_var($_POST['stock'], FILTER_SANITIZE_NUMBER_INT);
+        $marca = strtoupper(filter_var($_POST['marca'], FILTER_SANITIZE_STRING));
+        $modelo = strtoupper(filter_var($_POST['modelo'], FILTER_SANITIZE_STRING));
         $pcompra = $_POST['pcompra'];
         $pventa = $_POST['pventa'];
-        $categoria = $_POST['categoria'];
+        $categoria = strtoupper(filter_var($_POST['categoria'],FILTER_SANITIZE_STRING));
         //Para las imagenes 
         $imagen1 = $_FILES['img1'];
         $imagen2 = $_FILES['img2'];
@@ -105,7 +105,6 @@
          }
     }
    ?>
-        <hr>
         <section id="#crear">
             <h2>Crear</h2>
             <div class="contenedor">

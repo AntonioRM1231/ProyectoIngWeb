@@ -7,7 +7,7 @@ DESCRIBE tarjeta;
 SELECT * FROM cliente;
 SELECT * FROM tarjeta;  
 SELECT * FROM administrador; 
-
+SELECT * FROM zapato; 
 /* PROCEDIMIENTOS ALMACENADOS */
 DROP PROCEDURE IF EXISTS ingresarPedido;
 

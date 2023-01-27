@@ -50,8 +50,7 @@
     
       
 ?>
-    <hr>
-        <section id="#crear">
+        <section>
             <h1>
                 Iniciar Sesión
             </h1>

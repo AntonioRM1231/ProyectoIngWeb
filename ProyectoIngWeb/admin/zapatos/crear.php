@@ -1,6 +1,15 @@
 <?php
   require '../../conexionBD/database.php';
   include "../../includes/templates/header_admin.php";
+  require "../../includes/funciones.php";
+  $auth = estaAutenticadoAdmin();
+    // var_dump($auth);
+    // echo "var session: ";
+    // var_dump($_SESSION);
+    if(!$auth){
+        // echo 'dentro del if';
+        header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/index.php');
+    }
   //require '../../includes/funciones.php';
   //incluirTemplate('header_admin');
   $db = conectarDB();

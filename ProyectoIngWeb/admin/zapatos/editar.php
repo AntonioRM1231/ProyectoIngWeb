@@ -1,10 +1,19 @@
 <?php
   //Importar la conexion
+require "../../includes/funciones.php";
   // //Escribir el Query
   // $query = "SELECT * FROM zapato";
   // //Consultar la BD 
   // $consulta = mysqli_query($db, $query);
   //Muestra mensaje condicional
+  $auth = estaAutenticadoAdmin();
+    // var_dump($auth);
+    // echo "var session: ";
+    // var_dump($_SESSION);
+    if(!$auth){
+        // echo 'dentro del if';
+        header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/index.php');
+    }
   $result=$_GET['result'] ?? null;
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {

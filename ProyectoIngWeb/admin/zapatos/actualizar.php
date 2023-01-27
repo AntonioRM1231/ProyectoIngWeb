@@ -1,5 +1,13 @@
 <?php
-  
+  require "../../includes/funciones.php";
+  $auth = estaAutenticadoAdmin();
+    // var_dump($auth);
+    // echo "var session: ";
+    // var_dump($_SESSION);
+    if(!$auth){
+        // echo 'dentro del if';
+        header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/index.php');
+    }
   //Determinar si es un ID valido
   $id = $_GET['id'];
   $id = filter_var($id, FILTER_VALIDATE_INT);

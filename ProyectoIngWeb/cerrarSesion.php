@@ -16,6 +16,6 @@
         header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/index.php');
     }else if($bandera == 1){
         header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/index.php');
-    }
-    
+    } 
+     
 ?>

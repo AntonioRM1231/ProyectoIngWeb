@@ -1,7 +1,4 @@
    <?php
-      //CODIGO DE PRUEBA
-      $_SESSION['login'] = false;
-      //////////////////////////
       require 'includes/funciones.php';
       require 'Cliente.php';
       require 'conexionBD/connection.php';

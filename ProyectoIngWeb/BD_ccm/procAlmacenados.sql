@@ -168,3 +168,7 @@ END;
 $$
 CALL ingresarAdmin('Admin2','1234567891023654789');
 SELECT * FROM administrador;
+SELECT * FROM pedido;
+SELECT * FROM zapato;
+DELETE FROM zapato WHERE ID_Zapato = 1;
+DELETE FROM pedido WHERE ID_Pedido = 4;

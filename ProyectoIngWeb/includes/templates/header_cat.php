@@ -1,7 +1,9 @@
 <?php
-    if(!isset($_SESSION)){{
+    if(!isset($_SESSION)){
         session_start();
-    }}
+    }  
+    $auth = $_SESSION['login'] ?? false; //null
+    //var_dump($auth);
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +26,7 @@
         <div class="contenedor contenido-header">
            
             <!--LOGOTIPO-->
-            <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/productos.php">
+            <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/index.php">
                 <img class="logotipo" src="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/imagenes/ccm.png" alt="logotipo">
             </a>
             <div class="barra">
@@ -39,8 +41,25 @@
                     <a href="mujer2.php">Mujer</a>
                     <a href="nino2.php">Niño</a>
                     <a href="nina2.php">Niña</a>
-                    <a href="productos.php.#nosotros">Nosotros</a>
-                    <a href="cerrarSesion.php">Cerrar sesión</a>
+                    <a href="index.php#nosotros" class="a-nos">Nosotros</a>
+                    <!--INTERACTIVOS-->
+                    <?php  if(!$auth): ?>
+                        <a href="iniSesionCat.php"> 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                            </svg>
+                        </a>
+                        <a href="registro.php">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                                <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                            </svg>
+                        </a>
+                    <?php endif ?>
+                    <?php  if($auth): ?>
+                        <a href="cerrarSesion.php">Cerrar sesión</a>
+                    <?php endif ?>
                 </nav>
             </div>
         </div>

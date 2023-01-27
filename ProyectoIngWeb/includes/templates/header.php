@@ -57,6 +57,9 @@
                             </svg>
                         </a>
                     <?php endif ?>
+                    <?php  if($auth): ?>
+                        <a href="cerrarSesion.php">Cerrar sesión</a>
+                    <?php endif ?>
                 </nav>
             </div>
         </div>

@@ -6,6 +6,7 @@ SHOW DATABASES;
 USE ccm;
 SELECT * FROM cliente;
 DESCRIBE cliente;
+DESCRIBE zapato;
 CREATE TABLE tarjeta(
 	NumeroTarjeta VARCHAR(17) NOT NULL,
     CVC VARCHAR(4) NOT NULL,
@@ -31,6 +32,8 @@ CREATE TABLE zapato(
     imagenD VARCHAR(150),
     PRIMARY KEY (ID_Zapato)
 );
+ALTER TABLE zapato ADD Categoria VARCHAR(30);
+ALTER TABLE zapato CHANGE Categoria Categoria VARCHAR(25);
 
 CREATE TABLE direccion(
 	ID_Direccion INT NOT NULL AUTO_INCREMENT,

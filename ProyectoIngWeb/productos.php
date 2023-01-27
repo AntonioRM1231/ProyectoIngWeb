@@ -8,10 +8,11 @@
     // var_dump($auth);
     // echo "var session: ";
     // var_dump($_SESSION);
+    /*
     if(!$auth){
         // echo 'dentro del if';
         header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/index.php');
-    }
+    }*/
     //******************************************************/
 
     $resultado = $_GET['res'];

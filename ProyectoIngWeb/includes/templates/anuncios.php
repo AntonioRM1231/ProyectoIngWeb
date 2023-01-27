@@ -3,7 +3,7 @@
 switch ($usr) {
   case 1:
     $urlDB = 'conexionBD/database.php';
-    $ver = '/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/zapato.php?id=';
+    $ver = '/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/zapato2.php?id=';
     break;
   case 2:
     $urlDB = '../conexionBD/database.php';

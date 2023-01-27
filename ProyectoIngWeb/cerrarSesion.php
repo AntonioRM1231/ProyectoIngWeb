@@ -11,6 +11,7 @@
     $_SESSION = [];
     echo "cerrar sesión 2";
     echo "<br>";
+    
     if($bandera == 0){
         header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/index.php');
     }else if($bandera == 1){

@@ -1,5 +1,5 @@
 <?php
-    include 'includes/templates/header.php';
+    include 'includes/templates/header_cat.php';
 ?>
 <main class="contenedor">
     <h2>NIÑA</h2>

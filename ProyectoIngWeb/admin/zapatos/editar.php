@@ -38,7 +38,6 @@
   include "../../includes/templates/header_admin.php";
   //incluirTemplate('header_admin');
 ?>
-<hr>
 <main class="contenedor">
   <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/crear.php" class="boton-agua">CREAR</a>
   <?php if(intval($result)===1):?>

@@ -1,12 +1,14 @@
    <?php
+      //CODIGO DE PRUEBA
+      $_SESSION['login'] = false;
+      //////////////////////////
       require 'includes/funciones.php';
       require 'Cliente.php';
       require 'conexionBD/connection.php';
       incluirTemplate('header');
       $mysql = new connection();
       $conexion = $mysql->get_connection();
-      $correo = '';  
-
+      $correo = '';
       //Arreglo con mensajes de errores
       $erroresIS = [];
       //Ejecutar el código después de que el usuario envie el formulario

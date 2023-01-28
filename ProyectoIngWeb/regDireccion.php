@@ -4,135 +4,78 @@
     require 'conexionBD/connection.php';
     $mysql = new connection();
     $conexion = $mysql->get_connection();
-    $statement = $conexion->prepare('CALL ingresarClienteST(?,?,?,?,?,?,?,?,?)');
-    $CorreoE = '';
-    $NombreUsuario = '';
-    $Contrasenia = '';
-    $Nombre = '';
-    $ApPaterno = '';
-    $ApMaterno = '';
-    $Edad = '';
-    $NumTelefono = '';
+    $Calle = '';
+	  $NumExt = '';
+    $NumInt = '';
+    $CP = '';
+    $COLONIA = '';
+    $Municipio = '';
+    $Estado = '';
 
     //Arreglo con mensajes de errores
     $errores = [];
 
     //Ejecutar el código después de que el usuario envie el formulario
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $CorreoE = filter_var($_POST['CorreoEf'],FILTER_SANITIZE_EMAIL);
-        $NombreUsuario = $_POST['NombreUsuariof'];
-        $Contrasenia = $_POST['Contraseniaf'];
-        $Nombre = strtoupper(filter_var($_POST['Nombref'],FILTER_SANITIZE_STRING));
-        $ApPaterno = strtoupper(filter_var($_POST['ApPaternof'],FILTER_SANITIZE_STRING));
-        $ApMaterno = strtoupper(filter_var($_POST['ApMaternof'],FILTER_SANITIZE_STRING));
-        $Edad = $_POST['Edadf'];
-        $NumTelefono = filter_var($_POST['NumTelefonof'],FILTER_SANITIZE_NUMBER_INT);
+        $Calle = strtoupper(filter_var($_POST['Calle'],FILTER_SANITIZE_STRING));
+        $NumExt = strtoupper(filter_var($_POST['NumExt'],FILTER_SANITIZE_STRING));
+        $NumInt = strtoupper(filter_var($_POST['NumInt'],FILTER_SANITIZE_STRING));
+        $CP = filter_var($_POST['CP'],FILTER_SANITIZE_NUMBER_INT);
+        $COLONIA = strtoupper(filter_var($_POST['COLONIA'],FILTER_SANITIZE_STRING));
+        $Municipio = strtoupper(filter_var($_POST['Municipio'],FILTER_SANITIZE_STRING));
+        $Estado = strtoupper(filter_var($_POST['Estado'],FILTER_SANITIZE_STRING));
 
-        //Verificar si el correo electrónico ya existe en la base de datos
-        $consulta = "SELECT * FROM cliente WHERE CorreoE = '".$CorreoE."';";
-        $resultado = mysqli_query($conexion,$consulta);
-        
-        //Posibles errores al registrar un usuario
-        //Verifica que haya al menos una fila en el resultado de la consulta
-        if($resultado->num_rows){
-          $errores[] = 'El correo electrónico con el que desea registrarse ya se ha asignado a otra cuenta';
+        //Posibles errores al registrar una dirección
+        if(!$_POST['Calle']){
+          $errores[] = 'El nombre de la calle es obligatorio';
         }
-        if(!$_POST['CorreoEf']){
-          $errores[] = 'El correo electrónico es obligatorio';
+        if(!$_POST['NumExt']){
+          $errores[] = 'El número exterior es obligatorio';
         }
-        if(!$_POST['NombreUsuariof']){
-          $errores[] = 'El nombre de usuario es obligatorio';
-        }
-        if(strlen($_POST['NombreUsuariof']) < 5 || strlen($_POST['NombreUsuariof']) > 50){
-          $errores[] = 'El nombre de usuario debe tener mínimo 5 caracteres y máximo 50';
-        }
-        $permitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
-        for ($i=0; $i<strlen($_POST['NombreUsuariof']); $i++){
-          if (strpos($permitidos, substr($_POST['NombreUsuariof'],$i,1)) === false){
-            $errores[] = 'El nombre de usuario no permite caracteres especiales'; 
-            break; 
-          }
-        }
-        if(!$_POST['Contraseniaf']){
-          $errores[] = 'La contraseña es obligatoria';
-        }
-        $mayus = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        $contMayus = 0;
-        for($i = 0; $i<strlen($mayus); $i++){
-          if(str_contains($_POST['Contraseniaf'],substr($mayus,$i,1))) {
-            $contMayus++;
-          }
-        }
-        if($contMayus == 0){
-          $errores[] = 'La contraseña debe incluir al menos una mayúscula';  
+        if(!$_POST['CP']){
+          $errores[] = 'El Código Postal es obligatorio';
         }
         $nums = "0123456789";
         $contNums = 0;
         for($i = 0; $i<strlen($nums); $i++){
-          if(str_contains($_POST['Contraseniaf'],substr($nums,$i,1))) {
+          if(!str_contains($_POST['CP'],substr($nums,$i,1))) {
             $contNums++;
           }
         }
         if($contNums == 0){
-          $errores[] = 'La contraseña debe incluir al menos un número';  
+          $errores[] = 'El Código Postal unicamente puede incluir números';  
         }
-        $cEsp = "!#$%&/()=?¡¿[]{}_";
-        $contEsp = 0;
-        for($i = 0; $i<strlen($cEsp); $i++){
-          if(str_contains($_POST['Contraseniaf'],substr($cEsp,$i,1))) {
-            $contEsp++;
-          }
+        if(!$_POST['COLONIA']){
+          $errores[] = 'El nombre de la Colonia es obligatorio';
         }
-        if($contEsp == 0){
-          $errores[] = 'La contraseña debe incluir al menos un caracter especial';  
+        if(!$_POST['Municipio']){
+          $errores[] = 'El Municipio es obligatorio';
         }
-        if(strlen($_POST['Contraseniaf']) < 8){
-          $errores[] = 'La contraseña debe tener una longitud mínima de 8';
+        if(!$_POST['Estado']){
+          $errores[] = 'El Estado es obligatorio';
         }
-        if(!$_POST['Nombref']){
-          $errores[] = 'El nombre es obligatorio';
-        }
-        if(!$_POST['ApPaternof']){
-          $errores[] = 'El apellido paterno es obligatorio';
-        }
-        if(!$_POST['ApMaternof']){
-          $errores[] = 'El apellido materno es obligatorio';
-        }
-        if(!$_POST['Edadf']){
-          $errores[] = 'La edad es obligatoria';
-        }
-        if(!$_POST['NumTelefonof']){
-          $errores[] = 'El número telefónico es obligatorio';
-        } 
         //Fin de los posibles errores      
       
-        $consulta = "SELECT MAX(ID_Cliente) AS ID_Max FROM cliente";
-        $resultado = mysqli_query($conexion,$consulta);
-        $id_res = mysqli_fetch_assoc($resultado);
-        $id_Cliente = $id_res['ID_Max']+1;
-        $Contrasenia = password_hash($_POST['Contraseniaf'],PASSWORD_BCRYPT);
         if(empty($errores)){
-          $statement->bind_param('ssssssisi',  
-            $CorreoE,
-            $NombreUsuario,
-            $Contrasenia,
-            $Nombre,
-            $ApPaterno,
-            $ApMaterno,
-            $Edad,
-            $NumTelefono,
-            $id_Cliente
+          $statement = $conexion->prepare('CALL ingresarDireccion(?,?,?,?,?,?,?)');
+          $statement->bind_param('sssisss',  
+            $Calle,
+            $NumExt,
+            $NumInt,
+            $CP,
+            $COLONIA,
+            $Municipio,
+            $Estado
           );
           $statement->execute(); 
           $statement->close();
+
+          $consulta = "SELECT MAX(ID_Direccion) AS ID_Dir FROM direccion";  
+          $resultado = mysqli_query($conexion,$consulta);
+          $id_res = mysqli_fetch_assoc($resultado);
+          $ID_Dir = $id_res['ID_Dir'];
           $conexion->close();
-
-          session_start();
-          $_SESSION['CorreoE'] = $CorreoE;
-          $_SESSION['login'] = true;
-
-          header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/productos.php?res=1?id='.strval($id_Cliente));
-          //res=1 Si se llevo exitosamente el registro del nuevo cliente
+          header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/productos.php?dir='.strval($ID_Dir));
         }
     }
       
@@ -140,7 +83,7 @@
     <hr>
         <section id="#crear">
             <h1>
-                ¡Regístrate!
+                Ingresa los datos de la dirección a donde será enviado tu pedido
             </h1>
             <div class="contenedor">
                 <!-- Código para ver errores en el registro -->
@@ -150,38 +93,34 @@
                 </div>
             <?php endforeach; ?>  
 
-            <form class="formulario" method="POST" action="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/registro.php">
-                <div class="campo">
-                <label class="label">Correo Electrónico</label>
-                <input class="field" type="email" name="CorreoEf" placeholder="email@ejemplo.com" value="<?php echo $CorreoE?>" required>
+            <form class="formulario" method="POST" action="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/regDireccion.php">
+            <div class="campo">
+                <label class="label">Calle</label>
+                <input class="field" type="text" name="Calle" placeholder="Nombre de la Calle" value="<?php echo $Calle?>" required>
             </div>
             <div class="campo">
-                <label class="label">Nombre de Usuario</label>
-                <input class="field" type="text" name="NombreUsuariof" placeholder="Usuario" value="<?php echo $NombreUsuario?>" required>
+                <label class="label">Num Exterior </label>
+                <input class="field" type="text" name="NunExt" placeholder="Número Exterior" value="<?php echo $NunExt?>" required>
             </div>
             <div class="campo">
-                <label class="label">Contraseña</label>
-                <input class="field" type="password" name="Contraseniaf" placeholder="**********" required>
+                <label class="label">Num Interior </label>
+                <input class="field" type="text" name="NumInt" placeholder="Número Interior" value="<?php echo $NumInt?>" required>
             </div>
             <div class="campo">
-                <label class="label">Nombre</label>
-                <input class="field" type="text" name="Nombref" placeholder="Nombre" value="<?php echo $Nombre?>" required>
-            </div>
-            <div class="campo">
-                <label class="label">Apellido Paterno</label>
-                <input class="field" type="text" name="ApPaternof" placeholder="Apellido Paterno" value="<?php echo $ApPaterno?>" required>
-            </div>
-            <div class="campo">
-                <label class="label">Apellido Materno</label>
-                <input class="field" type="text" name="ApMaternof" placeholder="Apellido Materno" value="<?php echo $ApMaterno?>" required>
-            </div>
-            <div class="campo">
-                <label class="label">Edad</label>
-                <input class="field" type="number" name="Edadf" placeholder="00" min="0" value="<?php echo $Edad?>" required>
+                <label class="label">CP</label>
+                <input class="field" type="number" name="CP" placeholder="Código Postal" value="<?php echo $CP?>" required>
             </div>
             <div class="campo"> 
-                <label class="label">NumTelefono</label>
-                <input class="field" type="text" name="NumTelefonof" minlength="10" placeholder="1234567890" value="<?php echo $NumTelefono?>" required>
+                <label class="label">Colonia </label>
+                <input class="field" type="text" name="COLONIA" minlength="10" placeholder="Colonia" value="<?php echo $COLONIA?>" required>
+            </div>
+            <div class="campo">
+                <label class="label">Municipio</label>
+                <input class="field" type="text" name="Municipio" placeholder="Municipio" value="<?php echo $Municipio?>" required>
+            </div>
+            <div class="campo"> 
+                <label class="label">Estado</label>
+                <input class="field" type="text" name="Estado" minlength="10" placeholder="Estado" value="<?php echo $Estado?>" required>
             </div>
             <div class="campo">
                 <input type="submit" value="Enviar" class="boton-marron">

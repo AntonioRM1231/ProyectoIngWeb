@@ -68,16 +68,15 @@
     //Ejecutar el código después de que el usuario envie el formulario
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         
-        
         $statement = $conexion->prepare('CALL ingresarDireccion(?,?,?,?,?,?,?)');
         $statement->bind_param('sssisss',  
-        $Calle,
-        $NumExt,
-        $NumInt,
-        $CP,
-        $COLONIA,
-        $Municipio,
-        $Estado
+            $Calle,
+            $NumExt,
+            $NumInt,
+            $CP,
+            $COLONIA,
+            $Municipio,
+            $Estado
         );
         $statement->execute(); 
         $statement->close();

@@ -3,6 +3,8 @@
       require 'Cliente.php';
       require 'conexionBD/connection.php';
       incluirTemplate('header_registro');
+      $var = $_GET['var'];
+
       $mysql = new connection();
       $conexion = $mysql->get_connection();
       $correo = '';  
@@ -39,9 +41,6 @@
             session_start();
             $_SESSION['CorreoE'] = $correo;
             $_SESSION['login'] = true;
-            echo "<pre>";
-              var_dump($_SESSION);   
-            echo "</pre>";
             
             header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/productos.php?idIS='.strval($id_Cliente));
           }else{
@@ -50,19 +49,21 @@
         }else{
           $erroresIS[] = "El usuario no existe, por favor intente nuevamente";
         }
-        //var_dump($erroresIS);
       }
       
 ?>
     <hr>
         <section id="#crear">
+            <?php if(intval($var) == 1):?>
+                <div class="alerta exito">Por favor Inicie Sesión para continuar</div>       
+            <?php endif;?>    
             <h1>
                 Iniciar Sesión
             </h1>
             <div class="contenedor">
             <!-- Código para ver errores en el inicio de sesión -->
             <?php foreach($erroresIS as $error): ?>
-                <div class = "alerta error"> <!-- ...error-->
+                <div class = "alerta error"> 
                     <?php echo '*'.$error; ?>
                 </div>
             <?php endforeach; ?> 

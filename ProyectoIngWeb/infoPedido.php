@@ -2,6 +2,12 @@
     include "includes/templates/header_registro.php";
     require 'includes/funciones.php';
     require 'conexionBD/connection.php';
+
+    $auth = estaAutenticado();
+    if(!$auth){
+        header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/index.php');
+    }
+
     $mysql = new connection();
     $conexion = $mysql->get_connection();
     $band = 0;
@@ -14,10 +20,6 @@
     }else if($band == 0){
         $ID_Direccion = $_SESSION['ID_Direccion'];
     }
-    
-    /*else if($band == 0){
-
-    }*/
     
     $ID_Zapato = $_SESSION['ID_Zapato'];
     $CorreoE = $_SESSION['CorreoE'];

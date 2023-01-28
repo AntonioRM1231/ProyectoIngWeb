@@ -41,7 +41,7 @@
                     <a href="mujer2.php">Mujer</a>
                     <a href="nino2.php">Niño</a>
                     <a href="nina2.php">Niña</a>
-                    <!--a href="productos.php#nosotros" class="a-nos">Nosotros</a-->
+                    <!--a href="productos.php#nosotros" class="a-nos">Nosotros</a--> 
                     <!--INTERACTIVOS-->
                     <?php  if(!$auth): ?>
                         <a href="iniSesionCat.php"> 

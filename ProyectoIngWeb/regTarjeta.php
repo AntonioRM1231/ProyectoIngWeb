@@ -2,9 +2,14 @@
     include "includes/templates/header_registro.php";
     require 'includes/funciones.php';
     require 'conexionBD/connection.php';
+
+    $auth = estaAutenticado();
+    if(!$auth){
+        header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/index.php');
+    }  
+
     $mysql = new connection();
     $conexion = $mysql->get_connection();
-    
 
     $NumeroTarjeta = '';
 	  $CVC = '';

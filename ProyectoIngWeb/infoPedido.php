@@ -11,12 +11,12 @@
     $ID_Pedido = '';
     $FechaPedido = '';
     
-    $NombreUC = '';
-    $NombreC = '';
-    $ApPatC = '';
-    $ApMatC = '';
-    $NumTelC = '';
-    $NumTarjeta = '';
+    $NombreUsuario = '';
+    $Nombre = '';
+    $ApPaterno = '';
+    $ApMaterno = '';
+    $NumTelefono = '';
+    $NumeroTarjeta = '';
 
     $ColorZ = '';
     $NumZ = '';
@@ -36,23 +36,34 @@
     $consulta = "SELECT * FROM cliente WHERE CorreoE = '".$CorreoE."';";
     $resultado = mysqli_query($conexion,$consulta);
     $cliente = mysqli_fetch_assoc($resultado);
-    $NombreUC = $cliente['NombreUsuario'];
-    $NombreC = $cliente['Nombre'];
-    $ApPatC = $cliente['ApPaterno'];
-    $ApMatC = $cliente['ApMaterno'];
-    $NumTelC = $cliente['NumTelefono'];
-    $NumTarjeta = $cliente['NumeroTarjeta'];
+    $NombreUsuario = $cliente['NombreUsuario'];
+    $Nombre = $cliente['Nombre'];
+    $ApPaterno = $cliente['ApPaterno'];
+    $ApMaterno = $cliente['ApMaterno'];
+    $NumTelefono = $cliente['NumTelefono'];
+    $NumeroTarjeta = $cliente['NumeroTarjeta'];
 
     //Consulta datos del zapato
-    $consulta = "SELECT * FROM zapato WHERE CorreoE = '".$ID_Zapato."';";
+    $consulta = "SELECT * FROM zapato WHERE ID_Zapato = '".$ID_Zapato."';";
     $resultado = mysqli_query($conexion,$consulta);
-    $cliente = mysqli_fetch_assoc($resultado);
-
+    $zapato = mysqli_fetch_assoc($resultado);
+    $ColorZ = $zapato['Color'];
+    $NumZ = $zapato['NumeroDisp'];
+    $MarcaZ = $zapato['Marca'];
+    $ModeloZ = $zapato['Modelo'];
+    $PrecioZ = $zapato['PrecioVenta'];
 
     //Consulta Domicilio
-
-
-
+    $consulta = "SELECT * FROM direccion WHERE ID_Direccion = '".$ID_Direccion."';";
+    $resultado = mysqli_query($conexion,$consulta);
+    $direccion = mysqli_fetch_assoc($resultado);
+    $Calle = $direccion['Calle'];
+    $NumExt = $direccion['NumExt'];
+    $NumInt = $direccion['NumInt'];
+    $CP = $direccion['CP'];
+    $COLONIA = $direccion['COLONIA'];
+    $Municipio = $direccion['Municipio'];  
+    $Estado = $direccion['Estado'];
 
     //Ejecutar el código después de que el usuario envie el formulario
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -84,7 +95,7 @@
     <hr>
         <section id="#crear">
             <h1>
-                Ingresa los datos de la dirección a donde será enviado tu pedido
+                Datos sobre tu pedido
             </h1>
             <div class="contenedor">
                 <!-- Código para ver errores en el registro -->
@@ -95,36 +106,90 @@
             <?php endforeach; ?>  
 
             <form class="formulario" method="POST" action="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/regDireccion.php">
+            <h2>
+                ========================== Cliente ==========================
+            </h2>
+            <div class="campo">
+                <label class="label">Correo Electrónico</label>
+                <input class="field" type="text" value="<?php echo $CorreoE?>" readonly>
+            </div>
+            <div class="campo">
+                <label class="label">Nombre de Usuario</label>
+                <input class="field" type="text" value="<?php echo $NombreUsuario?>" readonly>
+            </div>
+            <div class="campo">
+                <label class="label">Nombre</label>
+                <input class="field" type="text" value="<?php echo $Nombre?>" readonly>
+            </div>
+            <div class="campo">
+                <label class="label">Apellido Paterno</label>
+                <input class="field" type="text" value="<?php echo $ApPaterno?>" readonly>
+            </div>
+            <div class="campo">
+                <label class="label">Apellido Materno</label>
+                <input class="field" type="text" value="<?php echo $ApMaterno?>" readonly>
+            </div>
+            <div class="campo"> 
+                <label class="label">NumTelefono</label>
+                <input class="field" type="text" value="<?php echo $NumTelefono?>" readonly>
+            </div>
+            <h2>
+                ========================== Zapato ==========================
+            </h2>
+            <div class="campo">
+                <label class="label">Marca</label>
+                <input class="field" type="text" value="<?php echo $MarcaZ?>" readonly>
+            </div>
+            <div class="campo">
+                <label class="label">Modelo</label>
+                <input class="field" type="text" value="<?php echo $ModeloZ?>" readonly>
+            </div>
+            <div class="campo">
+                <label class="label">Color</label>
+                <input class="field" type="text" value="<?php echo $ColorZ?>" readonly>
+            </div>
+            <div class="campo">
+                <label class="label">Número</label>
+                <input class="field" type="text" value="<?php echo $NumZ?>" readonly>
+            </div>
+            <div class="campo">
+                <label class="label">Precio</label>
+                <input class="field" type="text" value="<?php echo $PrecioZ?>" readonly>
+            </div>
+            <h2>
+                ========================= Domicilio =========================
+            </h2>
             <div class="campo">
                 <label class="label">Calle</label>
-                <input class="field" type="text" name="Calle" placeholder="Nombre de la Calle" value="<?php echo $Calle?>" required>
+                <input class="field" type="text" value="<?php echo $Calle?>" readonly>
             </div>
             <div class="campo">
                 <label class="label">Num Exterior </label>
-                <input class="field" type="text" name="NumExt" placeholder="Número Exterior" value="<?php echo $NumExt?>" required>
+                <input class="field" type="text" value="<?php echo $NumExt?>" readonly>
             </div>
             <div class="campo">
                 <label class="label">Num Interior </label>
-                <input class="field" type="text" name="NumInt" placeholder="Número Interior" value="<?php echo $NumInt?>">
+                <input class="field" type="text" value="<?php echo $NumInt?>" readonly>
             </div>
             <div class="campo">
                 <label class="label">CP</label>
-                <input class="field" type="number" name="CP" placeholder="Código Postal" value="<?php echo $CP?>" required>
+                <input class="field" type="number" value="<?php echo $CP?>" readonly>
             </div>
             <div class="campo"> 
                 <label class="label">Colonia </label>
-                <input class="field" type="text" name="COLONIA" placeholder="Colonia" value="<?php echo $COLONIA?>" required>
+                <input class="field" type="text" value="<?php echo $COLONIA?>" readonly>
             </div>
             <div class="campo">
                 <label class="label">Municipio</label>
-                <input class="field" type="text" name="Municipio" placeholder="Municipio" value="<?php echo $Municipio?>" required>
+                <input class="field" type="text" value="<?php echo $Municipio?>" readonly>
             </div>
-            <div class="campo"> 
+            <div class="campo">   
                 <label class="label">Estado</label>
-                <input class="field" type="text" name="Estado" placeholder="Estado" value="<?php echo $Estado?>" required>
+                <input class="field" type="text" value="<?php echo $Estado?>" readonly>
             </div>
+
             <div class="campo">
-                <input type="submit" value="Enviar" class="boton-marron">
+                <input type="submit" value="Confirmar pedido" class="boton-marron">
             </div>
           </form>
             </div>

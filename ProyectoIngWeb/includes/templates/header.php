@@ -41,7 +41,7 @@
                     <a href="mujer2.php">Mujer</a>
                     <a href="nino2.php">Niño</a>
                     <a href="nina2.php">Niña</a>
-                    <a href="index.php#nosotros" class="a-nos">Nosotros</a>
+                    <a href="#nosotros" class="a-nos">Nosotros</a>
                     <!--INTERACTIVOS-->
                     <?php  if(!$auth): ?>
                         <a href="#" data-bs-toggle="offcanvas" data-bs-target="#demo"> 

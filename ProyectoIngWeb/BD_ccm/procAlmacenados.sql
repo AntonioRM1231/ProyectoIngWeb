@@ -168,6 +168,18 @@ END;
 $$
 CALL ingresarAdmin('Admin2','1234567891023654789');
 SELECT * FROM administrador;
+
+/*ACTUALIZAR Disponibilidad EN LA TABLA DE zapato*/
+DELIMITER $$
+CREATE PROCEDURE actualizarStock(
+    IN _ID_Zapato INT
+)  
+BEGIN
+	UPDATE zapato SET Disponibilidad = (Disponibilidad - 1) WHERE ID_Zapato = _ID_Zapato;
+END;
+$$
+CALL actualizarStock(5);
+
 SELECT * FROM pedido;
 SELECT * FROM zapato;
 DELETE FROM zapato WHERE ID_Zapato = 1;

@@ -18,27 +18,47 @@ require "../../includes/funciones.php";
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       require '../../conexionBD/database.php';
+      require '../../conexionBD/connection.php';
+      $mysql = new connection();
+      $conexion = $mysql->get_connection();
+
       $db = conectarDB();
       $id = $_POST['id'];
       $id = filter_var($id, FILTER_VALIDATE_INT);
+      $bandera = 0;
       if($id){
-        //Eliminar el archivo
-        $query = "SELECT imagenA, imagenB, imagenC, imagenD FROM zapato WHERE ID_Zapato = ${id}";
-        $resultado = mysqli_query($db, $query);
-        echo "prueba";
-        $zapato = mysqli_fetch_assoc($resultado);
 
-        unlink('image/'.$zapato['imagenA']);
-        unlink('image/'.$zapato['imagenB']);
-        unlink('image/'.$zapato['imagenC']);
-        unlink('image/'.$zapato['imagenD']);
-        //Eliminar zapato
-        $query = "DELETE FROM zapato WHERE ID_Zapato = ${id}";
-        $resultado = mysqli_query($db, $query);
-        
-        if ($resultado) {
+        $consulta = "SELECT ID_Zapato FROM pedido WHERE ID_Zapato = ".strval($id);  
+        $resultado = mysqli_query($conexion,$consulta);
+        $id_res = mysqli_fetch_assoc($resultado);
+        $ID_Zap = $id_res['ID_Zapato'];
+        $conexion->close();
+
+        if($ID_Zap == NULL){
+          //Eliminar el archivo
+          $query = "SELECT imagenA, imagenB, imagenC, imagenD FROM zapato WHERE ID_Zapato = ${id}";
+          $resultado = mysqli_query($db, $query);
+          echo "prueba";
+          $zapato = mysqli_fetch_assoc($resultado);
+
+          unlink('image/'.$zapato['imagenA']);
+          unlink('image/'.$zapato['imagenB']);
+          unlink('image/'.$zapato['imagenC']);
+          unlink('image/'.$zapato['imagenD']);
+
+          //Eliminar zapato
+          $query = "DELETE FROM zapato WHERE ID_Zapato = ${id}";
+          $resultado = mysqli_query($db, $query);
+
+          if ($resultado) {
             header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/editar.php?result=3');
+          }
+        }else{
+          $bandera = 1;
         }
+        
+        
+        
 
       }
       
@@ -58,12 +78,19 @@ require "../../includes/funciones.php";
   <?php endif;?>
 
   <!-- CARDS -->
+  
+  
+  <?php if($bandera == 1): ?>
+    <div class = "alerta error"> 
+        No se puede eliminar el zapato 
+    </div>
+  <?php endif; ?>
+  
   <?php
   //Incluye un template
-  
   include "../../includes/templates/anuncios_g.php";
-  
   ?>
+  
   <!-- <div class="contenedor-anuncio"> -->
   <?php //while($zapato = mysqli_fetch_assoc($consulta)):?>
     <!-- <div class="anuncio">

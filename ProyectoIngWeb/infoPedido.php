@@ -38,6 +38,7 @@
     $MarcaZ = '';
     $ModeloZ = '';
     $PrecioZ = '';
+    $CategoriaZ = '';
 
     $Calle = '';
     $NumExt = '';
@@ -67,6 +68,7 @@
     $MarcaZ = $zapato['Marca'];
     $ModeloZ = $zapato['Modelo'];
     $PrecioZ = $zapato['PrecioVenta'];
+    $CategoriaZ = $zapato['Categoria'];
 
     //Consulta Domicilio
     $consulta = "SELECT * FROM direccion WHERE ID_Direccion = '".$ID_Direccion."';";
@@ -95,6 +97,13 @@
             $ID_Zapato,
             $ID_Direccion,
             $CorreoE
+        );
+        $statement->execute(); 
+        $statement->close();
+
+        $statement = $conexion->prepare('CALL actualizarStock(?)');
+        $statement->bind_param('i',  
+            $ID_Zapato
         );
         $statement->execute(); 
         $statement->close();
@@ -167,6 +176,10 @@
             <div class="campo">
                 <label class="label">Número</label>
                 <input class="field" type="text" value="<?php echo $NumZ?>" readonly>
+            </div>
+            <div class="campo">
+                <label class="label">Categoría</label>   
+                <input class="field" type="text" value="<?php echo $CategoriaZ?>" readonly>
             </div>
             <div class="campo">
                 <label class="label">Precio</label>

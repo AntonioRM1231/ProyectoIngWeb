@@ -110,7 +110,7 @@ END;
 $$
 CALL ingresarDireccion('Manuel A. Camacho','18-A',' ',53770,'El Chamizal','Naucalpan','México');
 SELECT * FROM direccion;
-
+SELECT * FROM pedido;
 
 /*INGRESAR VALORES EN LA TABLA DE pedido */
 DELIMITER $$

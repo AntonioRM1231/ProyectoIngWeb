@@ -18,8 +18,8 @@
     //Ejecutar el código después de que el usuario envie el formulario
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $Calle = strtoupper(filter_var($_POST['Calle'],FILTER_SANITIZE_STRING));
-        $NumExt = strtoupper(filter_var($_POST['NumExt'],FILTER_SANITIZE_STRING));
-        $NumInt = strtoupper(filter_var($_POST['NumInt'],FILTER_SANITIZE_STRING));
+        $NumExt = strtoupper($_POST['NumExt']);
+        $NumInt = strtoupper($_POST['NumInt']);  
         $CP = filter_var($_POST['CP'],FILTER_SANITIZE_NUMBER_INT);
         $COLONIA = strtoupper(filter_var($_POST['COLONIA'],FILTER_SANITIZE_STRING));
         $Municipio = strtoupper(filter_var($_POST['Municipio'],FILTER_SANITIZE_STRING));
@@ -32,7 +32,7 @@
         if(!$_POST['NumExt']){
           $errores[] = 'El número exterior es obligatorio';
         }
-        if(!$_POST['CP']){
+        if(!$_POST['CP']){  
           $errores[] = 'El Código Postal es obligatorio';
         }
         $nums = "0123456789";
@@ -75,7 +75,7 @@
           $id_res = mysqli_fetch_assoc($resultado);
           $ID_Dir = $id_res['ID_Dir'];
           $conexion->close();
-          header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/productos.php?dir='.strval($ID_Dir));
+          header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/infoPedido.php?dir='.strval($ID_Dir));
         }
     }
       
@@ -100,11 +100,11 @@
             </div>
             <div class="campo">
                 <label class="label">Num Exterior </label>
-                <input class="field" type="text" name="NunExt" placeholder="Número Exterior" value="<?php echo $NunExt?>" required>
+                <input class="field" type="text" name="NumExt" placeholder="Número Exterior" value="<?php echo $NumExt?>" required>
             </div>
             <div class="campo">
                 <label class="label">Num Interior </label>
-                <input class="field" type="text" name="NumInt" placeholder="Número Interior" value="<?php echo $NumInt?>" required>
+                <input class="field" type="text" name="NumInt" placeholder="Número Interior" value="<?php echo $NumInt?>">
             </div>
             <div class="campo">
                 <label class="label">CP</label>
@@ -112,7 +112,7 @@
             </div>
             <div class="campo"> 
                 <label class="label">Colonia </label>
-                <input class="field" type="text" name="COLONIA" minlength="10" placeholder="Colonia" value="<?php echo $COLONIA?>" required>
+                <input class="field" type="text" name="COLONIA" placeholder="Colonia" value="<?php echo $COLONIA?>" required>
             </div>
             <div class="campo">
                 <label class="label">Municipio</label>
@@ -120,7 +120,7 @@
             </div>
             <div class="campo"> 
                 <label class="label">Estado</label>
-                <input class="field" type="text" name="Estado" minlength="10" placeholder="Estado" value="<?php echo $Estado?>" required>
+                <input class="field" type="text" name="Estado" placeholder="Estado" value="<?php echo $Estado?>" required>
             </div>
             <div class="campo">
                 <input type="submit" value="Enviar" class="boton-marron">

@@ -151,7 +151,7 @@
             <?php endforeach; ?>  
 
             <form class="formulario" method="POST" action="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/registro.php">
-                <div class="campo">
+            <div class="campo">
                 <label class="label">Correo Electrónico</label>
                 <input class="field" type="email" name="CorreoEf" placeholder="email@ejemplo.com" value="<?php echo $CorreoE?>" required>
             </div>

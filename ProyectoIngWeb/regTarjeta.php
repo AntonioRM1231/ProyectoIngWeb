@@ -71,40 +71,31 @@
           $statement->execute();   
           $statement->close();
           $conexion->close();
-          echo "se logró";
-          //header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/regDireccion.php');
+          header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/regDireccion.php');
         }
         
-        //Fin de los posibles errores      
-      
-        $consulta = "SELECT MAX(ID_Cliente) AS ID_Max FROM cliente";
-        $resultado = mysqli_query($conexion,$consulta);
-        $id_res = mysqli_fetch_assoc($resultado);
-        $id_Cliente = $id_res['ID_Max']+1;
-        $Contrasenia = password_hash($_POST['Contraseniaf'],PASSWORD_BCRYPT);
         if(empty($errores)){
           $statement = $conexion->prepare('CALL ingresarTarjeta(?,?,?,?,?,?)');
-          $statement->bind_param('ssssssisi',  
-            $CorreoE,
-            $NombreUsuario,
-            $Contrasenia,
-            $Nombre,
-            $ApPaterno,
-            $ApMaterno,
-            $Edad,
-            $NumTelefono,
-            $id_Cliente
+          $statement->bind_param('ssssss',  
+            $NumeroTarjeta,
+            $CVC,
+            $FechaVenc,
+            $NombreTarjeta,
+            $ApPatTarjeta,
+            $ApMatTarjeta
           );
           $statement->execute(); 
+
+          $statement = $conexion->prepare('CALL ingActTarjetaEnCliente(?,?)');
+          $correo = $_SESSION['CorreoE'];
+          $statement->bind_param('ss',  
+            $correo,
+            $NumeroTarjeta
+          );
+          $statement->execute();
           $statement->close();
           $conexion->close();
-
-          session_start();
-          $_SESSION['CorreoE'] = $CorreoE;
-          $_SESSION['login'] = true;
-
-          header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/productos.php?res=1?id='.strval($id_Cliente));
-          //res=1 Si se llevo exitosamente el registro del nuevo cliente
+          header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/regDireccion.php');
         }
     }
       

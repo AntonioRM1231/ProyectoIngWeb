@@ -90,6 +90,7 @@ $$
 CALL ingresarTarjeta('1236547898529635','321','0629','Alina','S','C');
 SELECT * FROM tarjeta;
 
+DROP PROCEDURE IF EXISTS ingresarDireccion;
 /*INGRESAR VALORES EN LA TABLA DE direccion*/
 DELIMITER $$
 CREATE PROCEDURE ingresarDireccion(
@@ -105,8 +106,6 @@ BEGIN
 	INSERT INTO 
     direccion (Calle,NumExt,NumInt,CP,COLONIA,Municipio,Estado)
     VALUES (_Calle,_NumExt,_NumInt,_CP,_Colonia,_Municipio,_Estado);
-    /*Se devuelve el ID de la dirección*/
-    SELECT MAX(ID_Direccion) AS ID_Dir FROM direccion;
 END;
 $$
 CALL ingresarDireccion('Manuel A. Camacho','18-A',' ',53770,'El Chamizal','Naucalpan','México');

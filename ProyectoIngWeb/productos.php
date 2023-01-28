@@ -2,7 +2,7 @@
     //PRODUCTOS PARA CUANDO YA TIENE UNA CUENTA EL CLIENTE
     require 'includes/funciones.php';
     //require 'conexionBD/connection.php';
-    include "includes/templates/header_productos.php";
+    include "includes/templates/header_cat.php";
     //******************************************************/
     $auth = estaAutenticado();
     // var_dump($auth);

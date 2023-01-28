@@ -4,7 +4,20 @@
     require 'conexionBD/connection.php';
     $mysql = new connection();
     $conexion = $mysql->get_connection();
-    $ID_Direccion = $_GET['dir'];
+    $band = 0;
+    $band = $_GET['band'] ?? 0;
+    echo "valor de band: ".strval($band);
+    if($band == 1){
+        echo "estoy en el if ed band";
+        $ID_Direccion = $_GET['dir'];
+        $_SESSION['ID_Direccion'] = $ID_Direccion;
+    }else if($band == 0){
+        $ID_Direccion = $_SESSION['ID_Direccion'];
+    }
+    
+    /*else if($band == 0){
+
+    }*/
     
     $ID_Zapato = $_SESSION['ID_Zapato'];
     $CorreoE = $_SESSION['CorreoE'];
@@ -67,27 +80,29 @@
 
     //Ejecutar el código después de que el usuario envie el formulario
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        
-        $statement = $conexion->prepare('CALL ingresarDireccion(?,?,?,?,?,?,?)');
-        $statement->bind_param('sssisss',  
-            $Calle,
-            $NumExt,
-            $NumInt,
-            $CP,
-            $COLONIA,
-            $Municipio,
-            $Estado
+        echo "holi";
+        echo "<br>";
+        echo "ID_Zapato: ".strval($ID_Zapato);
+        echo "<br>";
+        echo "ID_Direccion: ".strval($ID_Direccion);
+        echo "<br>";
+        echo "Correo: ".$CorreoE;
+
+        $statement = $conexion->prepare('CALL ingresarPedido(?,?,?)');
+        $statement->bind_param('iis',  
+            $ID_Zapato,
+            $ID_Direccion,
+            $CorreoE
         );
         $statement->execute(); 
         $statement->close();
 
-        $consulta = "SELECT MAX(ID_Direccion) AS ID_Dir FROM direccion";  
+        $consulta = "SELECT MAX(ID_Pedido) AS ID_Ped FROM pedido";  
         $resultado = mysqli_query($conexion,$consulta);
-        $id_res = mysqli_fetch_assoc($resultado);
-        $ID_Dir = $id_res['ID_Dir'];
+        $id_ped = mysqli_fetch_assoc($resultado);
+        $ID_Pedido = $id_ped['ID_Ped'];
         $conexion->close();
-        header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/infoPedido.php?dir='.strval($ID_Dir));
-        
+        header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/final.php?id='.strval($ID_Pedido));
     }
       
 ?>
@@ -104,7 +119,7 @@
                 </div>
             <?php endforeach; ?>  
 
-            <form class="formulario" method="POST" action="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/regDireccion.php">
+            <form class="formulario" method="POST" action="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/infoPedido.php">
             <h2>
                 ========================== Cliente ==========================
             </h2>

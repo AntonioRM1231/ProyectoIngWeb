@@ -75,7 +75,7 @@
           $id_res = mysqli_fetch_assoc($resultado);
           $ID_Dir = $id_res['ID_Dir'];
           $conexion->close();
-          header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/infoPedido.php?dir='.strval($ID_Dir));
+          header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/infoPedido.php?band=1&dir='.strval($ID_Dir));
         }
     }
       

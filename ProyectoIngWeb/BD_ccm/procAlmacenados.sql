@@ -5,9 +5,10 @@ DESCRIBE cliente;
 DESCRIBE administrador;
 DESCRIBE tarjeta;
 SELECT * FROM cliente;
-SELECT * FROM tarjeta;  
+SELECT * FROM tarjeta;   
 SELECT * FROM administrador; 
-SELECT * FROM zapato; 
+SELECT * FROM zapato;
+SELECT * FROM pedido; 
 /* PROCEDIMIENTOS ALMACENADOS */
 DROP PROCEDURE IF EXISTS ingresarPedido;
 

@@ -43,10 +43,10 @@
         var_dump($auth);
         echo "<br>";
         echo "despues del vardump";
-        //sleep(10);
         $mysql = new connection();
         $conexion = $mysql->get_connection();  
 
+        //hacer aquiiiiiiiiiiiiiiii la validacion de la sesion  
         $consulta = "SELECT NumeroTarjeta FROM cliente WHERE CorreoE = '".$_SESSION['CorreoE']."';";
         $resultado = mysqli_query($conexion,$consulta);
         $NumeroTarjeta = mysqli_fetch_assoc($resultado);

@@ -39,7 +39,7 @@
                     <a href="mujer2.php">Mujer</a>
                     <a href="nino2.php">Niño</a>
                     <a href="nina2.php">Niña</a>
-                    <a href="productos.php.#nosotros">Nosotros</a>
+                    <a href="#nosotros" class="a-nos">Nosotros</a>
                     <a href="cerrarSesion.php">Cerrar sesión</a>
                 </nav>
             </div>

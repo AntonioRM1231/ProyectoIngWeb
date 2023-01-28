@@ -36,6 +36,7 @@ $consulta = mysqli_query($db, $query);
 ?>
 <div class="contenedor-anuncio">
 <?php while($zapato = mysqli_fetch_assoc($consulta)):?>
+  <?php if ($zapato['Disponibilidad']>0): ?>
     <div class="anuncio">
       <div id="<?php echo "carousel".$zapato['ID_Zapato'] ?>" class="carousel slide">
         <div class="carousel-inner">
@@ -71,9 +72,9 @@ $consulta = mysqli_query($db, $query);
         <a href="<?php echo $ver.$zapato['ID_Zapato'] ?>" class="boton-agua">Ver</a>
       </div>
     </div>
+    <?php endif; ?>
   <?php endwhile;?>
   </div>
 <?php
 //Cerrando la conexion a la base de datos
-
 ?>

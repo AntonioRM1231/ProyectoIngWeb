@@ -15,6 +15,9 @@ body{
 	background-size:cover;
 	font-size: 1.6rem;
     line-height: 1.5;
+    &.fijar-body{
+        overflow: hidden;
+    }
     &.body-scroll{
         padding-top: 15.8rem;
     }

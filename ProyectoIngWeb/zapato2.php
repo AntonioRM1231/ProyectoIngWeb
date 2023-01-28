@@ -1,39 +1,62 @@
 <?php
     echo "hola1";
     echo "<br>";
-    //Determinar si es un ID valido
-    $id = $_GET['id'];
-    $id = filter_var($id, FILTER_VALIDATE_INT);
-
-    if (!$id) {
-        echo "no hay id";
-        echo "<br>";
-            //header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/productos.php');
-    }
     include "includes/templates/header_cat.php";
-    //require '../../includes/funciones.php';
-    //incluirTemplate('header_admin');
-    // Base de datos
     require 'conexionBD/database.php';
+    require 'conexionBD/connection.php';
+    $bandera = 0;
+    $bandera = $_GET['b'] ?? 0;
+    //require '../../includes/funciones.php';
+    //Determinar si es un ID valido
+    if($bandera == 0){
+        $id = $_GET['id'];
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+        echo "id original: ".strval($id);
+        echo "<br>";
+        $_SESSION['ID_Zapato'] = $id;
+        echo "valor de session id: ".strval($_SESSION['ID_Zapato']);
+    }else if($bandera == 1){
+        $id = $_SESSION['ID_Zapato'];
+        echo "valor del id con session: ".strval($id);  
+        echo "<br>";
+    }
+
+    //if (!$id) {
+      //  echo "no hay id";
+        //echo "<br>";
+            //header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/productos.php');
+    //}
+    
     $db = conectarDB();
-    echo "después de la conexión";
-    echo "<br>";
     //Obtener los datos del zapato
     $consulta = "SELECT * FROM zapato WHERE ID_Zapato = ${id}";
     $resultado = mysqli_query($db, $consulta);
     if (!$resultado->num_rows) {
         header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/index.php');
     }
-    echo "después del resultado";
-    echo "<br>";
+    // echo "después del resultado";
+    // echo "<br>";
     $zapato = mysqli_fetch_assoc($resultado);
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         echo "en el if";
         var_dump($auth);
-        echo "despues del ivardump";
-        sleep(10);
-        //header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/index.php');
+        echo "<br>";
+        echo "despues del vardump";
+        //sleep(10);
+        $mysql = new connection();
+        $conexion = $mysql->get_connection();  
+
+        $consulta = "SELECT NumeroTarjeta FROM cliente WHERE CorreoE = '".$_SESSION['CorreoE']."';";
+        $resultado = mysqli_query($conexion,$consulta);
+        $NumeroTarjeta = mysqli_fetch_assoc($resultado);
+        $NumTarjeta = $NumeroTarjeta['NumeroTarjeta'];
+        $conexion->close();
+        if($NumTarjeta == NULL){
+            header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/regTarjeta.php');
+        }else{  
+            header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/regDireccion.php');
+        }
     }
 ?>
 <main class="contenedor">
@@ -47,9 +70,9 @@
                 </div>
                 <div class="anuncio-der">  
                     <h2><?php echo $zapato['Modelo'] ?></h2>
-                    <p><?php echo "$".$zapato['PrecioVenta'] ?></p>
+                    <p><?php echo "$".$zapato['PrecioVenta'] ?></p> 
                     <p><?php echo $zapato['NumeroDisp'] ?> MX </p>
-                    <form class="formulario" method="POST" action="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/zapato2.php">
+                    <form class="formulario" method="POST" action="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/zapato2.php?b=1">
                         <input type="submit" class="boton-marron" value="Comprar">
                     </form>
                 </div>

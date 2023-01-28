@@ -93,6 +93,9 @@ ALTER TABLE cliente DROP COLUMN ID_Pedido;
 /*Ignorar hasta aquí :)*/
 DESCRIBE cliente;
 SELECT * FROM cliente;
+SELECT * FROM pedido;
+SELECT * FROM zapato;
+SELECT * FROM direccion;
 
 CREATE TABLE administrador(
 	UsuarioAdmin VARCHAR(50) NOT NULL,

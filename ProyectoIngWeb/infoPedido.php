@@ -4,79 +4,80 @@
     require 'conexionBD/connection.php';
     $mysql = new connection();
     $conexion = $mysql->get_connection();
+    $ID_Direccion = $_GET['dir'];
+    
+    $ID_Zapato = $_SESSION['ID_Zapato'];
+    $CorreoE = $_SESSION['CorreoE'];
+    $ID_Pedido = '';
+    $FechaPedido = '';
+    
+    $NombreUC = '';
+    $NombreC = '';
+    $ApPatC = '';
+    $ApMatC = '';
+    $NumTelC = '';
+    $NumTarjeta = '';
+
+    $ColorZ = '';
+    $NumZ = '';
+    $MarcaZ = '';
+    $ModeloZ = '';
+    $PrecioZ = '';
+
     $Calle = '';
-	  $NumExt = '';
-    $NumInt = '';
+    $NumExt = '';
+    $NumInt = '';  
     $CP = '';
     $COLONIA = '';
     $Municipio = '';
     $Estado = '';
 
-    //Arreglo con mensajes de errores
-    $errores = [];
+    //Consulta datos del cliente
+    $consulta = "SELECT * FROM cliente WHERE CorreoE = '".$CorreoE."';";
+    $resultado = mysqli_query($conexion,$consulta);
+    $cliente = mysqli_fetch_assoc($resultado);
+    $NombreUC = $cliente['NombreUsuario'];
+    $NombreC = $cliente['Nombre'];
+    $ApPatC = $cliente['ApPaterno'];
+    $ApMatC = $cliente['ApMaterno'];
+    $NumTelC = $cliente['NumTelefono'];
+    $NumTarjeta = $cliente['NumeroTarjeta'];
+
+    //Consulta datos del zapato
+    $consulta = "SELECT * FROM zapato WHERE CorreoE = '".$ID_Zapato."';";
+    $resultado = mysqli_query($conexion,$consulta);
+    $cliente = mysqli_fetch_assoc($resultado);
+
+
+    //Consulta Domicilio
+
+
+
 
     //Ejecutar el código después de que el usuario envie el formulario
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $Calle = strtoupper(filter_var($_POST['Calle'],FILTER_SANITIZE_STRING));
-        $NumExt = strtoupper($_POST['NumExt']);
-        $NumInt = strtoupper($_POST['NumInt']);  
-        $CP = filter_var($_POST['CP'],FILTER_SANITIZE_NUMBER_INT);
-        $COLONIA = strtoupper(filter_var($_POST['COLONIA'],FILTER_SANITIZE_STRING));
-        $Municipio = strtoupper(filter_var($_POST['Municipio'],FILTER_SANITIZE_STRING));
-        $Estado = strtoupper(filter_var($_POST['Estado'],FILTER_SANITIZE_STRING));
+        
+        
+        $statement = $conexion->prepare('CALL ingresarDireccion(?,?,?,?,?,?,?)');
+        $statement->bind_param('sssisss',  
+        $Calle,
+        $NumExt,
+        $NumInt,
+        $CP,
+        $COLONIA,
+        $Municipio,
+        $Estado
+        );
+        $statement->execute(); 
+        $statement->close();
 
-        //Posibles errores al registrar una dirección
-        if(!$_POST['Calle']){
-          $errores[] = 'El nombre de la calle es obligatorio';
-        }
-        if(!$_POST['NumExt']){
-          $errores[] = 'El número exterior es obligatorio';
-        }
-        if(!$_POST['CP']){  
-          $errores[] = 'El Código Postal es obligatorio';
-        }
-        $nums = "0123456789";
-        $contNums = 0;
-        for($i = 0; $i<strlen($nums); $i++){
-          if(!str_contains($_POST['CP'],substr($nums,$i,1))) {
-            $contNums++;
-          }
-        }
-        if($contNums == 0){
-          $errores[] = 'El Código Postal unicamente puede incluir números';  
-        }
-        if(!$_POST['COLONIA']){
-          $errores[] = 'El nombre de la Colonia es obligatorio';
-        }
-        if(!$_POST['Municipio']){
-          $errores[] = 'El Municipio es obligatorio';
-        }
-        if(!$_POST['Estado']){
-          $errores[] = 'El Estado es obligatorio';
-        }
-        //Fin de los posibles errores      
-      
-        if(empty($errores)){
-          $statement = $conexion->prepare('CALL ingresarDireccion(?,?,?,?,?,?,?)');
-          $statement->bind_param('sssisss',  
-            $Calle,
-            $NumExt,
-            $NumInt,
-            $CP,
-            $COLONIA,
-            $Municipio,
-            $Estado
-          );
-          $statement->execute(); 
-          $statement->close();
-
-          $consulta = "SELECT MAX(ID_Direccion) AS ID_Dir FROM direccion";  
-          $resultado = mysqli_query($conexion,$consulta);
-          $id_res = mysqli_fetch_assoc($resultado);
-          $ID_Dir = $id_res['ID_Dir'];
-          $conexion->close();
-          header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/infoPedido.php?dir='.strval($ID_Dir));
-        }
+        $consulta = "SELECT MAX(ID_Direccion) AS ID_Dir FROM direccion";  
+        $resultado = mysqli_query($conexion,$consulta);
+        $id_res = mysqli_fetch_assoc($resultado);
+        $ID_Dir = $id_res['ID_Dir'];
+        $conexion->close();
+        header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/infoPedido.php?dir='.strval($ID_Dir));
+        
     }
       
 ?>

@@ -76,7 +76,6 @@
           $ID_Dir = $id_res['ID_Dir'];
           $conexion->close();
           header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/productos.php?dir='.strval($ID_Dir));
-          //res=1 Si se llevo exitosamente el registro del nuevo cliente
         }
     }
       
@@ -84,7 +83,7 @@
     <hr>
         <section id="#crear">
             <h1>
-                Ingresa los datos a donde será enviado tu pedido
+                Ingresa los datos de la dirección a donde será enviado tu pedido
             </h1>
             <div class="contenedor">
                 <!-- Código para ver errores en el registro -->
@@ -95,37 +94,33 @@
             <?php endforeach; ?>  
 
             <form class="formulario" method="POST" action="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/regDireccion.php">
-                <div class="campo">
-                <label class="label">Correo Electrónico</label>
-                <input class="field" type="email" name="CorreoEf" placeholder="email@ejemplo.com" value="<?php echo $CorreoE?>" required>
+            <div class="campo">
+                <label class="label">Calle</label>
+                <input class="field" type="text" name="Calle" placeholder="Nombre de la Calle" value="<?php echo $Calle?>" required>
             </div>
             <div class="campo">
-                <label class="label">Nombre de Usuario</label>
-                <input class="field" type="text" name="NombreUsuariof" placeholder="Usuario" value="<?php echo $NombreUsuario?>" required>
+                <label class="label">Num Exterior </label>
+                <input class="field" type="text" name="NunExt" placeholder="Número Exterior" value="<?php echo $NunExt?>" required>
             </div>
             <div class="campo">
-                <label class="label">Contraseña</label>
-                <input class="field" type="password" name="Contraseniaf" placeholder="**********" required>
+                <label class="label">Num Interior </label>
+                <input class="field" type="text" name="NumInt" placeholder="Número Interior" value="<?php echo $NumInt?>" required>
             </div>
             <div class="campo">
-                <label class="label">Nombre</label>
-                <input class="field" type="text" name="Nombref" placeholder="Nombre" value="<?php echo $Nombre?>" required>
-            </div>
-            <div class="campo">
-                <label class="label">Apellido Paterno</label>
-                <input class="field" type="text" name="ApPaternof" placeholder="Apellido Paterno" value="<?php echo $ApPaterno?>" required>
-            </div>
-            <div class="campo">
-                <label class="label">Apellido Materno</label>
-                <input class="field" type="text" name="ApMaternof" placeholder="Apellido Materno" value="<?php echo $ApMaterno?>" required>
-            </div>
-            <div class="campo">
-                <label class="label">Edad</label>
-                <input class="field" type="number" name="Edadf" placeholder="00" min="0" value="<?php echo $Edad?>" required>
+                <label class="label">CP</label>
+                <input class="field" type="number" name="CP" placeholder="Código Postal" value="<?php echo $CP?>" required>
             </div>
             <div class="campo"> 
-                <label class="label">NumTelefono</label>
-                <input class="field" type="text" name="NumTelefonof" minlength="10" placeholder="1234567890" value="<?php echo $NumTelefono?>" required>
+                <label class="label">Colonia </label>
+                <input class="field" type="text" name="COLONIA" minlength="10" placeholder="Colonia" value="<?php echo $COLONIA?>" required>
+            </div>
+            <div class="campo">
+                <label class="label">Municipio</label>
+                <input class="field" type="text" name="Municipio" placeholder="Municipio" value="<?php echo $Municipio?>" required>
+            </div>
+            <div class="campo"> 
+                <label class="label">Estado</label>
+                <input class="field" type="text" name="Estado" minlength="10" placeholder="Estado" value="<?php echo $Estado?>" required>
             </div>
             <div class="campo">
                 <input type="submit" value="Enviar" class="boton-marron">

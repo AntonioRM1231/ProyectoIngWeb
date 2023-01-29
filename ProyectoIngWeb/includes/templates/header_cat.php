@@ -58,6 +58,7 @@
                         </a>
                     <?php endif ?>
                     <?php  if($auth): ?>
+                        <a href="verPerfil.php">Ver Perfil</a>
                         <a href="cerrarSesion.php">Cerrar sesión</a>
                     <?php endif ?>
                 </nav>

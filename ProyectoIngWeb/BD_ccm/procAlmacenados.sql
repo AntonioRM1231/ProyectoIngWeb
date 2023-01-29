@@ -180,6 +180,33 @@ END;
 $$
 CALL actualizarStock(5);
 
+DROP PROCEDURE IF EXISTS editarCliente;
+/*EDITAR TODOS LOS DATOS EN LA TABLA DE cliente*/
+DELIMITER $$
+CREATE PROCEDURE editarCliente(
+    IN _CorreoE VARCHAR(70),
+	IN _NombreUsuario VARCHAR(50),
+    IN _Nombre VARCHAR(18),
+    IN _ApPaterno VARCHAR(18),
+    IN _ApMaterno VARCHAR(18),
+    IN _Edad INT,
+    IN _NumTelefono VARCHAR(10)
+)  
+BEGIN
+	UPDATE cliente   
+		SET NombreUsuario = _NombreUsuario,
+			Nombre = _Nombre,
+			ApPaterno = _ApPaterno,
+			ApMaterno = _ApMaterno,
+			Edad = _Edad,
+			NumTelefono = _NumTelefono
+    WHERE CorreoE = _CorreoE;
+END;  
+$$
+CALL editarCliente('0252@gmaiil.com','anahi1234','ANAHI','S','C',21,'1234567890');
+SELECT * FROM cliente;
+
+
 SELECT * FROM pedido;
 SELECT * FROM zapato;
 DELETE FROM zapato WHERE ID_Zapato = 1;

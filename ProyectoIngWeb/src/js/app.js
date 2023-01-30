@@ -61,7 +61,7 @@ function mostrarImagen(){
             const id = e.target.attributes.id.value;
             console.log(id);
             const image = document.createElement('div');
-            image.innerHTML=`<img width="400" height="500" src="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/image/${id}">`;
+            image.innerHTML=`<img width="600" height="600" src="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/image/${id}">`;
             //Crea ell overlay con la imagen
             const overlay = document.createElement('DIV');
             overlay.appendChild(image);

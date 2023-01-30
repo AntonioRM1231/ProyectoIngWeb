@@ -37,6 +37,6 @@
     display: $display;
     border: 1px solid v.$transparente;
     &:hover{
-         background-color: darken(v.$marron, 5);
+         background-color: darken($bgColor, 5);
     }
 }

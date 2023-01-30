@@ -4,6 +4,7 @@ SHOW TABLES;
 DESCRIBE cliente;
 DESCRIBE administrador;
 DESCRIBE tarjeta;
+DESCRIBE pedido;
 SELECT * FROM cliente;
 SELECT * FROM tarjeta;   
 SELECT * FROM administrador; 
@@ -11,8 +12,10 @@ SELECT * FROM zapato;
 SELECT * FROM pedido; 
 /* PROCEDIMIENTOS ALMACENADOS */
 DROP PROCEDURE IF EXISTS ingresarPedido;
-
+DROP PROCEDURE IF EXISTS ingresarClienteCT;
 DROP PROCEDURE IF EXISTS ingresarClienteST;
+DROP PROCEDURE IF EXISTS ingresarZapato;
+DROP TABLE gerente;
 /*INGRESAR VALORES EN LA TABLA DE cliente CUANDO AÚN NO REGISTRA TARJETA*/
 DELIMITER $$
 CREATE PROCEDURE ingresarClienteST(/*ST->Sin Tarjeta*/
@@ -155,6 +158,7 @@ CALL ingresarZapato('Azul',4,30,'Adidas','forum',700.00,800.00,'equipolocal','eq
 SELECT * FROM zapato;
 
 /*INGRESAR VALORES EN LA TABLA DE administrador*/
+DROP PROCEDURE IF EXISTS ingresarAdmin;
 DELIMITER $$
 CREATE PROCEDURE ingresarAdmin(
 	IN _UsuarioAdmin VARCHAR(50),

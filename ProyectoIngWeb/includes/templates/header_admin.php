@@ -43,6 +43,7 @@
                     <?php  if($auth): ?>
                         <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/editar.php">Editar Zapato</a>
                         <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/registroAdmin.php">Crear Nuevo Admin</a>
+                        <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/pedidos.php">Pedidos</a>
                         <a href="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/cerrarSesion.php">Cerrar sesión</a>
                     <?php endif ?>
                 </nav>

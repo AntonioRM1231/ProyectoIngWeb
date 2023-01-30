@@ -150,7 +150,6 @@
          }
     }
    ?>
-        <hr>
         <section id="#crear">
             <h2>Actualizar</h2>
             <div class="contenedor">
@@ -219,11 +218,6 @@
                 </form>
             </div>
         </section>
-        <hr>
-        <footer  class="site-footer">
-            <p><b>CUIDADO CON EL MICHI</b></p>
-            <p>TODOS LOS DERECHOS RESERVADOS</p>
-        </footer>
-        <script src="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/build/js/app.js"></script>
-    </body>
-</html>
+        <?php
+        include "../../includes/templates/footer.php";
+        ?>

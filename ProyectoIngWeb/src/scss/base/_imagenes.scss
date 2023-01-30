@@ -1,0 +1,11 @@
+@use 'variables' as v;
+
+.pedido-img{
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    img{
+        width: 25%;
+        border: 1px solid v.$marron;
+    }
+}

@@ -1,19 +1,13 @@
 <?php
       require '../includes/funciones.php';
-      //require 'Cliente.php';
       require '../conexionBD/connection.php';
-      include "../includes/templates/header_registro.php";
+      include "../includes/templates/header_admin.php";
 
       $auth = estaAutenticadoAdmin();
-      // var_dump($auth);
-      // echo "var session: ";
-      // var_dump($_SESSION);
       if(!$auth){
-          // echo 'dentro del if';
           header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/index.php');
       }
 
-      //incluirTemplate('header');
       $mysql = new connection();
       $conexion = $mysql->get_connection();
       $statement = $conexion->prepare('CALL ingresarAdmin(?,?)');
@@ -22,16 +16,12 @@
       $consulta = "SELECT * FROM administrador;";
       $resultado = mysqli_query($conexion,$consulta);
       if(!$resultado->num_rows){
-        echo "<br>";
-        echo "no hay results";
         $primerAdmin = 'yoSoyAdminUwU';
         $primerContrasenia = 'anahi123#admin';
         $primerContrasenia = password_hash($primerContrasenia,PASSWORD_BCRYPT);
         $consulta = "INSERT INTO administrador (UsuarioAdmin, ContraseniaAdmin) VALUES ('".$primerAdmin."','".$primerContrasenia."')";
         $resultado = mysqli_query($conexion,$consulta);
       }//Fin :D 
-      // echo "Despues de verificar si no hay usuarios";
-      // echo "<br>";
       $UsuarioAdmin = '';
       $ContraseniaAdmin = '';
 
@@ -48,8 +38,6 @@
         //Verificar si el usuario que desea registrar ya existe en la base de datos
         $consulta = "SELECT * FROM administrador WHERE UsuarioAdmin = '".$UsuarioAdmin."';";
         $resultado = mysqli_query($conexion,$consulta);
-        echo "Después de la var resutado";
-        echo "<br>";
         //Verifica que haya al menos una fila en el resultado de la consulta
         if($resultado->num_rows){
           $errores[] = 'El Nombre de Usuario que desea registrar ya ha sido asignado';
@@ -65,8 +53,6 @@
         }
         $ContraseniaAdmin = password_hash($ContraseniaAdmin,PASSWORD_BCRYPT);
         if(empty($errores)){
-            echo "En el if de empty";
-            echo "<br>";
             $statement->bind_param('ss',  
               $UsuarioAdmin,
               $ContraseniaAdmin
@@ -81,7 +67,6 @@
             $_SESSION['loginAdmin'] = true;
   
             header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/index.php');
-        //var_dump($erroresIS);
         }
       }
     ?>
@@ -114,11 +99,6 @@
           </form>
             </div>
         </section>
-    <hr>
-        <footer  class="site-footer">
-            <p><b>CUIDADO CON EL MICHI</b></p>
-            <p>TODOS LOS DERECHOS RESERVADOS</p>
-        </footer>
-        <script src="build/js/app.js"></script>
-    </body>
-</html>
+        <?php
+        include "../includes/templates/footer.php";
+        ?>

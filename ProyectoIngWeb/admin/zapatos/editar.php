@@ -18,23 +18,10 @@ require "../../includes/funciones.php";
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       require '../../conexionBD/database.php';
-      require '../../conexionBD/connection.php';
-      $mysql = new connection();
-      $conexion = $mysql->get_connection();
-
       $db = conectarDB();
       $id = $_POST['id'];
       $id = filter_var($id, FILTER_VALIDATE_INT);
-      $bandera = 0;
       if($id){
-
-        $consulta = "SELECT ID_Zapato FROM pedido WHERE ID_Zapato = ".strval($id);  
-        $resultado = mysqli_query($conexion,$consulta);
-        $id_res = mysqli_fetch_assoc($resultado);
-        $ID_Zap = $id_res['ID_Zapato'];
-        $conexion->close();
-
-        if($ID_Zap == NULL){
           //Eliminar el archivo
           $query = "SELECT imagenA, imagenB, imagenC, imagenD FROM zapato WHERE ID_Zapato = ${id}";
           $resultado = mysqli_query($db, $query);
@@ -53,13 +40,6 @@ require "../../includes/funciones.php";
           if ($resultado) {
             header('Location: /ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/editar.php?result=3');
           }
-        }else{
-          $bandera = 1;
-        }
-        
-        
-        
-
       }
       
   }
@@ -78,72 +58,13 @@ require "../../includes/funciones.php";
   <?php endif;?>
 
   <!-- CARDS -->
-  
-  
-  <?php if($bandera == 1): ?>
-    <div class = "alerta error"> 
-        No se puede eliminar el zapato 
-    </div>
-  <?php endif; ?>
-  
   <?php
   //Incluye un template
   include "../../includes/templates/anuncios_g.php";
   ?>
   
-  <!-- <div class="contenedor-anuncio"> -->
-  <?php //while($zapato = mysqli_fetch_assoc($consulta)):?>
-    <!-- <div class="anuncio">
-      <div id="<?php //echo "carousel".$zapato['ID_Zapato'] ?>" class="carousel slide">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="image/<?php //echo $zapato['imagenA'] ?>" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="image/<?php //echo $zapato['imagenB'] ?>" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="image/<?php //echo $zapato['imagenC'] ?>" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="image/<?php //echo $zapato['imagenD'] ?>" class="d-block w-100" alt="...">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="<?php //echo "#carousel".$zapato['ID_Zapato'] ?>" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="<?php //echo "#carousel".$zapato['ID_Zapato'] ?>" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-
-      <div class="contenido-anuncio">
-        <h3><?php //echo $zapato['Modelo'] ?></h3>
-        <p><?php //echo $zapato['Categoria'] ?>--<?php //echo $zapato['Marca'] ?><p>
-        <p>ID: <?php //echo $zapato['ID_Zapato'] ?> Color: <?php //echo $zapato['Color'] ?><p>
-        <p>Sz: <?php //echo $zapato['NumeroDisp']."MX" ?> Stock: <?php //echo $zapato['Disponibilidad'] ?><p>
-        <p><?php //echo "$".$zapato['PrecioCompra'] ?>-<?php //echo "$".$zapato['PrecioVenta'] ?><p>
-        <a href="zapato.php?id=<?php //echo $zapato['ID_Zapato'] ?>" class="boton-agua">Ver</a>
-        <a href="actualizar.php?id=<?php //echo $zapato['ID_Zapato'] ?>" class="boton-verde">Actualizar</a>
-        <form method='POST'>
-          <input type="hidden" name="id" value="<?php //echo $zapato['ID_Zapato'] ?>">
-          <input type="submit" class="boton-rojo" value="Eliminar">
-        </form>
-      </div>
-    </div> -->
-  <?php //endwhile;?>
-  <!-- </div> -->
 </main>
-<hr>
-<?php 
-//Cerrar la conexion 
+<?php
+  include "../../includes/templates/footer.php";
 ?>
-        <footer  class="site-footer">
-            <p><b>CUIDADO CON EL MICHI</b></p>
-            <p>TODOS LOS DERECHOS RESERVADOS</p>
-        </footer>
-        <script src="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/build/js/app.js"></script>
-    </body>
-</html>
+        

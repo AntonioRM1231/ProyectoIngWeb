@@ -43,15 +43,11 @@ $consulta = mysqli_query($db, $query);
         <p><?php echo "$".$zapato['PrecioCompra'] ?>-<?php echo "$".$zapato['PrecioVenta'] ?><p>
         <a href="zapato.php?id=<?php echo $zapato['ID_Zapato'] ?>" class="boton-agua">Ver</a>
         <a href="actualizar.php?id=<?php echo $zapato['ID_Zapato'] ?>" class="boton-verde">Actualizar</a>
-        <form method='POST'>
+        <!-- <form method='POST'>
           <input type="hidden" name="id" value="<?php echo $zapato['ID_Zapato'] ?>">
           <input type="submit" class="boton-rojo" value="Eliminar">
-        </form>
+        </form> -->
       </div>
     </div>
   <?php endwhile;?>
   </div>
-<?php
-//Cerrando la conexion a la base de datos
-
-?>

@@ -20,15 +20,14 @@
     }
     $zapato = mysqli_fetch_assoc($resultado);
 ?>
-<hr>
 <main class="contenedor">
         <section class="contenedor">
             <div class="cuerpo-anuncio">
                 <div class="anuncio-izq">
-                    <img src="image/<?php echo $zapato['imagenA'] ?>" class="pics">
-                    <img src="image/<?php echo $zapato['imagenB'] ?>" class="pics">
-                    <img src="image/<?php echo $zapato['imagenC'] ?>" class="pics">
-                    <img src="image/<?php echo $zapato['imagenD'] ?>" class="pics">
+                    <img src="image/<?php echo $zapato['imagenA'] ?>" class="pics" id="<?php echo $zapato['imagenA'] ?>">
+                    <img src="image/<?php echo $zapato['imagenB'] ?>" class="pics" id="<?php echo $zapato['imagenB'] ?>">
+                    <img src="image/<?php echo $zapato['imagenC'] ?>" class="pics" id="<?php echo $zapato['imagenC'] ?>">
+                    <img src="image/<?php echo $zapato['imagenD'] ?>" class="pics" id="<?php echo $zapato['imagenD'] ?>">
                 </div>
                 <div class="anuncio-der">
                     <h2><?php echo $zapato['Modelo'] ?></h2>
@@ -38,10 +37,6 @@
             </div>
         </section>
     </main>
-        <footer  class="site-footer">
-            <p><b>CUIDADO CON EL MICHI</b></p>
-            <p>TODOS LOS DERECHOS RESERVADOS</p>
-        </footer>
-        <script src="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/build/js/app.js"></script>
-    </body>
-</html>
+    <?php
+    include "../../includes/templates/footer.php";
+    ?>

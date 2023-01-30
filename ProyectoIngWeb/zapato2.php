@@ -1,6 +1,4 @@
 <?php
-    echo "hola1";
-    echo "<br>";
     include "includes/templates/header_cat.php";
     require 'conexionBD/database.php';
     require 'conexionBD/connection.php';
@@ -12,12 +10,9 @@
     if($bandera == 0){
         $id = $_GET['id'];
         $id = filter_var($id, FILTER_VALIDATE_INT);
-        //echo "id original: ".strval($id);
         $_SESSION['ID_Zapato'] = $id;
-        echo "valor de session id: ".strval($_SESSION['ID_Zapato']);
     }else if($bandera == 1){
         $id = $_SESSION['ID_Zapato'];
-        //echo "valor del id con session: ".strval($id);
     }
     
     $db = conectarDB();
@@ -71,10 +66,6 @@
             </div>
         </section>
     </main>
-        <footer  class="site-footer">
-            <p><b>CUIDADO CON EL MICHI</b></p>
-            <p>TODOS LOS DERECHOS RESERVADOS</p>
-        </footer>
-        <script src="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/build/js/app.js"></script>
-    </body>
-</html>
+    <?php
+        include "includes/templates/footer.php";
+    ?>

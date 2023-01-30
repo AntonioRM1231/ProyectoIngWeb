@@ -12,9 +12,7 @@
     $conexion = $mysql->get_connection();
     $band = 0;
     $band = $_GET['band'] ?? 0;
-    echo "valor de band: ".strval($band);
     if($band == 1){
-        echo "estoy en el if ed band";
         $ID_Direccion = $_GET['dir'];
         $_SESSION['ID_Direccion'] = $ID_Direccion;
     }else if($band == 0){
@@ -69,6 +67,7 @@
     $ModeloZ = $zapato['Modelo'];
     $PrecioZ = $zapato['PrecioVenta'];
     $CategoriaZ = $zapato['Categoria'];
+    $imagenA = $zapato['imagenA'];
 
     //Consulta Domicilio
     $consulta = "SELECT * FROM direccion WHERE ID_Direccion = '".$ID_Direccion."';";
@@ -84,13 +83,6 @@
 
     //Ejecutar el código después de que el usuario envie el formulario
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        echo "holi";
-        echo "<br>";
-        echo "ID_Zapato: ".strval($ID_Zapato);
-        echo "<br>";
-        echo "ID_Direccion: ".strval($ID_Direccion);
-        echo "<br>";
-        echo "Correo: ".$CorreoE;
 
         $statement = $conexion->prepare('CALL ingresarPedido(?,?,?)');
         $statement->bind_param('iis',  
@@ -123,13 +115,6 @@
                 Datos sobre tu pedido
             </h1>
             <div class="contenedor">
-                <!-- Código para ver errores en el registro -->
-            <?php foreach($errores as $error): ?>
-                <div class = "alerta error"> <!-- ...error-->
-                    <?php echo '*'.$error; ?>
-                </div>
-            <?php endforeach; ?>  
-
             <form class="formulario" method="POST" action="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/infoPedido.php">
             <h2>
                 ========================== Cliente ==========================
@@ -185,6 +170,9 @@
                 <label class="label">Precio</label>
                 <input class="field" type="text" value="<?php echo $PrecioZ?>" readonly>
             </div>
+            <div class="pedido-img">
+                <img src="/ProyectoIngWebGit/ProyectoIngWeb/ProyectoIngWeb/admin/zapatos/image/<?php echo $imagenA ?>" class="imagen-zapato">
+            </div>
             <h2>
                 ========================= Domicilio =========================
             </h2>
@@ -223,11 +211,7 @@
           </form>
             </div>
         </section>
-    <hr>
-        <footer  class="site-footer">
-            <p><b>CUIDADO CON EL MICHI</b></p>
-            <p>TODOS LOS DERECHOS RESERVADOS</p>
-        </footer>
-        <script src="build/js/app.js"></script>
-    </body>
+        <?php
+        include "includes/templates/footer.php";
+        ?>
 </html>
